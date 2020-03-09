@@ -357,7 +357,7 @@ body {
   color: #ffffff;
 }
 .button:focus {
-  outline: 1px dotted #ffffff;
+  outline: 1px dotted #d6d6d6;
 }
 .button--primary {
   border-color: #5090BE;
