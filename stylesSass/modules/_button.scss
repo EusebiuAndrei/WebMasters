@@ -1,21 +1,45 @@
 @import '../base/colors';
 
 .button {
+  box-sizing: border-box;
   border: 2px solid;
-  padding: 2px;
+  padding: 3px 6px;
   font-size: 14pt;
+  color: $color__font-main--base;
+
+  &:hover:active {
+    color: $color__font-main--important;
+  }
+
+  &:focus {
+    outline: 1px dotted $color__font-main--important;
+  }
 
   &--primary {
-    border-color: $color__primary--dark;
+    border-color: $color__primary--light;
     background-color: $color__primary;
-    color: $color__font-main--base;
 
     &:hover {
       border-color: $color__font-main--base;
     }
+  }
 
-    &:active {
-      color: $color__font-main--important;
+  &--secondary {
+    border-color: $color__primary--dark;
+    background-color: $color__secondary;
+
+    &:hover {
+      border-color: $color__primary;
+    }
+  }
+
+  &--danger {
+    border-color: $color__danger;
+    background-color: $color__secondary;
+    color: $color__danger;
+
+    &:hover {
+      color: $color__font-main--base;
     }
   }
 }
