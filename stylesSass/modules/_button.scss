@@ -1,0 +1,21 @@
+@import '../base/colors';
+
+.button {
+  border: 5px solid;
+  padding: 2px;
+  font-size: 14pt;
+
+  &--primary {
+    border-color: $color__primary--dark;
+    background-color: $color__primary;
+    color: $color__font-main--base;
+
+    &:hover {
+      border-color: $color__font-main--base;
+    }
+
+    &:active {
+      color: $color__font-main--important;
+    }
+  }
+}
