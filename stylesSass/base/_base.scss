@@ -3,5 +3,49 @@
 }
 
 body {
-    font-size: 1em;
+    font-size: 2rem;
+    background-color: $color__bg;
+    color: $color__font-main--base;
+
+    @media screen and (min-width: 500px) {
+        font-size: 4em;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $color__primary--light;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+button {
+    background-color: $color__primary--light;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-size: 1.7em;
+}
+
+h2 {
+    font-size: 1.55em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+p {
+    letter-spacing: 0.05em;
 }
