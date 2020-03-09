@@ -309,4 +309,38 @@ template {
 body {
   font-size: 1em; }
 
+.card {
+  display: flex; }
+  .card__title {
+    font-size: 1.2em;
+    margin-left: 5%;
+    color: #798da3; }
+  .card__imageProfile {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto; }
+  .card__content {
+    flex: 1 1 auto;
+    display: block;
+    margin-left: 5%;
+    color: #3b4754;
+    width: 28rem; }
+  .card__position {
+    margin-left: 5%;
+    color: #798da3; }
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+  .card-container__item {
+    flex: 1 1 1;
+    flex-direction: column;
+    flex-basis: auto;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border: 3px solid black;
+    background-color: #1E2A32; }
+
 /*# sourceMappingURL=index.css.map */
