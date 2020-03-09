@@ -368,6 +368,7 @@ body {
 }
 .button--secondary {
   border-color: #1E4058;
+  color: #255577;
   background-color: #1E2A32;
 }
 .button--secondary:hover {
