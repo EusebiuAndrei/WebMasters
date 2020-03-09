@@ -347,8 +347,8 @@ body {
 
 .button {
   box-sizing: border-box;
-  border: 2px solid;
-  border-radius: 3px;
+  border: 1px solid;
+  border-radius: 4px;
   padding: 3px 6px;
   font-size: 14pt;
   color: #d6d6d6;
