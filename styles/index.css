@@ -324,13 +324,12 @@ body {
   .card__imageProfile {
     display: block;
     max-width: 100%;
-    height: auto; }
+    height: 25%; }
   .card__content {
     flex: 1 1 auto;
     display: block;
     padding: 0 5%;
-    color: #3b4754;
-    width: 28rem; }
+    color: #3b4754; }
   .card__position {
     padding: 0 5%;
     color: #798da3; }
@@ -340,7 +339,7 @@ body {
   justify-content: space-around;
   flex-wrap: wrap; }
   .card-container__item {
-    flex-basis: 200px;
+    flex-basis: 300px;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     border: 3px solid black;

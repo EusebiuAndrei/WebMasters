@@ -20,7 +20,7 @@
       
         display: block;
         max-width: 100%;
-        height: auto;
+        height: 25%;
     
     }
 
@@ -28,10 +28,9 @@
         
         flex: 1 1 auto;
         display: block;
-       // padding: 5% 5% 3% 5%;
-       padding: 0 5%;
+        padding: 0 5%;
         color:$color__font-aside--important;
-        width: 28rem;
+       
         
     }
 
@@ -46,7 +45,7 @@
     flex-wrap: wrap;
    
     &__item{
-        flex-basis: 200px;
+        flex-basis: 300px;
         border-top-left-radius: 0.25rem;
         border-top-right-radius: 0.25rem;
 
