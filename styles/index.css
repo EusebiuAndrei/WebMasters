@@ -310,6 +310,26 @@ body {
   font-size: 1em; }
 
 .reports-container {
-  display: flex; }
+  width: 80%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #171F25;
+  background-color: #1E4058; }
+  .reports-container__children {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; }
+  .reports-container__children:nth-child(2n) {
+    background-color: #1E2A32; }
+
+.reports__content {
+  color: #ffffff; }
+.reports__heads {
+  font-size: 21px;
+  letter-spacing: 1px; }
+
+#despartitor {
+  display: block; }
 
 /*# sourceMappingURL=index.css.map */

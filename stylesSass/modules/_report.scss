@@ -1,3 +1,39 @@
 .reports-container{
+    width: 80%;
+    height: 50%;
     display: flex;
+    flex-direction: column;
+    border: 3px solid $color__secondary--dark;
+
+    background-color: $color__primary--dark;
+
+    &__children{
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    &__children:nth-child(2n){
+        background-color:$color__secondary;
+    }
+}
+
+.reports{
+
+    &__content{ 
+       
+        color: $color__font-main--important;
+    }
+
+    &__heads{
+        
+        font-size: 21px;
+        letter-spacing: 1px;
+       
+    }
+}
+
+#despartitor{
+    display: block;
 }
