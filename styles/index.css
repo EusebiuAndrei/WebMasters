@@ -309,4 +309,7 @@ template {
 body {
   font-size: 1em; }
 
+.reports-container {
+  display: flex; }
+
 /*# sourceMappingURL=index.css.map */
