@@ -323,7 +323,6 @@ body {
     color: #798da3; }
   .card__imageProfile {
     display: block;
-    margin: 0 auto;
     max-width: 100%;
     height: auto; }
   .card__content {
