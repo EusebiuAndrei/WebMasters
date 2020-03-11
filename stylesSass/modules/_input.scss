@@ -1,3 +1,18 @@
-.input {
+@import "../base/colors";
 
+.input {
+  background-color: $color__secondary;
+  color: $color__font-aside--base;
+  border: solid 2px $color__secondary--dark;
+  border-radius: 3px;
+
+  &:focus {
+    border-color: $color__primary;
+    color: $color__font-main--base;
+    outline: none;
+  }
+}
+
+.input::placeholder {
+  color: darken($color__font-aside__base, 10%);
 }
