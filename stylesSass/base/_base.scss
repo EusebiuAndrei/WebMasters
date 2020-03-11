@@ -3,12 +3,12 @@
 }
 
 body {
-    font-size: 2rem;
+    font-size: 1.2rem;
     background-color: $color__bg;
     color: $color__font-main--base;
 
-    @media screen and (min-width: 500px) {
-        font-size: 4em;
+    @media (min-width: map-get($map: $media-breakpoints, $key: "sm")) {
+        font-size: 1rem;
     }
 }
 

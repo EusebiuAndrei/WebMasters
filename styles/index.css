@@ -307,12 +307,12 @@ template {
   box-sizing: border-box; }
 
 body {
-  font-size: 4rem;
+  font-size: 1.2rem;
   background-color: #1e2932;
   color: #d6d6d6; }
-  @media screen and (min-width: 500px) {
+  @media (min-width: 576px) {
     body {
-      font-size: 1.6em; } }
+      font-size: 1rem; } }
 
 a {
   text-decoration: none;
@@ -343,5 +343,35 @@ h3 {
 
 p {
   letter-spacing: 0.05em; }
+
+.container {
+  display: grid; }
+
+.button {
+  box-sizing: border-box;
+  border: 2px solid;
+  padding: 3px 6px;
+  font-size: 14pt;
+  color: #d6d6d6; }
+  .button:hover:active {
+    color: #ffffff; }
+  .button:focus {
+    outline: 1px dotted #ffffff; }
+  .button--primary {
+    border-color: #5090BE;
+    background-color: #2E648B; }
+    .button--primary:hover {
+      border-color: #d6d6d6; }
+  .button--secondary {
+    border-color: #1E4058;
+    background-color: #1E2A32; }
+    .button--secondary:hover {
+      border-color: #2E648B; }
+  .button--danger {
+    border-color: #ff7043;
+    background-color: #1E2A32;
+    color: #ff7043; }
+    .button--danger:hover {
+      color: #d6d6d6; }
 
 /*# sourceMappingURL=index.css.map */
