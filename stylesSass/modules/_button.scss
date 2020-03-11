@@ -21,7 +21,7 @@
     background-color: $color__primary;
 
     &:hover {
-      border-color: $color__font-main--base;
+      border-color: lighten($color__primary--light, 10%)
     }
   }
 
@@ -31,7 +31,11 @@
     background-color: $color__secondary;
 
     &:hover {
-      border-color: $color__primary;
+      border-color: lighten($color__primary--dark, 10%)
+    }
+
+    &:hover:active {
+      color: lighten($color__primary--dark-light, 20%);
     }
   }
 
@@ -41,7 +45,11 @@
     color: $color__danger;
 
     &:hover {
-      color: $color__font-main--base;
+      border-color: lighten($color__danger, 10%)
+    }
+
+    &:hover:active {
+      color: lighten($color__danger, 20%);
     }
   }
 }
