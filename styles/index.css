@@ -345,7 +345,38 @@ p {
   letter-spacing: 0.05em; }
 
 .container {
-  display: grid; }
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 10vw 1fr 1fr 1fr 1fr 10vw;
+  grid-template-areas: "banner banner banner banner banner banner" "header header header header header header" ". map map map nr ." ". bar bar pie pie ." ". reports reports reports reports ." "sub sub sub sub sub sub" "footer footer footer footer footer footer";
+  grid-gap: 10px; }
+  .container__banner {
+    grid-area: banner;
+    background-color: #314352; }
+  .container__header {
+    grid-area: header;
+    background-color: #29323d; }
+  .container__sub {
+    grid-area: sub;
+    background-color: #29323d; }
+  .container__footer {
+    grid-area: footer;
+    background-color: #314352; }
+  .container__map {
+    grid-area: map;
+    background-color: #2E648B; }
+  .container__nr {
+    grid-area: nr;
+    background-color: #5090BE; }
+  .container__bar {
+    grid-area: bar;
+    background-color: #171F25; }
+  .container__pie {
+    grid-area: pie;
+    background-color: #29323d; }
+  .container__reports {
+    grid-area: reports;
+    background-color: #1E4058; }
 
 .button {
   box-sizing: border-box;
