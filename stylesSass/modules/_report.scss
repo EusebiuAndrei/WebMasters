@@ -1,0 +1,59 @@
+.reports-container{
+
+    //  width: 80%; // just for testing
+    //  height: 50%; // just for testing
+    
+      display: flex;
+      flex-direction: column;
+      border: 3px solid $color__secondary--dark;
+     
+      background-color: $color__primary--dark;
+  
+      &__children{
+         
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+  
+          @media (max-width: 700px) {
+             
+              justify-content: space-between;
+           }
+  
+      }
+  
+    
+  
+      &__children:nth-child(2n){
+          background-color:$color__secondary;
+      }
+  }
+  
+  .reports{
+      
+      &__content{ 
+          flex: 1 1 0px;
+          color: $color__font-main--important;
+      }
+  
+      &__heads{
+          flex: 1 1 0px;
+          font-size: 21px;
+          letter-spacing: 1px;
+         
+      }
+  
+      &__dissapear{
+         // justify-content: space-between;
+          @media (max-width: 700px) {
+             display: none;
+           
+          }
+  
+     
+      }
+  }
+  
+  #despartitor{
+      display: block;
+  }
