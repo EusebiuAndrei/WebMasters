@@ -492,4 +492,17 @@ p {
 #despartitor {
   display: block; }
 
+.input {
+  background-color: #1E2A32;
+  color: #798da3;
+  border: solid 2px #171F25;
+  border-radius: 3px; }
+  .input:focus {
+    border-color: #2E648B;
+    color: #d6d6d6;
+    outline: none; }
+
+.input::placeholder {
+  color: #5f738a; }
+
 /*# sourceMappingURL=index.css.map */
