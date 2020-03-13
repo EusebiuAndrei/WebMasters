@@ -2,7 +2,8 @@
 
 .button {
   box-sizing: border-box;
-  border: 2px solid;
+  border: 1px solid;
+  border-radius: 4px;
   padding: 3px 6px;
   font-size: 14pt;
   color: $color__font-main--base;
@@ -12,7 +13,7 @@
   }
 
   &:focus {
-    outline: 1px dotted $color__font-main--important;
+    outline: 1px dotted $color__font-main--base;
   }
 
   &--primary {
@@ -20,16 +21,21 @@
     background-color: $color__primary;
 
     &:hover {
-      border-color: $color__font-main--base;
+      border-color: lighten($color__primary--light, 10%)
     }
   }
 
   &--secondary {
     border-color: $color__primary--dark;
+    color: $color__primary--dark-light;
     background-color: $color__secondary;
 
     &:hover {
-      border-color: $color__primary;
+      border-color: lighten($color__primary--dark, 10%)
+    }
+
+    &:hover:active {
+      color: lighten($color__primary--dark-light, 20%);
     }
   }
 
@@ -39,7 +45,11 @@
     color: $color__danger;
 
     &:hover {
-      color: $color__font-main--base;
+      border-color: lighten($color__danger, 10%)
+    }
+
+    &:hover:active {
+      color: lighten($color__danger, 20%);
     }
   }
 }
