@@ -352,6 +352,7 @@ body {
   padding: 3px 6px;
   font-size: 14pt;
   color: #d6d6d6;
+  cursor: pointer;
 }
 .button:hover:active {
   color: #ffffff;
@@ -387,6 +388,18 @@ body {
 }
 .button--danger:hover:active {
   color: #ffbea9;
+}
+.button--settings {
+  background-color: #2E648B;
+  border-color: #5090BE;
+  width: 32px;
+  height: 24px;
+  background-image: url("../img/settings.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.button--settings:hover {
+  border-color: #75a8cc;
 }
 
 /*# sourceMappingURL=index.css.map */
