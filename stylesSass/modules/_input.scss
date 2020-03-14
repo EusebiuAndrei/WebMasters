@@ -11,6 +11,21 @@
     color: $color__font-main--base;
     outline: none;
   }
+
+  &--search {
+    border-width: 3px;
+    border-color: $color__font-main--base;
+    border-radius: 500px;
+    padding: 5px 10px;
+
+    background-image: url(../../img/search.png);
+    background-repeat: no-repeat;
+    background-position: right;
+
+    &:focus {
+      border-color: $color__primary--light;
+    }
+  }
 }
 
 .input::placeholder {
