@@ -1,0 +1,34 @@
+@import '../base/colors';
+
+.container__sub {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 250px;
+  align-items: center;
+}
+
+.sub__title {
+  color: $color__font-aside--important;
+  margin-top: 0;
+}
+
+.sub__description {
+  color: $color__font-aside--base;
+  margin-bottom: 25px;
+}
+
+.sub__form {
+  height: 30px;
+
+  &__button {
+    padding: 0 20px;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  &__input {
+    height: 100%;
+    vertical-align: middle;
+  }
+}

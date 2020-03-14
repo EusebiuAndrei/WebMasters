@@ -31,7 +31,7 @@
     $grid_areas_bg: (
         "banner": lighten($color__bg, 10%), 
         "header": $color__secondary--light,
-        "sub": $color__secondary--light,
+        "sub": $color__bg-aside,
         "footer": lighten($color__bg, 10%), 
         "map": $color__primary, 
         "nr": $color__primary--light, 
