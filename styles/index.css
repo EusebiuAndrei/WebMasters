@@ -606,6 +606,16 @@ p {
   align-items: center;
   padding: 20px 0;
 }
+@media (max-width: 768px) {
+  .container__banner {
+    padding: 10px 0;
+  }
+}
+@media (max-width: 576px) {
+  .container__banner {
+    padding: 5px 0;
+  }
+}
 
 .banner__title {
   display: flex;
@@ -617,10 +627,21 @@ p {
   width: 64px;
   height: 64px;
 }
+@media (max-width: 576px) {
+  .banner__title__image {
+    width: 32px;
+    height: 32px;
+  }
+}
 
 .banner__title__text {
   font-size: 32pt;
   align-self: flex-end;
+}
+@media (max-width: 576px) {
+  .banner__title__text {
+    font-size: 16pt;
+  }
 }
 
 .banner__subtitle {

@@ -6,11 +6,18 @@
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
+
+  @media (max-width: map_get($media-breakpoints, "md")) {
+    padding: 10px 0;
+  }
+
+  @media (max-width: map_get($media-breakpoints, "sm")) {
+    padding: 5px 0;
+  }
 }
 
 .banner__title {
   display: flex;
-
 }
 
 .banner__title__image {
@@ -18,11 +25,20 @@
   margin-bottom: 10px;
   width: 64px;
   height: 64px;
+
+  @media (max-width: map_get($media-breakpoints, "sm")) {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .banner__title__text {
   font-size: 32pt;
   align-self: flex-end;
+
+  @media (max-width: map_get($media-breakpoints, "sm")) {
+    font-size: 16pt;
+  }
 }
 
 .banner__subtitle {
