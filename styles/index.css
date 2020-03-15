@@ -572,4 +572,15 @@ p {
     .banner__subtitle {
       display: none; } }
 
+.navbar-container {
+  display: flex;
+  justify-content: center; }
+  .navbar-container__children {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0; }
+  .navbar-container__childrenAbs {
+    flex: 1; }
+
 /*# sourceMappingURL=index.css.map */
