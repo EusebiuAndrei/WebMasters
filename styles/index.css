@@ -488,8 +488,11 @@ p {
 @media (max-width: 700px) {
   .reports__dissapear {
     display: none; } }
+.reports__buttons {
+  padding: 5px 10px;
+  margin: 18px 12px; }
 
-#despartitor {
+.separator {
   display: block; }
 
 .input {

@@ -22,8 +22,6 @@
   
       }
   
-    
-  
       &__children:nth-child(2n){
           background-color:$color__secondary;
       }
@@ -49,11 +47,16 @@
              display: none;
            
           }
-  
-     
+      }
+
+      &__buttons{
+            
+            padding: 5px 10px;
+            margin:  18px 12px;
+           
       }
   }
   
-  #despartitor{
+  .separator{
       display: block;
   }
