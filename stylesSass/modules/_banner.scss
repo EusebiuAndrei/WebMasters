@@ -1,3 +1,6 @@
+@import '../base/colors';
+@import '../base/variables';
+
 .container__banner {
   display: flex;
   flex-direction: column;
@@ -24,4 +27,8 @@
 
 .banner__subtitle {
   color: darken($color__font-main--base, 20%);
+
+  @media (max-width: map_get($media-breakpoints, "md")) {
+    display: none;
+  }
 }
