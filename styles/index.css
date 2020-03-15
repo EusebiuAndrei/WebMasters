@@ -510,7 +510,8 @@ p {
   flex-direction: column;
   justify-content: center;
   min-height: 250px;
-  align-items: center; }
+  align-items: center;
+  background-color: #edf0f4; }
 
 .sub__title {
   color: #3b4754;
