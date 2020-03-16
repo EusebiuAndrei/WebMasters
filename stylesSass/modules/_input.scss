@@ -1,6 +1,7 @@
 @import "../base/colors";
 
 .input {
+  height: 2.5em;
   background-color: $color__secondary;
   color: $color__font-aside--base;
   border: solid 2px $color__secondary--dark;
@@ -21,7 +22,7 @@
 
     background-image: url("../img/search.png");
     background-repeat: no-repeat;
-    background-position: 7px 7px;
+    background-position: 3% center;
 
     &:focus {
       border-color: $color__primary--light;

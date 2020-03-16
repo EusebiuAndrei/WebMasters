@@ -496,6 +496,7 @@ p {
   display: block; }
 
 .input {
+  height: 2.5em;
   background-color: #1E2A32;
   color: #798da3;
   border: solid 2px #171F25;
@@ -511,7 +512,7 @@ p {
     padding: 5px 10px 5px 30px;
     background-image: url("../img/search.png");
     background-repeat: no-repeat;
-    background-position: 7px 7px; }
+    background-position: 3% center; }
     .input--search:focus {
       border-color: #5090BE; }
 
@@ -602,7 +603,7 @@ p {
     height: 64px;
     align-self: center;
     padding: .2em; }
-  .navbar-container__childrenButtons {
+  .navbar-container__input {
     flex-basis: 150px;
     margin: auto 12%;
     align-self: center; }
