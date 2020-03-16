@@ -581,7 +581,7 @@ p {
     display: flex;
     justify-content: center; }
     .navbar-container__text__children {
-      font-size: .9em;
+      font-size: 1em;
       flex: 1 1 200px;
       align-self: center;
       margin: auto 15%; }
@@ -590,7 +590,8 @@ p {
     margin: auto 12%;
     width: 64px;
     height: 64px;
-    align-self: center; }
+    align-self: center;
+    padding: .2em; }
   .navbar-container__childrenButtons {
     flex-basis: 150px;
     margin: auto 12%;
