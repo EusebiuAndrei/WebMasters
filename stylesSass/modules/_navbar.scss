@@ -1,0 +1,42 @@
+.navbar-container{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    &__text{
+
+        flex: 1 1 200px; 
+        display: flex;
+        justify-content: center;
+
+        &__children{  
+
+
+            font-size: 1em;
+            flex: 1 1 200px;
+            align-self: center;
+            margin: auto 15%;
+        }
+
+    }
+
+    &__img{
+    
+        flex-basis: 80px;
+        margin: auto 12%;
+        width: 64px;
+        height: 64px;
+        align-self: center;
+        padding: .2em;
+    }
+
+    &__childrenButtons{
+
+     flex-basis: 150px;
+     
+     margin: auto 12%;
+     align-self: center;
+
+    }   
+}
