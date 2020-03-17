@@ -21,14 +21,21 @@
 
     }
 
-    &__img{
-    
-        flex-basis: 80px;
+    &__title {
+        min-height: 64px;
+        display: flex;
         margin: auto 12%;
-        width: 64px;
-        height: 64px;
-        align-self: center;
-        padding: .2em;
+
+        &__img{
+            width: 48px;
+            height: 48px;
+            align-self: center;
+            padding: .2em;
+        }
+
+        &__text {
+            margin-top: 25%;
+        }
     }
 
     &__input{

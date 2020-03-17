@@ -5,7 +5,7 @@
     grid-gap: 10px;
     
     grid-template-areas:
-       "banner"
+       //"banner"
        "header"
        "map"
        "nr"
@@ -18,7 +18,7 @@
     @media (min-width: map-get($map: $media-breakpoints, $key: "lg")) {
         grid-template-columns: 10vw 1fr 1fr 1fr 1fr 10vw;
         grid-template-areas:
-        "banner banner banner banner banner banner"
+        //"banner banner banner banner banner banner"
         "header header header header header header"
         ". map map map nr ."
         ". bar bar pie pie ."
@@ -29,7 +29,7 @@
 
     $grid_areas: banner, header, sub, footer, map, nr, bar, pie, reports;
     $grid_areas_bg: (
-        "banner": lighten($color__bg, 10%), 
+        //"banner": lighten($color__bg, 10%),
         "header": $color__secondary--light,
         "sub": $color__bg-aside,
         "footer": lighten($color__bg, 10%), 
