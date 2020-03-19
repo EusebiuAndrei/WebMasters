@@ -644,6 +644,9 @@ p {
   padding: 0 20px;
   height: 100%;
   vertical-align: middle;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: none;
 }
 .sub__form__input {
   height: 100%;
