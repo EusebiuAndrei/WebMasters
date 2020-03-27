@@ -608,4 +608,37 @@ p {
     margin: auto 12%;
     align-self: center; }
 
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center; }
+  .footer-container__text {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center; }
+    .footer-container__text__children {
+      font-size: 1em;
+      flex: 1 1 auto;
+      align-self: center; }
+  .footer-container__img {
+    flex-basis: 80px;
+    margin: auto;
+    margin-left: 12%;
+    margin-right: 5%;
+    width: 64px;
+    height: 64px;
+    align-self: center;
+    padding: .2em; }
+  .footer-container__media {
+    flex-basis: 150px;
+    margin: auto 12%;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-self: center; }
+    .footer-container__media__buttons {
+      flex: 1 1 auto;
+      width: 20px;
+      height: 20px; }
+
 /*# sourceMappingURL=index.css.map */
