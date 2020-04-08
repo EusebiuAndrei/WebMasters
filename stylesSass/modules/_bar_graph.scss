@@ -3,10 +3,16 @@
 .bar_graph {
   display: flex;
   flex-direction: column;
+  border: 2px solid #314352;
 
-  .&__header {
+  &__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 5px 10px;
+
+    &__title {
+      font-size: 20px;
+    }
   }
 }

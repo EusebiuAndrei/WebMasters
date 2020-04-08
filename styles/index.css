@@ -745,4 +745,19 @@ p {
   align-self: center;
 }
 
+.bar_graph {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #314352;
+}
+.bar_graph__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+.bar_graph__header__title {
+  font-size: 20px;
+}
+
 /*# sourceMappingURL=index.css.map */

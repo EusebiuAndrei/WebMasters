@@ -53,12 +53,16 @@
             <p>Nr</p>
         </div>
         <div class="container__bar bar_graph">
-            <form class="bar_graph__header">
+            <div class="bar_graph__header">
                 <span class="bar_graph__header__title">Number of accidents over time</span>
 
                 <button class="bar_graph__header__settings_button button button--settings"></button>
-            </form>
-            <div class="bar_graph__content"></div>
+            </div>
+            <canvas class="bar_graph__content" id="bar_chart"></canvas>
+            <script>
+                const ctx = document.getElementById('bar_chart').getContext('2d');
+                // todo
+            </script>
         </div>
         <div class="container__pie">
             <p>Pie</p>
