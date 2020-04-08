@@ -3,13 +3,16 @@
 .bar_graph {
   display: flex;
   flex-direction: column;
-  border: 2px solid #314352;
+  border: 2px solid $color__font-aside--important;
 
   &__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 5px 10px;
+    padding: 10px;
+    background:
+      linear-gradient($color__font-aside--important, $color__font-aside--important) bottom left/ 20% 2px no-repeat,
+      $color__secondary--dark;
 
     &__title {
       font-size: 20px;

@@ -748,13 +748,14 @@ p {
 .bar_graph {
   display: flex;
   flex-direction: column;
-  border: 2px solid #314352;
+  border: 2px solid #3b4754;
 }
 .bar_graph__header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 10px;
+  background: linear-gradient(#3b4754, #3b4754) bottom left/20% 2px no-repeat, #171F25;
 }
 .bar_graph__header__title {
   font-size: 20px;
