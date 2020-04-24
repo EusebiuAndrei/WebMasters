@@ -637,8 +637,6 @@ p {
     justify-content: space-between;
     align-self: center; }
     .footer-container__media__buttons {
-      flex: 1 1 auto;
-      width: 20px;
-      height: 20px; }
+      flex: 1 1 auto; }
 
 /*# sourceMappingURL=index.css.map */
