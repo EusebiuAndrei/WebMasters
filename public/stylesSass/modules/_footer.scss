@@ -1,0 +1,44 @@
+.footer-container {
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+
+	&__text {
+		flex: 1 1 auto;
+		display: flex;
+		justify-content: center;
+
+		&__children {
+			font-size: 1em;
+			flex: 1 1 auto;
+			align-self: center;
+			//   margin: auto 15%;
+		}
+	}
+
+	&__img {
+		flex-basis: 80px;
+		margin: auto;
+		margin-left: 12%;
+		margin-right: 5%;
+		width: 64px;
+		height: 64px;
+		align-self: center;
+		padding: 0.2em;
+	}
+
+	&__media {
+		flex-basis: 150px;
+
+		margin: auto 12%;
+		align-self: center;
+
+		display: flex;
+		justify-content: space-between;
+		align-self: center;
+
+		&__buttons {
+			flex: 1 1 auto;
+		}
+	}
+}
