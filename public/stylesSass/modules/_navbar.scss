@@ -71,17 +71,17 @@
 
     }   
 
-   
 
-    &__button{
-        
+    &__dropdown{
 
-
+        position: relative;
         align-self: center;
         margin-right: 11%;
         flex-basis: auto;
-       
 
+    &__button{
+        
+        
         transform: rotate(90deg);
         align-content: center;
 
@@ -101,14 +101,35 @@
     }
 
     &__link{
+
+      
+        position: absolute;
+        text-decoration: none;
+        margin-top: 10%;
         display: none;
+        font-size: 18px;
+        padding: 6%;
+        color:black ;
+        background:rgb(248, 247, 247); ;
     }
 
-    &__button:hover{
-      
-     
-        background:    rgb(248, 247, 247);
+ }
+
+ &__dropdown:hover{
+
+  
+    button{
+ 
+       background:  rgb(248, 247, 247);
     }
+    a{
+       
+     display: block;
+     width: 70px;
+     height: 20px;
+
+     }
+ }
 
     &__hamburger{
 
