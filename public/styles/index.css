@@ -603,25 +603,86 @@ p {
   justify-content: center;
   align-content: center; }
   .navbar-container__text {
-    flex: 1 1 200px;
+    flex: 1 1 250px;
     display: flex;
     justify-content: center; }
+    @media (max-width: 700px) {
+      .navbar-container__text {
+        display: none; } }
     .navbar-container__text__children {
       font-size: 1em;
       flex: 1 1 200px;
       align-self: center;
-      margin: auto 15%; }
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 15%;
+      margin-left: 20%; }
   .navbar-container__img {
     flex-basis: 80px;
     margin: auto 12%;
+    margin-right: 15%;
     width: 64px;
     height: 64px;
     align-self: center;
     padding: .2em; }
+    @media (max-width: 700px) {
+      .navbar-container__img {
+        display: inline;
+        margin-left: 1%;
+        margin-right: 22%;
+        width: 60px;
+        height: 60px;
+        padding: .5em; } }
   .navbar-container__input {
     flex-basis: 150px;
-    margin: auto 12%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 12%;
+    margin-right: 1%;
     align-self: center; }
+    @media (max-width: 700px) {
+      .navbar-container__input {
+        display: none;
+        flex-wrap: wrap; } }
+  .navbar-container__button {
+    align-self: center;
+    margin-right: 11%;
+    flex-basis: auto;
+    transform: rotate(90deg);
+    align-content: center;
+    padding: .3%;
+    width: 35px;
+    height: 35px;
+    background: #d3d0d0;
+    color: black;
+    border-radius: 18%; }
+    @media (max-width: 970px) {
+      .navbar-container__button {
+        display: none; } }
+  .navbar-container__link {
+    display: none; }
+  .navbar-container__button:hover {
+    background: #b8b5b5; }
+  .navbar-container__hamburger {
+    flex-basis: 50px;
+    flex-grow: 1 1 auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 38%;
+    margin-right: .1%;
+    align-self: center; }
+    .navbar-container__hamburger span {
+      display: block;
+      margin-bottom: 5px;
+      background: #cdcdcd;
+      width: 33px;
+      height: 4px; }
+    @media (min-width: 700px) {
+      .navbar-container__hamburger {
+        display: none; } }
+    @media (max-width: 700px) {
+      .navbar-container__hamburger {
+        display: inline; } }
 
 .footer-container {
   display: flex;

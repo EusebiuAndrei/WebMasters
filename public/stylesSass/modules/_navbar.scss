@@ -6,7 +6,11 @@
 
     &__text{
 
-        flex: 1 1 200px; 
+        @media (max-width: 700px) {
+			display: none;
+		}
+
+        flex: 1 1 250px; 
         display: flex;
         justify-content: center;
 
@@ -16,7 +20,11 @@
             font-size: 1em;
             flex: 1 1 200px;
             align-self: center;
-            margin: auto 15%;
+            margin-top: auto;
+            margin-bottom: auto;
+
+            margin-right: 15%;
+            margin-left: 20%;
         }
 
     }
@@ -25,18 +33,105 @@
     
         flex-basis: 80px;
         margin: auto 12%;
+        margin-right: 15%;
         width: 64px;
         height: 64px;
         align-self: center;
         padding: .2em;
+
+        @media (max-width: 700px) {
+            display: inline;
+            margin-left: 1%;
+            margin-right: 22%;
+
+            width: 60px;
+            height: 60px;
+            padding: .5em;
+		}
     }
 
     &__input{
-
+    
      flex-basis: 150px;
      
-     margin: auto 12%;
+     margin-top: auto;
+     margin-bottom: auto;
+     margin-left: 12%;
+     margin-right: 1%;
      align-self: center;
 
+     @media (max-width: 700px) {
+        display: none;
+        flex-wrap: wrap;
+    }
+
+
     }   
+
+    &__button{
+        
+
+
+        align-self: center;
+        margin-right: 11%;
+        flex-basis: auto;
+       
+
+        transform: rotate(90deg);
+        align-content: center;
+
+        padding:.3%;
+        width: 35px;
+        height: 35px;
+        
+        background:rgb(211, 208, 208) ;
+        color: black;
+        
+        border-radius: 18%;
+
+           @media (max-width: 970px) {
+			display: none;
+		}
+
+    }
+
+    &__link{
+        display: none;
+    }
+
+    &__button:hover{
+      
+        background: rgb(184, 181, 181) ;
+    }
+
+    &__hamburger{
+
+         flex-basis: 50px;
+         flex-grow: 1 1 auto    ;
+         margin-top: auto;
+         margin-bottom: auto;
+         margin-left: 38%;
+         margin-right: .1%;
+         align-self: center;
+
+
+         span{
+
+            display: block;
+            margin-bottom: 5px;
+            background: #cdcdcd;
+            width: 33px;
+            height: 4px;
+
+         }
+        @media (min-width: 700px) {
+			display: none;
+        }
+        
+        @media (max-width: 700px) {
+			display: inline;
+		}
+        
+    }
+
 }
