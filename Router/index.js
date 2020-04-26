@@ -29,6 +29,7 @@ const enhanceReqAndBody = async (req, res) => {
 
 exports.handle = async (req, res) => {
 	try {
+		
 		await enhanceReqAndBody(req, res);
 		const [publicFolder, publicFile] = req.url
 			.substr(1)
@@ -41,16 +42,19 @@ exports.handle = async (req, res) => {
 			)
 		) {
 			try {
+				
 				const extension = publicFile.split('.')[1];
 				const data = await fs.readFile(
 					`public/${publicFolder}/${publicFile}`,
 				);
 
+			
 				res.writeHead(httpStatus.OK, {
 					'Content-Type': getContentType(extension),
 				});
 				return res.end(data);
 			} catch (error) {
+				
 				return res
 					.status(httpStatus.NOT_FOUND)
 					.render('error');
