@@ -639,11 +639,11 @@ p {
     margin-bottom: auto;
     margin-left: 12%;
     margin-right: 1%;
-    align-self: center; }
+    align-self: center;
+    background: url("../images/search.png") no-repeat 7px 8px; }
     @media (max-width: 700px) {
       .navbar-container__input {
-        display: none;
-        flex-wrap: wrap; } }
+        display: none; } }
   .navbar-container__button {
     align-self: center;
     margin-right: 11%;
@@ -653,16 +653,16 @@ p {
     padding: .3%;
     width: 35px;
     height: 35px;
-    background: #d3d0d0;
+    background: #b8b5b5;
     color: black;
     border-radius: 18%; }
-    @media (max-width: 970px) {
+    @media (max-width: 990px) {
       .navbar-container__button {
         display: none; } }
   .navbar-container__link {
     display: none; }
   .navbar-container__button:hover {
-    background: #b8b5b5; }
+    background: #f8f7f7; }
   .navbar-container__hamburger {
     flex-basis: 50px;
     flex-grow: 1 1 auto;

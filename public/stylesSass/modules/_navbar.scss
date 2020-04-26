@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
+  
 
     &__text{
 
@@ -60,13 +61,17 @@
      margin-right: 1%;
      align-self: center;
 
+     background: url("../images/search.png") no-repeat 7px 8px;
+
+
      @media (max-width: 700px) {
         display: none;
-        flex-wrap: wrap;
+      
     }
 
-
     }   
+
+   
 
     &__button{
         
@@ -84,12 +89,12 @@
         width: 35px;
         height: 35px;
         
-        background:rgb(211, 208, 208) ;
+        background:rgb(184, 181, 181) ;
         color: black;
         
         border-radius: 18%;
 
-           @media (max-width: 970px) {
+           @media (max-width: 990px) {
 			display: none;
 		}
 
@@ -101,7 +106,8 @@
 
     &__button:hover{
       
-        background: rgb(184, 181, 181) ;
+     
+        background:    rgb(248, 247, 247);
     }
 
     &__hamburger{
@@ -133,5 +139,13 @@
 		}
         
     }
+
+    // @media(max-width:700px){
+
+    //     border-bottom: 3px solid black;
+    
+    // }
+    
+
 
 }
