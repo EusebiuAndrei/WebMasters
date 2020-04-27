@@ -8,6 +8,42 @@
     <link rel="icon" href="../images/scar.png">
     <link rel="stylesheet" href="../styles/index.css">
 
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>  
+    <script>
+            window.onload = function () {
+            
+            var chart = new CanvasJS.Chart("chartContainer", {
+                
+                startAngle: 80,
+                animationEnabled: true,
+                title:{
+                    text: "Accidents"
+                },
+                legend:{
+                    cursor: "pointer",
+                    verticalAlign: "top",
+                },
+                data: [{
+                    
+                    type: "pie",
+                    showInLegend: true,
+                    toolTipContent: "{name}: <strong>{y}%</strong>",
+                    indexLabel: "{name} - {y}%",
+                    dataPoints: [
+                        { y: 26, name: "Speed limit" },
+                        { y: 10, name: "Sleeping driver" },
+                        { y: 50, name: "Alchoolic driver" },
+                        { y: 10, name: "Car issues" },
+                    ]
+                }]
+            });
+            chart.render();
+            }
+            
+            </script>
+
+
     <!-- Leaflet -->
     <link rel="stylesheet" href="../styles/leaflet.css" />
     <script src="../scripts/leaflet.js"></script>
@@ -30,6 +66,8 @@
             color: #777;
         }
     </style>
+     
+   
 </head>
 
 <body>
@@ -96,6 +134,9 @@
         </div>
         <div class="container__pie">
             <p>Pie</p>
+
+           <div id="chartContainer" ></div>
+
         </div>
         <div class="container__reports">
             <section class="reports-container">
