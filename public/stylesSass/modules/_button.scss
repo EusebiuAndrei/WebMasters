@@ -7,6 +7,7 @@
   padding: 3px 6px;
   font-size: 14pt;
   color: $color__font-main--base;
+  cursor: pointer;
 
   &:hover:active {
     color: $color__font-main--important;
@@ -50,6 +51,21 @@
 
     &:hover:active {
       color: lighten($color__danger, 20%);
+    }
+  }
+
+  &--settings {
+    background-color: $color__primary;
+    border-color: $color__primary--light;
+    width: 32px;
+    height: 24px;
+
+    background-image: url("../images/settings.png"); // wrong for scss, but right for css
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      border-color: lighten($color__primary--light, 10%)
     }
   }
 }
