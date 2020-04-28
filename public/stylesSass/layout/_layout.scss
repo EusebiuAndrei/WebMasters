@@ -21,7 +21,7 @@
         "banner banner banner banner banner banner"
         "header header header header header header"
         ". map map map nr ."
-        ". bar bar pie pie ."
+        ". bar bar bar pie ."
         ". reports reports reports reports ."
         "sub sub sub sub sub sub"
         "footer footer footer footer footer footer";
@@ -32,7 +32,7 @@
         "banner": lighten($color__bg, 10%), 
         "header": $color__secondary--light,
         "sub": $color__bg-aside,
-        "footer": lighten($color__bg, 10%), 
+        "footer": lighten($color__bg, 10%),
         "map": $color__primary, 
         "nr": $color__primary--light, 
         "bar": $color__secondary--dark, 

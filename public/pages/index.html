@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../styles/leaflet.css" />
     <script src="../scripts/leaflet.js"></script>
     <script src="../scripts/us-states.js"></script>
+    <script src="../scripts/moment.min.js"></script>
+    <script src="../scripts/Chart.min.js"></script>
     <style type="text/css">
         #map {
             height: 400px;
@@ -80,7 +82,10 @@
 
                 <button class="bar_graph__header__settings_button button button--settings"></button>
             </div>
-            <div class="bar_graph__content" id="chart_container"></div>
+            <div class="bar_graph__content" id="chart_container">
+                <canvas id="chart"></canvas>
+            </div>
+            <script src="../scripts/graph.js"></script>
         </div>
         <div class="container__pie">
             <p>Pie</p>

@@ -400,7 +400,7 @@ p {
 @media (min-width: 992px) {
   .container {
     grid-template-columns: 10vw 1fr 1fr 1fr 1fr 10vw;
-    grid-template-areas: "banner banner banner banner banner banner" "header header header header header header" ". map map map nr ." ". bar bar pie pie ." ". reports reports reports reports ." "sub sub sub sub sub sub" "footer footer footer footer footer footer";
+    grid-template-areas: "banner banner banner banner banner banner" "header header header header header header" ". map map map nr ." ". bar bar bar pie ." ". reports reports reports reports ." "sub sub sub sub sub sub" "footer footer footer footer footer footer";
   }
 }
 .container__banner {
