@@ -60,7 +60,7 @@
     width: 32px;
     height: 24px;
 
-    background-image: url("./images/settings.png");
+    background-image: url("../images/settings.png"); // wrong for scss, but right for css
     background-repeat: no-repeat;
     background-position: center;
 

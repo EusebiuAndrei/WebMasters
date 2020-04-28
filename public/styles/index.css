@@ -447,6 +447,7 @@ p {
   padding: 3px 6px;
   font-size: 14pt;
   color: #d6d6d6;
+  cursor: pointer;
 }
 .button:hover:active {
   color: #ffffff;
@@ -482,6 +483,18 @@ p {
 }
 .button--danger:hover:active {
   color: #ffbea9;
+}
+.button--settings {
+  background-color: #2E648B;
+  border-color: #5090BE;
+  width: 32px;
+  height: 24px;
+  background-image: url("../images/settings.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.button--settings:hover {
+  border-color: #75a8cc;
 }
 
 .cards {
@@ -624,7 +637,7 @@ p {
   border-color: #d6d6d6;
   border-radius: 500px;
   padding: 5px 10px 5px 30px;
-  background-image: url("../img/search.png");
+  background-image: url("../images/search.png");
   background-repeat: no-repeat;
   background-position: 3% center;
 }
@@ -642,11 +655,11 @@ p {
   justify-content: center;
   min-height: 250px;
   align-items: center;
-  background-color: #edf0f4;
+  background-color: #29323d;
 }
 
 .sub__title {
-  color: #3b4754;
+  color: #d6d6d6;
   margin-top: 0;
 }
 
@@ -659,9 +672,13 @@ p {
   height: 30px;
 }
 .sub__form__button {
+  margin-left: 10px;
   padding: 0 20px;
   height: 100%;
   vertical-align: middle;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: none;
 }
 .sub__form__input {
   height: 100%;
