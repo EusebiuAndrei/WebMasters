@@ -820,5 +820,8 @@ p {
 .bar_graph__header__title {
   font-size: 20px;
 }
+.bar_graph__content {
+  min-height: 300px;
+}
 
 /*# sourceMappingURL=index.css.map */
