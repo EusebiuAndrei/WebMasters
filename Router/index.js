@@ -1,12 +1,7 @@
 const httpStatus = require('http-status-codes');
 const fs = require('fs').promises;
 
-const {
-	collectBody,
-	enhanceResponseWithRender,
-	enhanceResponseWithStatus,
-	enhanceResponseWithJson,
-} = require('./enhancers');
+const { enhanceReqAndRes } = require('./enhancers');
 const { getContentType } = require('./helpers');
 
 const routes = {
@@ -17,20 +12,10 @@ const routes = {
 	DELETE: {},
 };
 
-const enhanceReqAndBody = async (req, res) => {
-	if (req.method !== 'GET') {
-		await collectBody(req);
-	}
-
-	enhanceResponseWithRender(res);
-	enhanceResponseWithStatus(res);
-	enhanceResponseWithJson(res);
-};
-
 exports.handle = async (req, res) => {
 	try {
-		await enhanceReqAndBody(req, res);
-		const [publicFolder, publicFile] = req.url
+		await enhanceReqAndRes(req, res);
+		const [publicFolder, publicFile] = req.pathname
 			.substr(1)
 			.split('/');
 
@@ -57,8 +42,8 @@ exports.handle = async (req, res) => {
 			}
 		}
 		// Fire the aproppiate request handler
-		if (routes[req.method][req.url]) {
-			routes[req.method][req.url](req, res);
+		if (routes[req.method][req.pathname]) {
+			routes[req.method][req.pathname](req, res);
 		}
 		// File Not Found Page
 		else {

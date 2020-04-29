@@ -1,4 +1,25 @@
 const pug = require('pug');
+const url = require('url');
+
+const enhanceReqAndRes = async (req, res) => {
+	await enhanceRequest(req);
+	await enhanceResponse(res);
+};
+
+const enhanceRequest = async (req) => {
+	if (req.method !== 'GET') {
+		await collectBody(req);
+	}
+
+	enhanceRequestWithQuery(req);
+	enhanceRequestWithPathname(req);
+};
+
+const enhanceResponse = async (res) => {
+	enhanceResponseWithRender(res);
+	enhanceResponseWithStatus(res);
+	enhanceResponseWithJson(res);
+};
 
 const collectBody = (req) => {
 	return new Promise((resolve, reject) => {
@@ -11,6 +32,14 @@ const collectBody = (req) => {
 		});
 		req.on('error', (err) => reject(err));
 	});
+};
+
+const enhanceRequestWithQuery = (req) => {
+	req.query = url.parse(req.url, true).query;
+};
+
+const enhanceRequestWithPathname = (req) => {
+	req.pathname = url.parse(req.url, true).pathname;
 };
 
 const enhanceResponseWithRender = (res) => {
@@ -39,7 +68,12 @@ const enhanceResponseWithJson = (res) => {
 };
 
 module.exports = {
+	enhanceReqAndRes,
+	enhanceRequest,
+	enhanceResponse,
 	collectBody,
+	enhanceRequestWithQuery,
+	enhanceRequestWithPathname,
 	enhanceResponseWithRender,
 	enhanceResponseWithStatus,
 	enhanceResponseWithJson,
