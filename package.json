@@ -19,11 +19,11 @@
 		"leaflet": "^1.6.0",
 		"mongoose": "^5.9.10",
 		"mongoose-autopopulate": "^0.12.2",
-		"nodemon": "^2.0.2",
 		"pug": "^2.0.4",
 		"winston": "^3.2.1"
 	},
 	"devDependencies": {
-		"@types/hapi__joi": "^16.0.12"
+		"@types/hapi__joi": "^16.0.12",
+		"nodemon": "^2.0.2"
 	}
 }
