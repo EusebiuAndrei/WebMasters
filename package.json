@@ -22,5 +22,8 @@
 		"nodemon": "^2.0.2",
 		"pug": "^2.0.4",
 		"winston": "^3.2.1"
+	},
+	"devDependencies": {
+		"@types/hapi__joi": "^16.0.12"
 	}
 }
