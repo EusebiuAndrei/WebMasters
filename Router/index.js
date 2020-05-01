@@ -15,9 +15,7 @@ const routes = {
 exports.handle = async (req, res) => {
 	try {
 		await enhanceReqAndRes(req, res);
-		const [publicFolder, publicFile] = req.pathname
-			.substr(1)
-			.split('/');
+		const publicFolder = req.pathname.substr(1).split('/')[0];
 
 		// Serve public folder
 		if (
@@ -26,14 +24,22 @@ exports.handle = async (req, res) => {
 			)
 		) {
 			try {
+				const nrOfDirectories = req.pathname
+					.substr(1)
+					.split('/').length;
+				const publicFile = req.pathname.substr(1).split('/')[
+					nrOfDirectories - 1
+				];
+
 				const extension = publicFile.split('.')[1];
 				const data = await fs.readFile(
-					`public/${publicFolder}/${publicFile}`,
+					`public/${req.pathname}`,
 				);
 
 				res.writeHead(httpStatus.OK, {
 					'Content-Type': getContentType(extension),
 				});
+				console.log(getContentType(extension));
 				return res.end(data);
 			} catch (error) {
 				return res
