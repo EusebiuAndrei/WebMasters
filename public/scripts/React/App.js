@@ -1,12 +1,29 @@
-import Greeter from './Greeter.js';
+
 import Map from './Map.js';
-import ListExample from './ListExample.js';
+import Navbar from './Navbar.js';
+import Banner from './Banner.js';
+import Statistics from './Statics.js';
+import BarGraph from './BarGraph.js';
+import Pie from './Pie.js';
+import Reports from './Reports.js';
+import Subscribe from './Subscribe.js';
+import Footer from './Footer.js';
 
 const App = () => {
-	return `
+    return `
+        <div class="container">
+            ${Banner()}
+            ${Navbar()}
             ${Map()}
-            ${ListExample()}
-        `;
+            ${Statistics()}
+            ${BarGraph()}
+            ${Pie()}
+            ${Reports()}
+            ${Subscribe()}
+            ${Footer()}
+            
+        </div>
+            `;
 };
 
 export default App;
