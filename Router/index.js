@@ -39,7 +39,7 @@ exports.handle = async (req, res) => {
 				res.writeHead(httpStatus.OK, {
 					'Content-Type': getContentType(extension),
 				});
-				console.log(getContentType(extension));
+
 				return res.end(data);
 			} catch (error) {
 				return res
