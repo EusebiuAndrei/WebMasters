@@ -2,7 +2,7 @@ export const initializePieChart = () =>{
 
     var pie = document.getElementById('pieChart');
 
-    let colors = ['#E9967A	', '#87CEFA', '#FAFAD2', '#3CB371'];
+    let colors = ['#E9967A', '#87CEFA', '#FAFAD2', '#3CB371'];
 
 
 

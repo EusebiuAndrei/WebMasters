@@ -371,7 +371,7 @@ p {
     background-color: #2E648B; }
   .container__nr {
     grid-area: nr;
-    background-color: #5090BE; }
+    background-color: #171F25; }
   .container__bar {
     grid-area: bar;
     background-color: #171F25; }
@@ -784,7 +784,26 @@ p {
   .notFound__page____txtDescr {
     font-size: 25px; }
 
-.container__pie canvas {
+.container__pie__chart {
   margin-top: 15%; }
+
+.container__nr__elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5%; }
+  .container__nr__elements__paragraph {
+    align-content: center;
+    align-self: center;
+    text-align: center;
+    width: 80%;
+    margin: 1%;
+    border: 1.5px solid #29323d;
+    background: #1E2A32; }
+    .container__nr__elements__paragraph p:nth-child(2n) {
+      color: orange; }
+  @media (max-width: 700px) {
+    .container__nr__elements {
+      flex-wrap: wrap; } }
 
 /*# sourceMappingURL=index.css.map */

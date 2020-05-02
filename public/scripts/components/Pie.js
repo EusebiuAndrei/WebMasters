@@ -2,8 +2,9 @@ const Pie = () =>{
 
     return `  
     <div class="container__pie">
-
-             <canvas id="pieChart" width="300px" height="200px"></canvas>
+            <div class="container__pie__chart">
+             <canvas id="pieChart" width="330px" height="300px"></canvas>
+            </div>
     </div>`
     ;
 

@@ -2,7 +2,7 @@
 import * as Map from '../components/Map.js';
 import * as Navbar from '../components/Navbar.js';
 import * as Banner from '../components/Banner.js';
-import * as Statistics from '../components/Statics.js';
+import * as Statistics from '../components/Statistics.js';
 import * as BarGraph from '../components/BarGraph.js';
 import * as Pie from '../components/Pie.js';
 import * as Reports from '../components/Reports.js';
