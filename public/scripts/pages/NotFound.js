@@ -1,6 +1,5 @@
-const NotFound = () =>{
-
-    return `
+const NotFound = () => {
+	return `
 
         <div class="notFound__page">
 
@@ -12,10 +11,9 @@ const NotFound = () =>{
         </div>
     
     `;
-
 };
 
-const addEventsListeners =()=>{};
+const initialize = () => {};
 
 export default NotFound;
-export {addEventsListeners};
+export { initialize };

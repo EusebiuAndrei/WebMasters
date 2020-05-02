@@ -9,11 +9,13 @@ import * as Reports from '../components/Reports.js';
 import * as Subscribe from '../components/Subscribe.js';
 import * as Footer from '../components/Footer.js';
 
-
 // Gharts, Maps, Pie, Charts(in general)
 import { initializeGraph } from '../visuals/graph.js';
 import { intializeMap } from '../visuals/index.js';
 import { initializePieChart } from '../visuals/pie.js';
+
+// Api
+import * as api from '../api/index.js';
 
 const App = () => {
 	return `
@@ -54,6 +56,14 @@ const initializeVisuals = () => {
 const initialize = () => {
 	initializeEventListeners();
 	initializeVisuals();
+
+	// An example of using calls to backend
+	const runFetch = async () => {
+		const response = await api.getUsers();
+
+		console.log(response);
+	};
+	runFetch();
 };
 
 export default App;
