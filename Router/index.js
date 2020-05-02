@@ -16,6 +16,8 @@ exports.handle = async (req, res) => {
 	try {
 		await enhanceReqAndRes(req, res);
 		const publicFolder = req.pathname.substr(1).split('/')[0];
+		const root = req.pathname.split('/')[1];
+
 		// Serve public folder
 		if (
 			['pages', 'styles', 'scripts', 'images'].includes(
@@ -46,27 +48,27 @@ exports.handle = async (req, res) => {
 					.render('error');
 			}
 		}
-		// Fire the aproppiate request handler
-		if (routes[req.method][req.pathname]) {
-			routes[req.method][req.pathname](req, res);
+		// Api handler
+		if (root === 'api') {
+			// Fire the aproppiate request handler
+			if (routes[req.method][req.pathname]) {
+				return routes[req.method][req.pathname](req, res);
+			}
+
+			res.status(httpStatus.NOT_FOUND).json({
+				success: false,
+				error: { message: 'Not Found' },
+			});
 		}
 		// File Not Found Page
 		else {
-			const root = req.pathname.split('/')[1];
+			const data = await fs.readFile(`public/pages/react.html`);
 
-			if (root === 'api') {
-				res.status(httpStatus.NOT_FOUND).render('error');
-			} else {
-				const data = await fs.readFile(
-					`public/pages/react.html`,
-				);
+			res.writeHead(httpStatus.OK, {
+				'Content-Type': 'text/html',
+			});
 
-				res.writeHead(httpStatus.OK, {
-					'Content-Type': 'text/html',
-				});
-
-				return res.end(data);
-			}
+			return res.end(data);
 		}
 	} catch (ex) {
 		console.log('error: ' + ex);

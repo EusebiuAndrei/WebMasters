@@ -1,11 +1,10 @@
 const httpStatus = require('http-status-codes');
 const router = require('../../Router');
-const fs = require('fs').promises;
 
-const ROUTE_BASE = '/info';
+const ROUTE_BASE = '/api/info';
 
 router.get(`${ROUTE_BASE}`, (req, res) => {
-	res.status(httpStatusCodes.OK).render('new', {
+	res.status(httpStatus.OK).render('new', {
 		name: 'Timothy',
 	});
 });

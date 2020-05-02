@@ -2,7 +2,7 @@ const httpStatusCodes = require('http-status-codes');
 const { userService } = require('../../services');
 const router = require('../../Router');
 
-const ROUTE_BASE = '/users';
+const ROUTE_BASE = '/api/users';
 
 // Here we have all the controllers
 router.get(`${ROUTE_BASE}`, async (req, res) => {
