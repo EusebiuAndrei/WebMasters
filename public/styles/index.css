@@ -772,4 +772,16 @@ p {
   .bar_graph__content {
     min-height: 300px; }
 
+.notFound__page {
+  text-align: center;
+  display: block;
+  margin: 18% 30%; }
+  .notFound__page__error {
+    font-size: 55px;
+    color: aliceblue; }
+  .notFound__page__txtErr {
+    font-size: 32px; }
+  .notFound__page____txtDescr {
+    font-size: 25px; }
+
 /*# sourceMappingURL=index.css.map */

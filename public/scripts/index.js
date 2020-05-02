@@ -3,6 +3,7 @@ import { createStateEvent } from './utils/index.js';
 
 // Components
 import * as App from './pages/App.js';
+import * as NotFound from './pages/NotFound.js'
 
 // setTimeout(() => {
 // 	const root = document.getElementById('list-example');
@@ -11,10 +12,7 @@ import * as App from './pages/App.js';
 
 const routes = {
 	'/': App,
-	'/not-found': {
-		default: () => '<h1>Not found</h1>',
-		initialize: () => {},
-	},
+	'/not-found': NotFound,
 };
 
 let pathname = location.pathname;
