@@ -4,6 +4,9 @@ import { createStateEvent } from './utils/index.js';
 // Components
 import * as App from './pages/App.js';
 
+// Api
+import * as api from './api/index.js';
+
 // setTimeout(() => {
 // 	const root = document.getElementById('list-example');
 // 	root.dispatchEvent(createStateEvent({ data: ['John', 'Marry'] }));
@@ -27,3 +30,11 @@ if (!routes[pathname]) {
 html = routes[pathname].default();
 document.body.innerHTML = html;
 routes[pathname].initialize();
+
+// An example of using calls to backend
+const runFetch = async () => {
+	const response = await api.getUsers();
+
+	console.log(response);
+};
+runFetch();
