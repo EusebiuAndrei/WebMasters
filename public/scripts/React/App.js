@@ -1,12 +1,19 @@
-import Greeter from './Greeter.js';
-import Map from './Map.js';
-import ListExample from './ListExample.js';
+import * as Greeter from './Greeter.js';
+import * as Map from './Map.js';
+import * as ListExample from './ListExample.js';
 
 const App = () => {
 	return `
-            ${Map()}
-            ${ListExample()}
+            ${Map.default()}
+            ${ListExample.default()}
         `;
 };
 
+const initiateEventListeners = () => {
+	ListExample.addEventsListeners();
+	Greeter.addEventsListeners();
+	Map.addEventsListeners();
+};
+
 export default App;
+export { initiateEventListeners };

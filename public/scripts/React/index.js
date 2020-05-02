@@ -1,17 +1,27 @@
 import { createStateEvent } from './utils.js';
 
-import App from './App.js';
-import * as ListExample from './ListExample.js';
-import * as Greeter from './ListExample.js';
-import * as MapUS from './ListExample.js';
+import * as App from './App.js';
 
 setTimeout(() => {
 	const root = document.getElementById('list-example');
 	root.dispatchEvent(createStateEvent({ data: ['John', 'Marry'] }));
 }, 3000);
 
-document.body.innerHTML = App();
+const routes = {
+	'/': App,
+	'/not-found': {
+		default: () => '<h1>Not found</h1>',
+		initiateEventListeners: () => {},
+	},
+};
 
-ListExample.addEventsListeners();
-Greeter.addEventsListeners();
-MapUS.addEventsListeners();
+let pathname = location.pathname;
+let html = '';
+
+if (!routes[pathname]) {
+	window.location.pathname = '/not-found';
+}
+
+html = routes[pathname].default();
+document.body.innerHTML = html;
+routes[pathname].initiateEventListeners();
