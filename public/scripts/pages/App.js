@@ -9,9 +9,11 @@ import * as Reports from '../components/Reports.js';
 import * as Subscribe from '../components/Subscribe.js';
 import * as Footer from '../components/Footer.js';
 
-// Gharts, Maps
+
+// Gharts, Maps, Pie, Charts(in general)
 import { initializeGraph } from '../visuals/graph.js';
 import { intializeMap } from '../visuals/index.js';
+import { initializePieChart } from '../visuals/pie.js';
 
 const App = () => {
 	return `
@@ -46,6 +48,7 @@ const initializeVisuals = () => {
 	// Run visuals
 	initializeGraph();
 	intializeMap();
+	initializePieChart();
 };
 
 const initialize = () => {
