@@ -1,5 +1,6 @@
-const httpStatusCodes = require('http-status-codes');
+const httpStatus = require('http-status-codes');
 const router = require('../../Router');
+const fs = require('fs').promises;
 
 const ROUTE_BASE = '/info';
 

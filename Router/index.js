@@ -16,7 +16,6 @@ exports.handle = async (req, res) => {
 	try {
 		await enhanceReqAndRes(req, res);
 		const publicFolder = req.pathname.substr(1).split('/')[0];
-
 		// Serve public folder
 		if (
 			['pages', 'styles', 'scripts', 'images'].includes(
@@ -53,7 +52,21 @@ exports.handle = async (req, res) => {
 		}
 		// File Not Found Page
 		else {
-			res.status(httpStatus.NOT_FOUND).render('error');
+			const root = req.pathname.split('/')[1];
+
+			if (root === 'api') {
+				res.status(httpStatus.NOT_FOUND).render('error');
+			} else {
+				const data = await fs.readFile(
+					`public/pages/react.html`,
+				);
+
+				res.writeHead(httpStatus.OK, {
+					'Content-Type': 'text/html',
+				});
+
+				return res.end(data);
+			}
 		}
 	} catch (ex) {
 		console.log('error: ' + ex);
