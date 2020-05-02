@@ -64,7 +64,7 @@ exports.handle = async (req, res) => {
 		}
 		// File Not Found Page
 		else {
-			const data = await fs.readFile(`public/pages/react.html`);
+			const data = await fs.readFile(`public/pages/index.html`);
 
 			res.writeHead(httpStatus.OK, {
 				'Content-Type': 'text/html',
