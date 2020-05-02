@@ -1,7 +1,7 @@
 import {
 	getDomStringFromArray,
 	getDomElementFromDomString,
-} from './utils.js';
+} from '../utils/index.js';
 import Greeter from './Greeter.js';
 
 const ListExample = ({ data = ['one', 'two'] } = {}) => {

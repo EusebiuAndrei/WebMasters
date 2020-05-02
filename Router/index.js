@@ -32,7 +32,9 @@ exports.handle = async (req, res) => {
 					nrOfDirectories - 1
 				];
 
-				const extension = publicFile.split('.')[1];
+				const nrOfDots = publicFile.split('.').length;
+				const extension = publicFile.split('.')[nrOfDots - 1];
+
 				const data = await fs.readFile(
 					`public/${req.pathname}`,
 				);

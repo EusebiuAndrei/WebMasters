@@ -1,4 +1,4 @@
-var statesData = {
+const statesData = {
 	type: 'FeatureCollection',
 	features: [
 		{
@@ -4387,3 +4387,5 @@ var statesData = {
 		},
 	],
 };
+
+export default statesData;

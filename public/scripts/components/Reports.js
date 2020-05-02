@@ -1,28 +1,27 @@
 import {
 	getDomStringFromArray,
 	getDomElementFromDomString,
-} from './utils.js';
+} from '../utils/index.js';
 
 const obj = {
-    
-    location: "Near hospital",
-    date: "13 aug 2018",
-    phone: "251-661-532",
-    city: "New York"
-    
+	location: 'Near hospital',
+	date: '13 aug 2018',
+	phone: '251-661-532',
+	city: 'New York',
 };
 
 const obj2 = {
-
-    location: "Around 3th street",
-    date: "13 aug 2018",
-    phone: "251-661-5362",
-    city: "San Francisco"
-    
+	location: 'Around 3th street',
+	date: '13 aug 2018',
+	phone: '251-661-5362',
+	city: 'San Francisco',
 };
 
 const Reports = ({ data = [obj, obj2, obj, obj2, obj] } = {}) => {
-	const printData = data.map((elem) => `  <article class="reports reports-container__children">
+	const printData = data.map(
+		(
+			elem,
+		) => `  <article class="reports reports-container__children">
     <p class="reports__content reports__heads">${elem.location}</p>
 
     <p class="reports__content reports__dissapear"> ${elem.date} <span class="separator">
@@ -37,9 +36,10 @@ const Reports = ({ data = [obj, obj2, obj, obj2, obj] } = {}) => {
     <button class="button button--secondary reports__buttons">Details</button>
 
 </article>
-`);
+`,
+	);
 
-    return `
+	return `
           <div class="container__reports">
               <section class="reports-container">
                     ${getDomStringFromArray(printData)}
@@ -51,7 +51,6 @@ const Reports = ({ data = [obj, obj2, obj, obj2, obj] } = {}) => {
 
         `;
 };
-
 
 const addEventsListeners = () => {};
 
