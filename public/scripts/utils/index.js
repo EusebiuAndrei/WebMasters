@@ -1,3 +1,5 @@
+import StateManager from './StateManager.js';
+
 const getDomStringFromArray = (elements) => {
 	let elementsString = '';
 	elements.forEach((element) => (elementsString += element));

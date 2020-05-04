@@ -6,7 +6,7 @@ export const intializeMap = () => {
 		name: feature.properties.name,
 		numberOfCrimes: Math.round(Math.random() * 3000),
 	}));
-	console.log(states);
+	// console.log(states); !!!
 	var mapboxAccessToken =
 		'pk.eyJ1IjoiY2hyaXM5OTQ1IiwiYSI6ImNrOGtleXBicjAxMGgzbXFoZXJ0Zzk4ZnkifQ.Kr18bWBCkThXnXa4tCGZbA';
 	var map = L.map('map').setView([37.8, -96], 4);
