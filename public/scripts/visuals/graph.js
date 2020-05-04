@@ -1,18 +1,12 @@
-export const initializeGraph = () => {
+export const initializeGraph = ({ data, labels }) => {
 	const ctx = document.getElementById('chart');
 	const chart = new Chart(ctx, {
 		type: 'line',
 		data: {
-			labels: [
-				"Feb '16",
-				"Mar '16",
-				"Apr '16",
-				"May '16",
-				"Jun '16",
-			],
+			labels,
 			datasets: [
 				{
-					data: [200, 157, 215, 186, 190],
+					data,
 					backgroundColor: '#5090BE50',
 					borderColor: '#5090BE',
 				},

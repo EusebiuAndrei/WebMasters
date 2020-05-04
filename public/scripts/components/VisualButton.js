@@ -22,8 +22,8 @@ const addEventsListeners = (id) => {
 		);
 		StateManager.setState({ visualType: root.id.substr(2) });
 
-		console.log(currentVisual.children[0]);
-		console.log(getDomElementFromDomString(Visualizer.default()));
+		// console.log(currentVisual.children[0]);
+		// console.log(getDomElementFromDomString(Visualizer.default()));
 
 		currentVisual.children[0].replaceWith(
 			getDomElementFromDomString(Visualizer.default()),
@@ -31,7 +31,7 @@ const addEventsListeners = (id) => {
 
 		Visualizer.initializeVisualsByType(
 			StateManager.getState().visualType,
-		)();
+		)(StateManager.getStateForVisual().fetchedData);
 
 		current.textContent =
 			'Current: ' + visualDescription[root.id.substr(2)];

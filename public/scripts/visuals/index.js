@@ -1,6 +1,6 @@
 import statesData from './us-states.js';
 
-export const intializeMap = () => {
+export const intializeMap = ({ some = '' } = {}) => {
 	// get some data
 	const states = statesData.features.map((feature) => ({
 		name: feature.properties.name,
