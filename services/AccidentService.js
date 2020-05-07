@@ -5,7 +5,7 @@ function groupBuilder({ bucketType, bucketColumn, timeChart, valueType }) {
 	if (bucketType === 'column') {
 		_id = `$${bucketColumn}`;
 	} else { // query.bucketType === 'time'
-		const dateColumn = `$${timeChart.timeAxisBasedOn}Time`
+		const dateColumn = `$${timeChart.timeAxisBasedOn}Time`;
 		_id = {
 			year: {$year: dateColumn}
 		};
@@ -14,7 +14,7 @@ function groupBuilder({ bucketType, bucketColumn, timeChart, valueType }) {
 		} else {
 			_id.month = {$month: dateColumn};
 			if (timeChart.bucketSize === 'day') {
-				_id.month = {$dayOfMonth: dateColumn};
+				_id.day = {$dayOfMonth: dateColumn};
 			}
 		}
 	}
@@ -47,6 +47,18 @@ function sorter({bucketType}) {
 	}
 }
 
+function timeAxisFilter({from, to, timeAxisBasedOn}) {
+	const dateColumn = `${timeAxisBasedOn}Time`
+	const filter = {};
+	if (from) {
+		filter.$gte = from;
+	}
+	if (to) {
+		filter.$lte = to;
+	}
+	return { [dateColumn]: filter };
+}
+
 class AccidentService {
 	constructor({ db, services }) {
 		this.db = db;
@@ -60,10 +72,25 @@ class AccidentService {
 				aggregate = aggregate.match(filterIntoMatch(filter))
 			}
 		}
+		if (query.bucketType === 'time') {
+			aggregate = aggregate.match(timeAxisFilter(query.timeChart))
+		}
 		aggregate = aggregate.group(groupBuilder(query));
 		aggregate = aggregate.sort(sorter(query));
 
-		const result = await aggregate.exec();
+		let result = await aggregate.exec();
+
+		if (query.joinBucketsPast) {
+			const kept = result.slice(0, query.joinBucketsPast);
+			const merged = result.slice(query.joinBucketsPast);
+			const other = merged.reduce(
+				({_id, value}, current) => ({_id, value: value + current.value}),
+				{
+					_id: 'other',
+					value: 0,
+				});
+			result = [...kept, other];
+		}
 
 		const bucketLabels = result.map(item => item._id);
 		const values = result.map(item => item.value);
