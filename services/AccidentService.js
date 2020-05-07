@@ -39,6 +39,14 @@ function filterIntoMatch({ column, constraint, value }) {
 	};
 }
 
+function sorter({bucketType}) {
+	if (bucketType === 'time') {
+		return { _id: 1 };
+	} else {
+		return { value: -1 };
+	}
+}
+
 class AccidentService {
 	constructor({ db, services }) {
 		this.db = db;
@@ -47,12 +55,13 @@ class AccidentService {
 
 	async getBuckets(query) {
 		let aggregate = this.db.accidents.aggregate();
-
-		for (const filter of query.filters) {
-			aggregate = aggregate.match(filterIntoMatch(filter))
+		if (query.filters) {
+			for (const filter of query.filters) {
+				aggregate = aggregate.match(filterIntoMatch(filter))
+			}
 		}
-
 		aggregate = aggregate.group(groupBuilder(query));
+		aggregate = aggregate.sort(sorter(query));
 
 		const result = await aggregate.exec();
 

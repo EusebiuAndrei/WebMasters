@@ -1,7 +1,7 @@
 const { Joi } = require('celebrate');
 const { discreteColumns, numericColumns, columns } = require('./columns');
 
-const schema = Joi.object().keys({
+const schema = Joi.object().required().keys({
     bucketType: Joi.string().valid('time', 'column').required(),
     bucketColumn: Joi.string().valid(...discreteColumns),
     joinBucketsPast: Joi.number().integer().min(1),
@@ -16,7 +16,7 @@ const schema = Joi.object().keys({
         bucketSize: Joi.string().valid('day', 'week', 'month', 'year').required(),
         from: Joi.date(),
         to: Joi.date().min(Joi.ref('from')),
-        timeAxisBasedOn: Joi.string.valid('start', 'end').default('start').required(),
+        timeAxisBasedOn: Joi.string().valid('start', 'end').default('start'),
     },
     filters: Joi.array().items(
         Joi.alternatives().try(
@@ -25,7 +25,7 @@ const schema = Joi.object().keys({
                 constraint: Joi.string().valid('in'),
                 value: Joi.array(),
             }),
-            Joi.object.keys({
+            Joi.object().keys({
                 column: Joi.string().valid(...columns),
                 constraint: Joi.string().valid('ne', 'lte', 'gte', 'lt', 'gt'),
                 value: Joi.any(),
