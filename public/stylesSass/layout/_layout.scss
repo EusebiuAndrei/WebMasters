@@ -72,11 +72,13 @@
 	display: flex !important;
 }
 
-.options-container form div div:first-child {
+.options-container form > div > div:first-child {
 	flex-grow: 3;
+	display: flex !important;
+	flex-wrap: wrap;
 }
 
-.options-container form div div:last-child {
+.options-container form > div > div:last-child {
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
@@ -93,4 +95,67 @@
 #js-settings input,
 #js-settings select {
 	display: block;
+}
+
+.dataset {
+	display: flex !important;
+	flex-direction: column;
+	box-shadow: 2px 2px 6px 4px #66a;
+	border-radius: 5px;
+	padding: 0.5em;
+	margin: 0.5em;
+}
+
+.dataset-filter {
+	display: flex !important;
+	flex-direction: column;
+	border: 2px solid red;
+	padding: 0.5em;
+	border-radius: 8px;
+	margin: 0.5em 0;
+}
+
+#js-add-dataset {
+	width: 2em;
+	height: 2em;
+	border-radius: 50%;
+	font-size: 1.5em;
+	font-weight: bold;
+	cursor: pointer;
+	margin-left: 1em;
+	align-self: flex-end;
+}
+
+#js-add-dataset:hover {
+	border: 2px solid #5090be;
+	color: #5090be;
+	background-color: inherit !important;
+}
+
+#js-remove-dataset {
+	background-color: red;
+	cursor: pointer;
+}
+
+#js-remove-dataset:hover {
+	background-color: lighten(#ff0000, 4);
+}
+
+#js-add-filter {
+	cursor: pointer;
+	margin: 0.5em 0;
+}
+
+#js-add-filter:hover {
+	background-color: lighten(#5090be, 4);
+}
+
+#js-add-dataset:focus,
+#js-add-filter {
+	outline: none;
+}
+
+#js-apply-form {
+	margin-top: 1.5em !important;
+	margin-bottom: 1em !important;
 }

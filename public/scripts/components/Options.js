@@ -12,8 +12,7 @@ const Options = () => {
                 <form>
                     <div>
                         <div>
-                            ${Dataset()}
-                            <button type="button" id="js-add-dataset">Add dataset</button>
+                            <button type="button" id="js-add-dataset">+</button>
                         </div>
                         <div>
                             <label>Bucket Type
@@ -65,7 +64,7 @@ const Options = () => {
                         </div>
                     </div>
 
-                    <button type="submit" style="margin: 0 auto; display: block;">Apply</button>
+                    <button type="submit" id="js-apply-form" style="margin: 0 auto; display: block;">Apply</button>
                 </form>
             </div>
         `;
@@ -126,7 +125,7 @@ const TimeChart = () => {
 
 const Filter = () => {
 	return `
-        <div div="dataset-filter">
+        <div class="dataset-filter">
             <label>Column
                 <input type="text" />
             </label>
@@ -154,6 +153,7 @@ const Dataset = () => {
                 <input type="text" />
             </label>
             <button type="button" id="js-add-filter">Add filter</button>
+            <button type="button" id="js-remove-dataset">Remove dataset</button>
         </div>
     `;
 };
@@ -204,16 +204,26 @@ const addEventsListeners = () => {
 		}
 	});
 
-	const buttonAddFilter = document.getElementById('js-add-filter');
-	buttonAddFilter.addEventListener('click', (event) => {
-		event.target.before(getDomElementFromDomString(Filter()));
-	});
-
 	const buttonAddDataset = document.getElementById(
 		'js-add-dataset',
 	);
 	buttonAddDataset.addEventListener('click', (event) => {
 		event.target.before(getDomElementFromDomString(Dataset()));
+
+		// button add filter
+		event.target.previousElementSibling
+			.querySelector('#js-add-filter')
+			.addEventListener('click', (event) => {
+				event.target.before(
+					getDomElementFromDomString(Filter()),
+				);
+			});
+
+		event.target.previousElementSibling
+			.querySelector('#js-remove-dataset')
+			.addEventListener('click', (event) => {
+				console.log(event.target.parentElement.remove());
+			});
 	});
 };
 
