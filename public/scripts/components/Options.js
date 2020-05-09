@@ -1,0 +1,221 @@
+import StateManager from '../utils/StateManager.js';
+import { visualTypeEnum } from '../constants.js';
+import { getDomElementFromDomString } from '../utils/index.js';
+
+const Options = () => {
+	const { inputData } = StateManager.getStateForVisual();
+	const { visualType } = StateManager.getState();
+	console.log(inputData);
+
+	return `
+            <div class="options-container">
+                <form>
+                    <div>
+                        <div>
+                            ${Dataset()}
+                            <button type="button" id="js-add-dataset">Add dataset</button>
+                        </div>
+                        <div>
+                            <label>Bucket Type
+                                <select name="bucketType" style="display: block;">
+                                    <option value="time" ${
+										visualType ===
+										visualTypeEnum.BAR_GRAPH
+											? 'selected'
+											: ''
+									}>Time</option>
+                                    <option value="column" ${
+										visualType ===
+											visualTypeEnum.MAP ||
+										visualType ===
+											visualTypeEnum.PIE_CHART
+											? 'selected'
+											: ''
+									}>Column</option>
+                                </select>
+                            </label>
+
+                            ${
+								inputData.bucketType === 'column'
+									? BucketColumn()
+									: ''
+							}
+                            
+                            ${
+								visualType ===
+								visualTypeEnum.PIE_CHART
+									? `<label>Join Buckets Past
+                                        <input type="text" name="joinBucketsPast" style="display: block;"/>
+                                    </label>`
+									: ''
+							}
+                            
+                            <label>Value type of a bucket
+                                <select style="display: block;" id="js-value-type">
+                                    <option value="count">Number of accidents</option>
+                                    <option value="other">Custom value</option>
+                                </select>
+                            </label>
+
+                            ${
+								inputData.bucketType === 'time'
+									? TimeChart()
+									: ''
+							}
+                        </div>
+                    </div>
+
+                    <button type="submit" style="margin: 0 auto; display: block;">Apply</button>
+                </form>
+            </div>
+        `;
+};
+
+const ValueType = () => {
+	return `
+        <div id="js-value-type-more">
+            <label>Data target
+                <select style="display: block;">
+                    <option value="temperature">Temperature</option>
+                    <option value="severity">Severity</option>
+                    <option value="humidity">Humidity</option>
+                    <option value="pressure">Pressure</option>
+                    <option value="visibility">Visibility</option>
+                    <option value="precipitation">Precipitation</option>
+                    <option value="windSpeed">Wind speed</option>
+                    <option value="windChill">Wind chill</option>
+                </select>
+            </label>
+            <label>Aggreagation
+                <select style="display: block;">
+                    <option value="avg">Average</option>
+                    <option value="min">Minimum</option>
+                    <option value="max">Maximum</option>
+                </select>
+            </label>
+        </div>
+    `;
+};
+
+const TimeChart = () => {
+	return `
+        <div id="js-time-more">
+            <label>Data target
+                <select style="display: block;">
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                </select>
+            </label>
+            <label>Start date
+                <input type="date" />
+            </label>
+            <label>End date
+                <input type="date" />
+            </label>
+            <label>Time Axis based on
+                <select style="display: block;">
+                    <option value="start">Start of the accident</option>
+                    <option value="end">End of the accident</option>
+                </select>
+            </label>
+        </div>
+    `;
+};
+
+const Filter = () => {
+	return `
+        <div div="dataset-filter">
+            <label>Column
+                <input type="text" />
+            </label>
+            <label>Constraint
+                <select style="display: block;">
+                    <option value="in">In the next values</option>
+                    <option value="ne">Not Equal To</option>
+                    <option value="lte">Less than or equal to</option>
+                    <option value="gte">Grater than or equal to</option>
+                    <option value="lt">Less than</option>
+                    <option value="gt">Grater than</option>
+                </select>
+            </label>
+            <label>Value
+                <input type="text" />
+            </label>
+        </div>
+    `;
+};
+
+const Dataset = () => {
+	return `
+        <div id="" class="dataset">
+            <label>Dataset name
+                <input type="text" />
+            </label>
+            <button type="button" id="js-add-filter">Add filter</button>
+        </div>
+    `;
+};
+
+const BucketColumn = () => {
+	return `
+        <label>Bucket Column
+            <input type="text" name="bucketColumn" style="display: block;"/>
+        </label>
+    `;
+};
+
+const addEventsListeners = () => {
+	const settings = document.getElementById('js-settings');
+	const form = settings.querySelector('form');
+	const inputs = settings.querySelectorAll('input');
+	const value_type = settings.querySelector('#js-value-type');
+
+	inputs.forEach((input) =>
+		input.addEventListener('change', (event) => {
+			console.log('AAAAAA');
+			console.log(event.target);
+		}),
+	);
+
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
+		console.log(event.target.elements);
+		console.log(event.target);
+		console.log(event.currentTarget);
+	});
+
+	value_type.addEventListener('change', (event) => {
+		console.log(event.target.value);
+		const valueMore = document.getElementById(
+			'js-value-type-more',
+		);
+
+		if (event.target.value === 'count') {
+			if (valueMore) {
+				valueMore.remove();
+			}
+		} else {
+			console.log(event.target.parentElement);
+			event.target.parentElement.after(
+				getDomElementFromDomString(ValueType()),
+			);
+		}
+	});
+
+	const buttonAddFilter = document.getElementById('js-add-filter');
+	buttonAddFilter.addEventListener('click', (event) => {
+		event.target.before(getDomElementFromDomString(Filter()));
+	});
+
+	const buttonAddDataset = document.getElementById(
+		'js-add-dataset',
+	);
+	buttonAddDataset.addEventListener('click', (event) => {
+		event.target.before(getDomElementFromDomString(Dataset()));
+	});
+};
+
+export default Options;
+export { addEventsListeners };
