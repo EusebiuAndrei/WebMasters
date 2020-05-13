@@ -6,9 +6,9 @@ const ROUTE_BASE = '/api/records';
 
 
 /* get an accident by id */
-router.get(`${ROUTE_BASE}`, async (req, res) => {
+router.get(`${ROUTE_BASE}/:id`, async (req, res) => {
 	
-	const result = await recordService.getAccidentById(req.query);
+	const result = await recordService.getAccidentById(req.params);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
 
@@ -16,18 +16,18 @@ router.get(`${ROUTE_BASE}`, async (req, res) => {
 
 
 /* delete an accident by id */
-router.delete(`${ROUTE_BASE}`, async (req, res) => {
+router.delete(`${ROUTE_BASE}/:id`, async (req, res) => {
 	
-	const result = await recordService.deleteAccidentById(req.query);
+	const result = await recordService.deleteAccidentById(req.params);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
 
 });
 
 /* update an accident by id */
-router.patch(`${ROUTE_BASE}`, async (req, res) => {
+router.patch(`${ROUTE_BASE}/:id`, async (req, res) => {
 
-	const result = await recordService.updateAccidentById(req.query, req.body);
+	const result = await recordService.updateAccidentById(req.params, req.body);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
 });

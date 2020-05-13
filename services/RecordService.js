@@ -71,6 +71,10 @@ class RecordService{
         console.log(id);
         const accident =  await this.db.accidents.findOne({_id: id});
 
+        if(accident==null){
+            throw new Error("Not found!");
+        }
+
         return {
           success : true,
           data :  {accident}
