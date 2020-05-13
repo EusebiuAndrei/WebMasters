@@ -63,6 +63,32 @@ class RecordService{
       
     }
 
+    async getAccidentById(query){
+
+      try{
+
+        const {id} = query;
+        console.log(id);
+        const accident =  await this.db.accidents.findOne({_id: id});
+
+        return {
+          success : true,
+          data :  {accident}
+        }
+
+      }catch(error){
+        console.log(error)
+
+        return {
+          success : false,
+          error: { message: error.message },
+        }
+
+      }
+
+
+    }
+
 
 };
 
