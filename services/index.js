@@ -1,8 +1,9 @@
 // Import all the users models
-const { Users } = require('../models/index');
+const { Users, Accidents } = require('../models/index');
 
 // Import all the service constructors
 const UserService = require('./UserService');
+const AccidentService = require('./AccidentService');
 
 // Create the service objects with dependencies
 const userService = new UserService({
@@ -12,7 +13,16 @@ const userService = new UserService({
 	services: {},
 });
 
+const accidentService = new AccidentService({
+	db: {
+		accidents: Accidents,
+	},
+	services: {},
+});
+
+
 // Export the service object
 module.exports = {
 	userService,
+	accidentService
 };
