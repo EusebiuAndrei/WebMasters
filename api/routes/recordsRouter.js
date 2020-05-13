@@ -24,6 +24,15 @@ router.delete(`${ROUTE_BASE}`, async (req, res) => {
 
 });
 
+/* update an accident by id */
+router.patch(`${ROUTE_BASE}`, async (req, res) => {
+
+	const result = await recordService.updateAccidentById(req.query, req.body);
+	const statusCode = result.success ? 200 : 400;
+	res.status(statusCode).json(result);
+});
+
+
 // move to router.get with query params
 router.post(`${ROUTE_BASE}`, async (req, res) => {
 
@@ -31,3 +40,5 @@ router.post(`${ROUTE_BASE}`, async (req, res) => {
 		const statusCode = result.success ? 200 : 400;
 		res.status(statusCode).json(result);
 });
+
+

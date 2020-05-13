@@ -113,6 +113,34 @@ class RecordService{
 
     }
 
+    async updateAccidentById(query, payload){
+        
+      try{
+
+     //   console.log(payload);
+        const {id} = query;
+     //   console.log(id);
+        const updated = await this.db.accidents.findOneAndUpdate({_id: id}, payload)
+        
+
+        return {
+          success : true,
+          data :  {updated}
+        }
+
+      }catch(error){
+        console.log(error)
+
+        return {
+          success : false,
+          error: { message: error.message },
+        }
+
+      }
+    
+  }
+
+
 };
 
 module.exports = RecordService;
