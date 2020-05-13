@@ -1,5 +1,5 @@
 const { recordDataRequestSchema } = require('../schemas');
-
+const { recordData } = require('../models/accident/validator')
 
 class RecordService{
 
@@ -62,6 +62,109 @@ class RecordService{
         }
       
     }
+
+    async getAccidentById(query){
+
+      try{
+
+        const {id} = query;
+        console.log(id);
+        const accident =  await this.db.accidents.findOne({_id: id});
+
+        return {
+          success : true,
+          data :  {accident}
+        }
+
+      }catch(error){
+        console.log(error)
+
+        return {
+          success : false,
+          error: { message: error.message },
+        }
+      }
+    }
+
+
+    async deleteAccidentById(query){
+
+      try{
+
+        const {id} = query;
+        console.log(id);
+        const accident =  await this.db.accidents.deleteOne({_id: id});
+
+        return {
+          success : true,
+          //data :  {accident}
+        }
+
+      }catch(error){
+        console.log(error)
+
+        return {
+          success : false,
+          error: { message: error.message },
+        }
+
+      }
+
+
+    }
+
+    async updateAccidentById(query, payload){
+        
+      try{
+
+     //   console.log(payload);
+        const {id} = query;
+     //   console.log(id);
+        const updated = await this.db.accidents.findOneAndUpdate({_id: id}, payload)
+        
+
+        return {
+          success : true,
+          data :  {updated}
+        }
+
+      }catch(error){
+        console.log(error)
+
+        return {
+          success : false,
+          error: { message: error.message },
+        }
+
+      }
+    
+  }
+
+    async addAccident(payload){
+
+      try{
+
+        //validate the schema 
+       // const {error, data} = await recordData.validate(payload);
+        const accident = new this.db.accidents(payload);
+
+        await accident.save();
+
+        return {
+          success : true,
+          data :  {accident}
+        }
+
+      }catch(error){
+        console.log(error)
+
+        return {
+          success : false,
+          error: { message: error.message },
+        }
+      }
+  }
+
 
 
 };
