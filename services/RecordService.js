@@ -1,5 +1,5 @@
 const { recordDataRequestSchema } = require('../schemas');
-
+const { recordData } = require('../models/accident/validator')
 
 class RecordService{
 
@@ -139,6 +139,32 @@ class RecordService{
       }
     
   }
+
+    async addAccident(payload){
+
+      try{
+
+        //validate the schema 
+       // const {error, data} = await recordData.validate(payload);
+        const accident = new this.db.accidents(payload);
+
+        await accident.save();
+
+        return {
+          success : true,
+          data :  {accident}
+        }
+
+      }catch(error){
+        console.log(error)
+
+        return {
+          success : false,
+          error: { message: error.message },
+        }
+      }
+  }
+
 
 
 };
