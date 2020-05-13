@@ -83,12 +83,35 @@ class RecordService{
           success : false,
           error: { message: error.message },
         }
+      }
+    }
+
+
+    async deleteAccidentById(query){
+
+      try{
+
+        const {id} = query;
+        console.log(id);
+        const accident =  await this.db.accidents.deleteOne({_id: id});
+
+        return {
+          success : true,
+          //data :  {accident}
+        }
+
+      }catch(error){
+        console.log(error)
+
+        return {
+          success : false,
+          error: { message: error.message },
+        }
 
       }
 
 
     }
-
 
 };
 
