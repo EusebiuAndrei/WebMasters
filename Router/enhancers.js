@@ -1,18 +1,20 @@
 const pug = require('pug');
 const url = require('url');
 
-const enhanceReqAndRes = async (req, res) => {
-	await enhanceRequest(req);
+const enhanceReqAndRes = async (req, res, matchedPathname) => {
+	await enhanceRequest(req, matchedPathname);
 	await enhanceResponse(res);
 };
 
-const enhanceRequest = async (req) => {
+const enhanceRequest = async (req, matchedPathname) => {
 	if (req.method !== 'GET') {
 		await collectBody(req);
 	}
 
-	enhanceRequestWithQuery(req);
 	enhanceRequestWithPathname(req);
+	enhanceRequestWithQuery(req);
+	if (matchedPathname)
+		enhanceRequestWithParams(req, matchedPathname);
 };
 
 const enhanceResponse = async (res) => {
@@ -36,6 +38,19 @@ const collectBody = (req) => {
 
 const enhanceRequestWithQuery = (req) => {
 	req.query = url.parse(req.url, true).query;
+};
+
+const enhanceRequestWithParams = (req, matchedPathname) => {
+	const pathnameArray = req.pathname.substr(1).split('/');
+	const matchedPathnameArray = matchedPathname.substr(1).split('/');
+
+	req.params = {};
+	for (let index = 0; index < pathnameArray.length; index++) {
+		if (matchedPathnameArray[index].startsWith(':')) {
+			req.params[matchedPathnameArray[index].substr(1)] =
+				pathnameArray[index];
+		}
+	}
 };
 
 const enhanceRequestWithPathname = (req) => {

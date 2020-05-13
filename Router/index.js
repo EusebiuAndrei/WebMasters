@@ -1,8 +1,9 @@
 const httpStatus = require('http-status-codes');
 const fs = require('fs').promises;
+const url = require('url');
 
 const { enhanceReqAndRes } = require('./enhancers');
-const { getContentType } = require('./helpers');
+const { getContentType, tryRoute } = require('./helpers');
 
 const routes = {
 	GET: {},
@@ -12,9 +13,20 @@ const routes = {
 	DELETE: {},
 };
 
+const matchPathname = (method, reqPathname) => {
+	const mappedPathname = Object.keys(
+		routes[method],
+	).find((pathname) => tryRoute(reqPathname, pathname));
+
+	return mappedPathname;
+};
+
 exports.handle = async (req, res) => {
+	const pathname = url.parse(req.url, true).pathname;
+	const matchedPathname = matchPathname(req.method, pathname);
+
 	try {
-		await enhanceReqAndRes(req, res);
+		await enhanceReqAndRes(req, res, matchedPathname);
 		const publicFolder = req.pathname.substr(1).split('/')[0];
 		const root = req.pathname.split('/')[1];
 
@@ -53,8 +65,9 @@ exports.handle = async (req, res) => {
 		// Api handler
 		if (root === 'api') {
 			// Fire the aproppiate request handler
-			if (routes[req.method][req.pathname]) {
-				return routes[req.method][req.pathname](req, res);
+
+			if (routes[req.method][matchedPathname]) {
+				return routes[req.method][matchedPathname](req, res);
 			}
 
 			res.status(httpStatus.NOT_FOUND).json({
@@ -91,3 +104,4 @@ exports.put = (url, action) => {
 exports.delete = (url, action) => {
 	routes['DELETE'][url] = action;
 };
+exports.matchPathname = matchPathname;

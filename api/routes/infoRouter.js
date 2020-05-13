@@ -3,10 +3,8 @@ const router = require('../../Router');
 
 const ROUTE_BASE = '/api/info';
 
-router.get(`${ROUTE_BASE}`, (req, res) => {
-	res.status(httpStatus.OK).render('new', {
-		name: 'Timothy',
-	});
+router.get(`${ROUTE_BASE}/:msg/hello/:id`, (req, res) => {
+	res.status(httpStatus.OK).json({ msg: 'WoW' });
 });
 
 router.post(`${ROUTE_BASE}`, (req, res) => {
