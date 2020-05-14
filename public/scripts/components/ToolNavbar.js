@@ -55,6 +55,8 @@ const addEventsListeners = () => {
 			'.options-container',
 		);
 
+		console.log(Options.default());
+
 		if (optionsContainer === null) {
 			settingsRoot.children[0]?.remove();
 			settingsRoot.append(
