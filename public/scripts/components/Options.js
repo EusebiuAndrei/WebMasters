@@ -15,7 +15,8 @@ const Options = () => {
                             <button type="button" id="js-add-dataset">+</button>
                         </div>
                         <div>
-                            <label>Bucket Type
+                            <label>
+                                <span>Bucket Type</span>
                                 <select name="bucketType" style="display: block;">
                                     <option value="time" ${
 										visualType ===
@@ -43,13 +44,15 @@ const Options = () => {
                             ${
 								visualType ===
 								visualTypeEnum.PIE_CHART
-									? `<label>Join Buckets Past
+									? `<label>
+                                        <span>Join Buckets Past</span>
                                         <input type="text" name="joinBucketsPast" style="display: block;"/>
                                     </label>`
 									: ''
 							}
                             
-                            <label>Value type of a bucket
+                            <label>
+                                <span>Value type of a bucket</span>
                                 <select style="display: block;" id="js-value-type">
                                     <option value="count">Number of accidents</option>
                                     <option value="other">Custom value</option>
@@ -99,7 +102,8 @@ const ValueType = () => {
 const TimeChart = () => {
 	return `
         <div id="js-time-more">
-            <label>Data target
+            <label>
+                <span>Data target</span>
                 <select style="display: block;">
                     <option value="day">Day</option>
                     <option value="week">Week</option>
@@ -107,13 +111,16 @@ const TimeChart = () => {
                     <option value="year">Year</option>
                 </select>
             </label>
-            <label>Start date
+            <label>
+                <span>Start date</span>
                 <input type="date" />
             </label>
-            <label>End date
+            <label>
+                <span>End date</span>
                 <input type="date" />
             </label>
-            <label>Time Axis based on
+            <label>
+                <span>Time Axis based on</span>
                 <select style="display: block;">
                     <option value="start">Start of the accident</option>
                     <option value="end">End of the accident</option>
@@ -126,10 +133,12 @@ const TimeChart = () => {
 const Filter = () => {
 	return `
         <div class="dataset-filter">
-            <label>Column
+            <label>
+                <span>Column</span>
                 <input type="text" />
             </label>
-            <label>Constraint
+            <label>
+                <span>Constraint</span>
                 <select style="display: block;">
                     <option value="in">In the next values</option>
                     <option value="ne">Not Equal To</option>
@@ -139,7 +148,8 @@ const Filter = () => {
                     <option value="gt">Grater than</option>
                 </select>
             </label>
-            <label>Value
+            <label>
+                <span>Value</span>
                 <input type="text" />
             </label>
         </div>
@@ -149,7 +159,8 @@ const Filter = () => {
 const Dataset = () => {
 	return `
         <div id="" class="dataset">
-            <label>Dataset name
+            <label>
+                <span>Dataset name</span>
                 <input type="text" />
             </label>
             <button type="button" id="js-add-filter">Add filter</button>
@@ -160,7 +171,8 @@ const Dataset = () => {
 
 const BucketColumn = () => {
 	return `
-        <label>Bucket Column
+        <label>
+            <span>Bucket Column</span>
             <input type="text" name="bucketColumn" style="display: block;"/>
         </label>
     `;
