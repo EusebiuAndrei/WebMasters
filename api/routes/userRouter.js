@@ -13,8 +13,12 @@ router.get(`${ROUTE_BASE}`, async (req, res) => {
 });
 
 router.get(`${ROUTE_BASE}/auth`, async (req, res) => {
-	console.log(req.headers);
-	res.end();
+	// console.log(req.headers.authorization);
+	const result = await userService.authorize(
+		req.headers.authorization,
+	);
+	const statusCode = result.success ? 200 : 404;
+	res.status(statusCode).json(result);
 });
 
 router.post(`${ROUTE_BASE}/register`, async function (req, res) {

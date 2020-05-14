@@ -21,6 +21,7 @@
 		"moment": "^2.25.1",
 		"mongoose": "^5.9.10",
 		"mongoose-autopopulate": "^0.12.2",
+		"node-fetch": "^2.6.0",
 		"pug": "^2.0.4",
 		"winston": "^3.2.1"
 	},

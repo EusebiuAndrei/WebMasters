@@ -1,4 +1,6 @@
+const jwt = require('jsonwebtoken');
 const Logger = require('../loaders/logger');
+const config = require('../config');
 
 class UserService {
 	constructor({ db, services }) {
@@ -26,13 +28,36 @@ class UserService {
 
 		try {
 			await user.save();
-
+			await user.generateAuthToken();
 			return { success: true, data: { user } };
 		} catch (error) {
 			Logger.error(error);
 			return {
 				success: false,
 				error: { message: error.message },
+			};
+		}
+	}
+
+	async authorize(bareartoken) {
+		try {
+			const token = bareartoken.replace('Bearer ', '');
+			// console.log(token);
+			const { _id } = jwt.verify(token, config.jwtSecret);
+			const user = await this.db.users.find({
+				_id,
+				'tokens.token': token,
+			});
+
+			if (!user) {
+				throw new Error('Not authorized');
+			}
+
+			return { success: true, data: {} };
+		} catch (error) {
+			return {
+				success: false,
+				error: { message: 'Not authorized' },
 			};
 		}
 	}

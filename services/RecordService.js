@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const { recordDataRequestSchema } = require('../schemas');
 const { recordData } = require('../models/accident/validator');
 
@@ -52,9 +53,12 @@ class RecordService {
 		}
 	}
 
-	async getAccidentById(query) {
+	async getAccidentById(query, bearerToken) {
 		try {
+			await authorize(bearerToken);
+
 			const { id } = query;
+
 			console.log(id);
 			const accident = await this.db.accidents.findOne({
 				_id: id,
@@ -78,8 +82,9 @@ class RecordService {
 		}
 	}
 
-	async deleteAccidentById(query) {
+	async deleteAccidentById(query, bearerToken) {
 		try {
+			await authorize(bearerToken);
 			const { id } = query;
 			console.log(id);
 			const accident = await this.db.accidents.deleteOne({
@@ -100,8 +105,9 @@ class RecordService {
 		}
 	}
 
-	async updateAccidentById(query, payload) {
+	async updateAccidentById(query, payload, bearerToken) {
 		try {
+			await authorize(bearerToken);
 			//   console.log(payload);
 			const { id } = query;
 			//   console.log(id);
@@ -124,8 +130,9 @@ class RecordService {
 		}
 	}
 
-	async addAccident(payload) {
+	async addAccident(payload, bearerToken) {
 		try {
+			await authorize(bearerToken);
 			//validate the schema
 			// const {error, data} = await recordData.validate(payload);
 			const accident = new this.db.accidents(payload);
@@ -147,6 +154,24 @@ class RecordService {
 	}
 
 	// fds
+}
+
+async function authorize(bearerToken) {
+	let response = await fetch(
+		'http://localhost:3001/api/users/auth',
+		{
+			method: 'GET',
+			headers: {
+				Authorization: bearerToken,
+			},
+		},
+	);
+
+	response = await response.json();
+	// console.log(response);
+	if (response.success === false) {
+		throw new Error(response.error.message);
+	}
 }
 
 module.exports = RecordService;

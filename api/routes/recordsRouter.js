@@ -6,14 +6,20 @@ const ROUTE_BASE = '/api/records';
 
 /* get an accident by id */
 router.get(`${ROUTE_BASE}/:id`, async (req, res) => {
-	const result = await recordService.getAccidentById(req.params);
+	const result = await recordService.getAccidentById(
+		req.params,
+		req.headers.authorization,
+	);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
 });
 
 /* delete an accident by id */
 router.delete(`${ROUTE_BASE}/:id`, async (req, res) => {
-	const result = await recordService.deleteAccidentById(req.params);
+	const result = await recordService.deleteAccidentById(
+		req.params,
+		req.headers.authorization,
+	);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
 });
@@ -23,6 +29,7 @@ router.patch(`${ROUTE_BASE}/:id`, async (req, res) => {
 	const result = await recordService.updateAccidentById(
 		req.params,
 		req.body,
+		req.headers.authorization,
 	);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
@@ -37,7 +44,10 @@ router.post(`${ROUTE_BASE}`, async (req, res) => {
 
 /* add an accident */
 router.post(`${ROUTE_BASE}/add`, async (req, res) => {
-	const result = await recordService.addAccident(req.body);
+	const result = await recordService.addAccident(
+		req.body,
+		req.headers.authorization,
+	);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
 });
