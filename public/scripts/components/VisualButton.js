@@ -36,6 +36,13 @@ const addEventsListeners = (id) => {
 		current.textContent =
 			'Current: ' + visualDescription[root.id.substr(2)];
 		current.dataset.currentVisualId = root.id.substr(2);
+
+		const optionsContainer = document.querySelector(
+			'.options-container',
+		);
+		if (optionsContainer) {
+			optionsContainer.remove();
+		}
 	});
 };
 

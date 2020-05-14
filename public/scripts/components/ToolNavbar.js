@@ -1,7 +1,12 @@
 import { visualTypeEnum } from '../constants.js';
 import VisualButton from './VisualButton.js';
-import { getDomStringFromArray } from '../utils/index.js';
+import {
+	getDomStringFromArray,
+	getDomElementFromDomString,
+} from '../utils/index.js';
 import StateManager from '../utils/StateManager.js';
+import * as Options from './Options.js';
+import Export from './Export.js';
 
 export const visualDescription = {
 	[visualTypeEnum.MAP]: 'Map',
@@ -32,15 +37,48 @@ const ToolNavbar = () => {
                     </ul>
                 </div> 
                 <div>
-                    <a href="#">Export</a>
-                    <a href="#">Options</a>
+                    <a href="#" id="js-export">Export</a>
+                    <a href="#" id="js-options">Options</a>
                 </div>
             </div>
         </div>
     `;
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+	const settingsRoot = document.getElementById('js-settings');
+	const optionsLink = document.getElementById('js-options');
+	const exportLink = document.getElementById('js-export');
+
+	optionsLink.addEventListener('click', (event) => {
+		const optionsContainer = document.querySelector(
+			'.options-container',
+		);
+
+		if (optionsContainer === null) {
+			settingsRoot.children[0]?.remove();
+			settingsRoot.append(
+				getDomElementFromDomString(Options.default()),
+			);
+			Options.addEventsListeners();
+		} else {
+			optionsContainer.remove();
+		}
+	});
+
+	exportLink.addEventListener('click', (event) => {
+		const exportContainer = document.querySelector(
+			'.export-container',
+		);
+
+		if (exportContainer === null) {
+			settingsRoot.children[0]?.remove();
+			settingsRoot.append(getDomElementFromDomString(Export()));
+		} else {
+			exportContainer.remove();
+		}
+	});
+};
 
 export default ToolNavbar;
 export { addEventsListeners };

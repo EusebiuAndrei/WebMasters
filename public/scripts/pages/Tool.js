@@ -1,5 +1,4 @@
 // Components
-import * as Navbar from '../components/Navbar.js';
 import * as Banner from '../components/Banner.js';
 import * as Footer from '../components/Footer.js';
 import * as Vizualizer from '../components/Visualizer.js';
@@ -19,7 +18,9 @@ const Tool = () => {
         <div class="container">
             ${Banner.default()}
             ${ToolNavbar.default()}
-            ${Vizualizer.default()}
+			${Vizualizer.default()}
+			<div id="js-settings">
+			</div>
             ${Footer.default()}
         </div>
             `;
@@ -27,7 +28,7 @@ const Tool = () => {
 
 const initializeEventListeners = () => {
 	Banner.addEventsListeners();
-	Navbar.addEventsListeners();
+	ToolNavbar.addEventsListeners();
 	Footer.addEventsListeners();
 	Vizualizer.addEventsListeners();
 

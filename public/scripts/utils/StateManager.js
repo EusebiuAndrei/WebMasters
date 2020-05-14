@@ -59,6 +59,8 @@ class StateManager {
 				return {};
 		}
 	};
+
+	setStateForVisualContainer = (propName, propValue) => {};
 }
 
 const initialState = {
