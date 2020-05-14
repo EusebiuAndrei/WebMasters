@@ -1,22 +1,22 @@
 const { recordDataRequestSchema } = require('../schemas');
-// const { recordData } = require('../models/accident/validator');
+const { recordData } = require('../models/accident/validator');
 
 class RecordService {
 	constructor({ db, services }) {
 		this.db = db;
 		this.services = services;
 	}
-	// smth sda
 
 	async getData(payload) {
 		try {
-			const { data } = await recordDataRequestSchema.validate(
-				payload,
-			);
-			const { orderBy } = data;
-			const { skip, limit } = data;
+			const {
+				error,
+				data,
+			} = await recordDataRequestSchema.validate(payload);
+			const { orderBy } = payload;
+			const { skip, limit } = payload;
 
-			const filter = data.filters ? payload.filters : [];
+			const filter = payload.filters ? payload.filters : [];
 
 			const queryFilters = filter.map((filter) => {
 				return {
@@ -88,7 +88,7 @@ class RecordService {
 
 			return {
 				success: true,
-				// data :  {accident}
+				//data :  {accident}
 			};
 		} catch (error) {
 			console.log(error);
@@ -126,7 +126,7 @@ class RecordService {
 
 	async addAccident(payload) {
 		try {
-			// validate the schema
+			//validate the schema
 			// const {error, data} = await recordData.validate(payload);
 			const accident = new this.db.accidents(payload);
 
@@ -145,6 +145,8 @@ class RecordService {
 			};
 		}
 	}
+
+	// fds
 }
 
 module.exports = RecordService;
