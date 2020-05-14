@@ -12,24 +12,6 @@ const userSchema = mongoose.Schema(
 			required: true,
 			min: 6,
 		},
-		name: {
-			type: String,
-			//	required: true,
-			min: 5,
-		},
-		// role: {
-		// 	type: String,
-		// 	enum: ['Client', 'Provider'],
-		// 	default: 'Provider',
-		// },
-		emailToken: {
-			type: String,
-		},
-		confirmed: {
-			type: Boolean,
-			required: true,
-			default: 'true',
-		},
 		tokens: [
 			{
 				token: {
