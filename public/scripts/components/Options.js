@@ -98,7 +98,7 @@ const ValueType = () => {
         </div>
     `;
 };
-
+// dsa
 const TimeChart = () => {
 	return `
         <div id="js-time-more">
@@ -155,7 +155,7 @@ const Filter = () => {
         </div>
     `;
 };
-
+// dfsds jvgf sdf
 const Dataset = () => {
 	return `
         <div id="" class="dataset">
@@ -163,6 +163,7 @@ const Dataset = () => {
                 <span>Dataset name</span>
                 <input type="text" />
             </label>
+            <p>Filters</p>
             <button type="button" id="js-add-filter">Add filter</button>
             <button type="button" id="js-remove-dataset">Remove dataset</button>
         </div>

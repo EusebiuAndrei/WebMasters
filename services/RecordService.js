@@ -1,177 +1,152 @@
 const { recordDataRequestSchema } = require('../schemas');
-const { recordData } = require('../models/accident/validator')
+const { recordData } = require('../models/accident/validator');
 
-class RecordService{
-
-    constructor({ db, services }) {
+class RecordService {
+	constructor({ db, services }) {
 		this.db = db;
 		this.services = services;
-    }
-    
-    async getData(payload){
-        
-        try{
+	}
 
-         const {error, data} = await recordDataRequestSchema.validate(payload);
-         const {orderBy} = payload;
-         const {skip, limit} = payload; 
+	async getData(payload) {
+		try {
+			const {
+				error,
+				data,
+			} = await recordDataRequestSchema.validate(payload);
+			const { orderBy } = payload;
+			const { skip, limit } = payload;
 
-         const filter = payload.filters ? payload.filters : [];
+			const filter = payload.filters ? payload.filters : [];
 
-         const queryFilters = filter.map(filter => {
+			const queryFilters = filter.map((filter) => {
+				return {
+					[filter.column]: {
+						[`$${filter.constraint}`]: filter.value,
+					},
+				};
+			});
 
-            return {
+			// console.log(JSON.stringify({$and: [...queryFilters]}, null, 2));
+			// console.log();
 
-              [filter.column]:{
-                  [`$${filter.constraint}`] : filter.value
-              }
+			const accidents = await this.db.accidents
+				.find({
+					$and: [...queryFilters],
+				})
+				.sort({ [orderBy.column]: orderBy.order })
+				.limit(limit)
+				.skip(skip);
+			// console.log(accidents);
 
-            };
+			return {
+				success: true,
+				data: { accidents },
+			};
+		} catch (error) {
+			console.log(error);
 
-         });
-        
-        // console.log(JSON.stringify({$and: [...queryFilters]}, null, 2));
-        // console.log();
+			return {
+				success: false,
+				error: { message: error.message },
+			};
+		}
+	}
 
-         const accidents = await this.db.accidents.find({
+	async getAccidentById(query) {
+		try {
+			const { id } = query;
+			console.log(id);
+			const accident = await this.db.accidents.findOne({
+				_id: id,
+			});
 
-         $and: [...queryFilters]
-        
+			if (accident == null) {
+				throw new Error('Not found!');
+			}
 
-         })
-           .sort({[orderBy.column] : orderBy.order})
-           .limit(limit)
-           .skip(skip)
-          ;
+			return {
+				success: true,
+				data: { accident },
+			};
+		} catch (error) {
+			console.log(error);
 
-         // console.log(accidents);
+			return {
+				success: false,
+				error: { message: error.message },
+			};
+		}
+	}
 
-          return {
-            success : true,
-            data :  {accidents}
-          }
+	async deleteAccidentById(query) {
+		try {
+			const { id } = query;
+			console.log(id);
+			const accident = await this.db.accidents.deleteOne({
+				_id: id,
+			});
 
-        }catch(error){
-          console.log(error)
+			return {
+				success: true,
+				//data :  {accident}
+			};
+		} catch (error) {
+			console.log(error);
 
-          return {
-            success : false,
-            error: { message: error.message },
-          }
+			return {
+				success: false,
+				error: { message: error.message },
+			};
+		}
+	}
 
-        }
-      
-    }
+	async updateAccidentById(query, payload) {
+		try {
+			//   console.log(payload);
+			const { id } = query;
+			//   console.log(id);
+			const updated = await this.db.accidents.findOneAndUpdate(
+				{ _id: id },
+				payload,
+			);
 
-    async getAccidentById(query){
+			return {
+				success: true,
+				data: { updated },
+			};
+		} catch (error) {
+			console.log(error);
 
-      try{
+			return {
+				success: false,
+				error: { message: error.message },
+			};
+		}
+	}
 
-        const {id} = query;
-        console.log(id);
-        const accident =  await this.db.accidents.findOne({_id: id});
+	async addAccident(payload) {
+		try {
+			//validate the schema
+			// const {error, data} = await recordData.validate(payload);
+			const accident = new this.db.accidents(payload);
 
-        if(accident==null){
-            throw new Error("Not found!");
-        }
+			await accident.save();
 
-        return {
-          success : true,
-          data :  {accident}
-        }
+			return {
+				success: true,
+				data: { accident },
+			};
+		} catch (error) {
+			console.log(error);
 
-      }catch(error){
-        console.log(error)
+			return {
+				success: false,
+				error: { message: error.message },
+			};
+		}
+	}
 
-        return {
-          success : false,
-          error: { message: error.message },
-        }
-      }
-    }
-
-
-    async deleteAccidentById(query){
-
-      try{
-
-        const {id} = query;
-        console.log(id);
-        const accident =  await this.db.accidents.deleteOne({_id: id});
-
-        return {
-          success : true,
-          //data :  {accident}
-        }
-
-      }catch(error){
-        console.log(error)
-
-        return {
-          success : false,
-          error: { message: error.message },
-        }
-
-      }
-
-
-    }
-
-    async updateAccidentById(query, payload){
-        
-      try{
-
-     //   console.log(payload);
-        const {id} = query;
-     //   console.log(id);
-        const updated = await this.db.accidents.findOneAndUpdate({_id: id}, payload)
-        
-
-        return {
-          success : true,
-          data :  {updated}
-        }
-
-      }catch(error){
-        console.log(error)
-
-        return {
-          success : false,
-          error: { message: error.message },
-        }
-
-      }
-    
-  }
-
-    async addAccident(payload){
-
-      try{
-
-        //validate the schema 
-       // const {error, data} = await recordData.validate(payload);
-        const accident = new this.db.accidents(payload);
-
-        await accident.save();
-
-        return {
-          success : true,
-          data :  {accident}
-        }
-
-      }catch(error){
-        console.log(error)
-
-        return {
-          success : false,
-          error: { message: error.message },
-        }
-      }
-  }
-
-
-
-};
+	// fds
+}
 
 module.exports = RecordService;
-
