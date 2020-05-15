@@ -27,8 +27,7 @@
 			'footer footer footer footer footer footer';
 	}
 
-	$grid_areas: banner, header, sub, footer, map, nr, bar, pie,
-		reports;
+	$grid_areas: banner, header, sub, footer, map, nr, bar, pie, reports;
 	$grid_areas_bg: (
 		'banner': lighten($color__bg, 10%),
 		'header': $color__secondary--light,
@@ -44,10 +43,7 @@
 	@each $grid_area in $grid_areas {
 		&__#{$grid_area} {
 			grid-area: $grid_area;
-			background-color: map-get(
-				$map: $grid_areas_bg,
-				$key: '#{$grid_area}'
-			);
+			background-color: map-get($map: $grid_areas_bg, $key: '#{$grid_area}');
 		}
 	}
 }
@@ -86,9 +82,14 @@
 }
 
 #js-settings {
-	grid-column-start: 2;
-	grid-column-end: 6;
 	background-color: #13211c;
+	grid-column-start: 1;
+	grid-column-end: 2;
+
+	@media (min-width: 700px) {
+		grid-column-start: 2;
+		grid-column-end: 6;
+	}
 }
 
 #js-settings label,
@@ -230,4 +231,17 @@ label span {
 	letter-spacing: 0.1em;
 	font-size: 1.25em;
 	margin: 10px 0 !important;
+}
+
+label ~ p {
+	letter-spacing: 0.1em;
+	font-size: 1.2em;
+	margin: 0;
+	margin-top: 1em;
+	text-align: center;
+}
+
+#js-time-more {
+	flex-direction: column;
+	align-items: center;
 }

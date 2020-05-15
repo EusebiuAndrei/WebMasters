@@ -60,7 +60,29 @@ class StateManager {
 		}
 	};
 
-	setStateForVisualContainer = (propName, propValue) => {};
+	setFetchedData = (payload) => {
+		const fetchedData = {
+			data: payload.values,
+			labels: payload.bucketLabels,
+		};
+		console.log(fetchedData);
+
+		switch (this.state.visualType) {
+			case visualTypeEnum.MAP:
+				this.state.mapUS.fetchedData = fetchedData;
+				break;
+			case visualTypeEnum.BAR_GRAPH:
+				this.state.lineChart.fetchedData = fetchedData;
+				break;
+			case visualTypeEnum.PIE_CHART:
+				this.state.pieChart.fetchedData = fetchedData;
+				break;
+			default:
+				break;
+		}
+
+		this.setState(this.state);
+	};
 }
 
 const initialState = {
@@ -75,13 +97,7 @@ const initialState = {
 		},
 		fetchedData: {
 			data: [200, 157, 215, 186, 190],
-			labels: [
-				"Feb '16",
-				"Mar '16",
-				"Apr '16",
-				"May '16",
-				"Jun '16",
-			],
+			labels: ["Feb '16", "Mar '16", "Apr '16", "May '16", "Jun '16"],
 		},
 	},
 	pieChart: {
@@ -93,12 +109,7 @@ const initialState = {
 		},
 		fetchedData: {
 			data: [45, 15, 35, 5],
-			labels: [
-				'Speed limit',
-				'Alchool',
-				'Sleeping driver',
-				'Others',
-			],
+			labels: ['Speed limit', 'Alchool', 'Sleeping driver', 'Others'],
 		},
 	},
 	mapUS: {

@@ -20,8 +20,6 @@ const createStateEvent = (payload) => {
 	});
 };
 
-export {
-	getDomStringFromArray,
-	getDomElementFromDomString,
-	createStateEvent,
-};
+export const eventApplyForm = new Event('applyForm');
+
+export { getDomStringFromArray, getDomElementFromDomString, createStateEvent };

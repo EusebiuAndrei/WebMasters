@@ -1,11 +1,12 @@
 import StateManager from '../utils/StateManager.js';
 import { visualTypeEnum } from '../constants.js';
-import { getDomElementFromDomString } from '../utils/index.js';
-
+import { getDomElementFromDomString, eventApplyForm } from '../utils/index.js';
+import * as api from '../api/index.js';
+// fds
 const Options = () => {
 	const { inputData } = StateManager.getStateForVisual();
 	const { visualType } = StateManager.getState();
-	console.log(inputData);
+	// console.log(inputData);
 
 	return `
             <div class="options-container">
@@ -14,21 +15,18 @@ const Options = () => {
                         <div>
                             <button type="button" id="js-add-dataset">+</button>
                         </div>
-                        <div>
+                        <div id="js-chart-data">
                             <label>
                                 <span>Bucket Type</span>
-                                <select name="bucketType" style="display: block;">
+                                <select name="bucketType" id="js-bucket" style="display: block;">
                                     <option value="time" ${
-										visualType ===
-										visualTypeEnum.BAR_GRAPH
+										visualType === visualTypeEnum.BAR_GRAPH
 											? 'selected'
 											: ''
 									}>Time</option>
                                     <option value="column" ${
-										visualType ===
-											visualTypeEnum.MAP ||
-										visualType ===
-											visualTypeEnum.PIE_CHART
+										visualType === visualTypeEnum.MAP ||
+										visualType === visualTypeEnum.PIE_CHART
 											? 'selected'
 											: ''
 									}>Column</option>
@@ -38,13 +36,12 @@ const Options = () => {
                             ${
 								inputData.bucketType === 'column'
 									? BucketColumn()
-									: ''
+									: TimeChart()
 							}
                             
                             ${
-								visualType ===
-								visualTypeEnum.PIE_CHART
-									? `<label>
+								visualType === visualTypeEnum.PIE_CHART
+									? `<label id="js-join-buckets-past">
                                         <span>Join Buckets Past</span>
                                         <input type="text" name="joinBucketsPast" style="display: block;"/>
                                     </label>`
@@ -58,12 +55,6 @@ const Options = () => {
                                     <option value="other">Custom value</option>
                                 </select>
                             </label>
-
-                            ${
-								inputData.bucketType === 'time'
-									? TimeChart()
-									: ''
-							}
                         </div>
                     </div>
 
@@ -76,19 +67,12 @@ const Options = () => {
 const ValueType = () => {
 	return `
         <div id="js-value-type-more">
-            <label>Data target
-                <select style="display: block;">
-                    <option value="temperature">Temperature</option>
-                    <option value="severity">Severity</option>
-                    <option value="humidity">Humidity</option>
-                    <option value="pressure">Pressure</option>
-                    <option value="visibility">Visibility</option>
-                    <option value="precipitation">Precipitation</option>
-                    <option value="windSpeed">Wind speed</option>
-                    <option value="windChill">Wind chill</option>
-                </select>
+            <label>
+                <span>Data target</span>
+                ${SelectForColumn()}
             </label>
-            <label>Aggreagation
+            <label>
+                <span>Aggregation</span>
                 <select style="display: block;">
                     <option value="avg">Average</option>
                     <option value="min">Minimum</option>
@@ -98,7 +82,7 @@ const ValueType = () => {
         </div>
     `;
 };
-// dsa
+
 const TimeChart = () => {
 	return `
         <div id="js-time-more">
@@ -113,11 +97,11 @@ const TimeChart = () => {
             </label>
             <label>
                 <span>Start date</span>
-                <input type="date" />
+                <input type="date" value="2016-07-22" min="2016-01-01" max="2018-12-31"/>
             </label>
             <label>
                 <span>End date</span>
-                <input type="date" />
+                <input type="date" value="2017-07-22" min="2016-01-01" max="2018-12-31"/>
             </label>
             <label>
                 <span>Time Axis based on</span>
@@ -135,7 +119,7 @@ const Filter = () => {
         <div class="dataset-filter">
             <label>
                 <span>Column</span>
-                <input type="text" />
+                ${SelectForColumn(true)}
             </label>
             <label>
                 <span>Constraint</span>
@@ -172,11 +156,27 @@ const Dataset = () => {
 
 const BucketColumn = () => {
 	return `
-        <label>
+        <label id="js-bucket-column">
             <span>Bucket Column</span>
-            <input type="text" name="bucketColumn" style="display: block;"/>
+            ${SelectForColumn(true)}
         </label>
     `;
+};
+
+const SelectForColumn = (state) => {
+	return `
+		<select style="display: block;">
+			${state ? '<option value="state">State</option>' : ''}
+			<option value="temperature">Temperature</option>
+			<option value="severity">Severity</option>
+			<option value="humidity">Humidity</option>
+			<option value="pressure">Pressure</option>
+			<option value="visibility">Visibility</option>
+			<option value="precipitation">Precipitation</option>
+			<option value="windSpeed">Wind speed</option>
+			<option value="windChill">Wind chill</option>
+		</select>
+	`;
 };
 
 const addEventsListeners = () => {
@@ -184,6 +184,8 @@ const addEventsListeners = () => {
 	const form = settings.querySelector('form');
 	const inputs = settings.querySelectorAll('input');
 	const value_type = settings.querySelector('#js-value-type');
+	const buttonAddDataset = document.getElementById('js-add-dataset');
+	const buttonBucketType = document.getElementById('js-bucket');
 
 	inputs.forEach((input) =>
 		input.addEventListener('change', (event) => {
@@ -192,18 +194,58 @@ const addEventsListeners = () => {
 		}),
 	);
 
-	form.addEventListener('submit', (event) => {
+	form.addEventListener('submit', async (event) => {
 		event.preventDefault();
-		console.log(event.target.elements);
-		console.log(event.target);
-		console.log(event.currentTarget);
+
+		const chartData = computeChartDataObjectFromDom();
+		const datasets = computeDatasetsObjectFromDom(form);
+
+		console.log(chartData);
+		console.log(datasets);
+		console.log(eventApplyForm.type);
+
+		const root = document.getElementById(`a-${StateManager.getState().visualType}`);
+		console.log(root);
+
+		if (datasets.length === 0) {
+			try {
+				const result = await api.getDataset(chartData);
+				console.log('!!!!');
+				console.log(result);
+				console.log('!!!!');
+
+				console.log('STATE', StateManager.getState());
+				StateManager.setFetchedData(result);
+				root.dispatchEvent(eventApplyForm);
+				console.log('STATE', StateManager.getState());
+			} catch (error) {
+				console.log('AAAAAAAA');
+				console.log(error);
+			}
+
+			return;
+		}
+
+		for (const dataset of datasets) {
+			const { filters } = dataset;
+			const payload = { ...chartData, filters };
+
+			console.log(payload);
+			try {
+				const result = await api.getDataset(payload);
+				console.log('!!!!');
+				console.log(result);
+				console.log('!!!!');
+			} catch (error) {
+				console.log('AAAAAAAA');
+				console.log(error);
+			}
+		}
 	});
 
 	value_type.addEventListener('change', (event) => {
 		console.log(event.target.value);
-		const valueMore = document.getElementById(
-			'js-value-type-more',
-		);
+		const valueMore = document.getElementById('js-value-type-more');
 
 		if (event.target.value === 'count') {
 			if (valueMore) {
@@ -211,15 +253,10 @@ const addEventsListeners = () => {
 			}
 		} else {
 			console.log(event.target.parentElement);
-			event.target.parentElement.after(
-				getDomElementFromDomString(ValueType()),
-			);
+			event.target.parentElement.after(getDomElementFromDomString(ValueType()));
 		}
 	});
 
-	const buttonAddDataset = document.getElementById(
-		'js-add-dataset',
-	);
 	buttonAddDataset.addEventListener('click', (event) => {
 		event.target.before(getDomElementFromDomString(Dataset()));
 
@@ -227,9 +264,7 @@ const addEventsListeners = () => {
 		event.target.previousElementSibling
 			.querySelector('#js-add-filter')
 			.addEventListener('click', (event) => {
-				event.target.before(
-					getDomElementFromDomString(Filter()),
-				);
+				event.target.before(getDomElementFromDomString(Filter()));
 			});
 
 		event.target.previousElementSibling
@@ -238,6 +273,99 @@ const addEventsListeners = () => {
 				console.log(event.target.parentElement.remove());
 			});
 	});
+
+	buttonBucketType.addEventListener('click', (event) => {
+		const domBucketColumn = document.getElementById('js-bucket-column');
+		const domTimeChart = document.getElementById('js-time-more');
+		console.log(event.target.value);
+
+		if (event.target.value === 'column') {
+			if (domTimeChart) {
+				domTimeChart.replaceWith(getDomElementFromDomString(BucketColumn()));
+			}
+		} else {
+			if (domBucketColumn) {
+				domBucketColumn.replaceWith(getDomElementFromDomString(TimeChart()));
+			}
+		}
+	});
+};
+
+const computeChartDataObjectFromDom = () => {
+	const domChartData = document.getElementById('js-chart-data');
+	const domBucketColumn = document.getElementById('js-bucket-column');
+	const domTimeChart = document.getElementById('js-time-more');
+	const domValueTypeMore = document.getElementById('js-value-type-more');
+	const domJoinBucketsPast = document.getElementById('js-join-buckets-past');
+	const data = {};
+
+	const bucketType = domChartData.children[0].children[1].value;
+	data.bucketType = bucketType;
+
+	if (bucketType === 'column') {
+		data.bucketColumn = domBucketColumn.children[1].value;
+	} else {
+		data.timeChart = {
+			bucketSize: domTimeChart.children[0].children[1].value,
+			from: domTimeChart.children[1].children[1].value,
+			to: domTimeChart.children[2].children[1].value,
+			timeAxisBasedOn: domTimeChart.children[3].children[1].value,
+		};
+	}
+
+	const domValueType = domValueTypeMore
+		? domChartData.children[domChartData.children.length - 2]
+		: domChartData.children[domChartData.children.length - 1];
+	const valueType = domValueType.children[1].value;
+
+	if (valueType === 'count') {
+		data.valueType = valueType;
+	} else {
+		data.valueType = {
+			column: domValueTypeMore.children[0].children[1].value,
+			type: domValueTypeMore.children[1].children[1].value,
+		};
+	}
+
+	if (domJoinBucketsPast) {
+		data.joinBucketsPast = domJoinBucketsPast.children[1].value;
+	}
+
+	return data;
+};
+
+const computeDatasetsObjectFromDom = (form) => {
+	const datasets = [];
+
+	const domDatasets = form.querySelectorAll('.dataset');
+	domDatasets.forEach((domDataset) => {
+		const domDatasetFilter = domDataset.querySelectorAll('.dataset-filter');
+		const dataset = {
+			name: domDataset.children[0].children[1].value,
+			filters: [],
+		};
+
+		domDataset.querySelectorAll('.dataset-filter').forEach((datasetFilter) => {
+			const value = datasetFilter.children[2].children[1].value;
+			const filter = {
+				column: datasetFilter.children[0].children[1].value,
+				constraint: datasetFilter.children[1].children[1].value,
+			};
+
+			if (filter.constraint === 'in') {
+				// Use what Tudor gave
+				filter.value = value;
+			} else {
+				filter.value = parseInt(value);
+			}
+
+			dataset.filters.push(filter);
+		});
+
+		datasets.push(dataset);
+	});
+
+	return datasets;
 };
 
 export default Options;

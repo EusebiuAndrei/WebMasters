@@ -407,9 +407,13 @@ p {
   align-items: center; }
 
 #js-settings {
-  grid-column-start: 2;
-  grid-column-end: 6;
-  background-color: #13211c; }
+  background-color: #13211c;
+  grid-column-start: 1;
+  grid-column-end: 2; }
+  @media (min-width: 700px) {
+    #js-settings {
+      grid-column-start: 2;
+      grid-column-end: 6; } }
 
 #js-settings label,
 #js-settings input,
@@ -530,6 +534,17 @@ label span {
   letter-spacing: 0.1em;
   font-size: 1.25em;
   margin: 10px 0 !important; }
+
+label ~ p {
+  letter-spacing: 0.1em;
+  font-size: 1.2em;
+  margin: 0;
+  margin-top: 1em;
+  text-align: center; }
+
+#js-time-more {
+  flex-direction: column;
+  align-items: center; }
 
 .button {
   box-sizing: border-box;
