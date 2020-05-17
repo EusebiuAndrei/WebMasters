@@ -112,7 +112,10 @@ class AccidentService {
 		const data = result.map(item => item.value);
 
 		if (query.bucketType === 'time') {
-			labels = labels.map(timeLabelToString)
+			labels = labels.map(timeLabelToString);
+		}
+		else {
+			labels = labels.map(label => label.toString());
 		}
 
 		return {labels, data};
