@@ -1,4 +1,4 @@
-const Logger = require('../loaders/logger');
+// const Logger = require('../loaders/logger');
 
 function groupBuilder({ bucketType, bucketColumn, timeChart, valueType }) {
 	let _id;
@@ -92,10 +92,10 @@ class AccidentService {
 			result = [...kept, other];
 		}
 
-		const bucketLabels = result.map(item => item._id);
-		const values = result.map(item => item.value);
+		const labels = result.map(item => item._id);
+		const data = result.map(item => item.value);
 
-		return { bucketLabels, values };
+		return {labels, data};
 	}
 }
 
