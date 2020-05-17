@@ -59,6 +59,21 @@ function timeAxisFilter({from, to, timeAxisBasedOn}) {
 	return { [dateColumn]: filter };
 }
 
+function timeLabelToString({year, month, week, day}) {
+	if (week) {
+		return `${year}w${week}`;
+	} else {
+		let str = year.toString();
+		if (month) {
+			str = `${month}/${str}`;
+			if (day) {
+				str = `${day}/${str}`;
+			}
+		}
+		return str;
+	}
+}
+
 class AccidentService {
 	constructor({ db, services }) {
 		this.db = db;
@@ -92,8 +107,13 @@ class AccidentService {
 			result = [...kept, other];
 		}
 
-		const labels = result.map(item => item._id);
+		let labels;
+		labels = result.map(item => item._id);
 		const data = result.map(item => item.value);
+
+		if (query.bucketType === 'time') {
+			labels = labels.map(timeLabelToString)
+		}
 
 		return {labels, data};
 	}
