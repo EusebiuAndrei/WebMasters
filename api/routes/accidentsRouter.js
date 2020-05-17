@@ -1,7 +1,6 @@
 const httpStatus = require('http-status-codes');
 const router = require('../../Router');
 const { accidentService } = require('../../services');
-const { chartDataRequestSchema } = require('../../schemas');
 
 const ROUTE_BASE = '/api/accidents';
 
@@ -11,11 +10,7 @@ router.get(`${ROUTE_BASE}`, (req, res) => {
 
 // move to router.get with query params
 router.post(`${ROUTE_BASE}/chart_data`, async (req, res) => {
-	const { error, value } = chartDataRequestSchema.validate(req.body);
-	if (error) {
-		res.status(httpStatus.BAD_REQUEST).json(error.message);
-	} else {
-		const result = await accidentService.getBuckets(value);
-		res.status(httpStatus.OK).json(result);
-	}
+	const result = await accidentService.getBuckets(req.body);
+	const status = result.success ? httpStatus.OK : httpStatus.BAD_REQUEST;
+	res.status(status).json(result);
 });

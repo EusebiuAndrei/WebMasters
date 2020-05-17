@@ -1,5 +1,8 @@
 // const Logger = require('../loaders/logger');
 
+const { chartDataRequestSchema } = require('../schemas');
+
+
 function groupBuilder({ bucketType, bucketColumn, timeChart, valueType }) {
 	let _id;
 	if (bucketType === 'column') {
@@ -81,6 +84,13 @@ class AccidentService {
 	}
 
 	async getBuckets(query) {
+		const { error, value } = chartDataRequestSchema.validate(query);
+		if (error) {
+			return {success: false, error};
+		} else {
+			query = value;
+		}
+
 		let aggregate = this.db.accidents.aggregate();
 		if (query.filters) {
 			for (const filter of query.filters) {
