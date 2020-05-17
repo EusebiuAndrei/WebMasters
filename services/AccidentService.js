@@ -118,7 +118,7 @@ class AccidentService {
 			labels = labels.map(label => label.toString());
 		}
 
-		return {labels, data};
+		return {success: true, data: {labels, data}};
 	}
 }
 
