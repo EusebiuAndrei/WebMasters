@@ -9,6 +9,7 @@ import Pie from './Pie.js';
 import { initializeGraph } from '../visuals/graph.js';
 import { intializeMap } from '../visuals/index.js';
 import { initializePieChart } from '../visuals/pie.js';
+import { initializeLineChart } from '../visuals/lineChart.js';
 import stateManager from '../utils/StateManager.js';
 
 const Vizualizer = () => {
@@ -26,6 +27,8 @@ const getVisualizerByType = (visualType) => {
 	switch (visualType) {
 		case visualTypeEnum.MAP:
 			return MapUS;
+		case visualTypeEnum.LINE_CHART:
+			return BarGraph;
 		case visualTypeEnum.BAR_GRAPH:
 			return BarGraph;
 		case visualTypeEnum.PIE_CHART:
@@ -39,6 +42,8 @@ const initializeVisualsByType = (visualType) => {
 	switch (visualType) {
 		case visualTypeEnum.MAP:
 			return intializeMap;
+		case visualTypeEnum.LINE_CHART:
+			return initializeLineChart;
 		case visualTypeEnum.BAR_GRAPH:
 			return initializeGraph;
 		case visualTypeEnum.PIE_CHART:

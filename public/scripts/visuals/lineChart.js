@@ -1,10 +1,10 @@
 import { randomColor } from '../utils/index.js';
 
-export const initializeGraph = ({ data, labels }) => {
+export const initializeLineChart = ({ data, labels }) => {
 	console.log('~~~~~~~~', labels);
 	const ctx = document.getElementById('chart');
 	const chart = new Chart(ctx, {
-		type: 'bar',
+		type: 'line',
 		data: {
 			labels,
 			datasets: [

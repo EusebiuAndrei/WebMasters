@@ -51,8 +51,10 @@ class StateManager {
 		switch (this.state.visualType) {
 			case visualTypeEnum.MAP:
 				return this.state.mapUS;
-			case visualTypeEnum.BAR_GRAPH:
+			case visualTypeEnum.LINE_CHART:
 				return this.state.lineChart;
+			case visualTypeEnum.BAR_GRAPH:
+				return this.state.barChart;
 			case visualTypeEnum.PIE_CHART:
 				return this.state.pieChart;
 			default:
@@ -65,8 +67,11 @@ class StateManager {
 			case visualTypeEnum.MAP:
 				this.state.mapUS.fetchedData = payload;
 				break;
-			case visualTypeEnum.BAR_GRAPH:
+			case visualTypeEnum.LINE_CHART:
 				this.state.lineChart.fetchedData = payload;
+				break;
+			case visualTypeEnum.BAR_GRAPH:
+				this.state.barChart.fetchedData = payload;
 				break;
 			case visualTypeEnum.PIE_CHART:
 				this.state.pieChart.fetchedData = payload;
@@ -91,6 +96,19 @@ const initialState = {
 		},
 		fetchedData: {
 			data: [{ name: 'Line Chart', data: [200, 157, 215, 186, 190] }],
+			labels: ["Feb '16", "Mar '16", "Apr '16", "May '16", "Jun '16"],
+		},
+	},
+	barChart: {
+		inputData: {
+			bucketType: 'time',
+			valueType: 'count',
+			timeChart: {
+				bucketSize: 'month',
+			},
+		},
+		fetchedData: {
+			data: [{ name: 'Bar Chart', data: [200, 157, 215, 186, 190] }],
 			labels: ["Feb '16", "Mar '16", "Apr '16", "May '16", "Jun '16"],
 		},
 	},

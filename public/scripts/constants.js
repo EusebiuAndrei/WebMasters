@@ -1,5 +1,6 @@
 export const visualTypeEnum = {
 	MAP: 'MAP',
+	LINE_CHART: 'LINE_CHART',
 	BAR_GRAPH: 'BAR_GRAPH',
 	PIE_CHART: 'PIE_CHART',
 };
