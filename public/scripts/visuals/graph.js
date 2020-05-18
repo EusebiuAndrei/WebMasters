@@ -1,3 +1,5 @@
+import { randomColor } from '../utils/index.js';
+
 export const initializeGraph = ({ data, labels }) => {
 	const ctx = document.getElementById('chart');
 	const chart = new Chart(ctx, {
@@ -5,11 +7,11 @@ export const initializeGraph = ({ data, labels }) => {
 		data: {
 			labels,
 			datasets: [
-				{
-					data,
-					backgroundColor: '#5090BE50',
-					borderColor: '#5090BE',
-				},
+				...data.map((dataset) => ({
+					label: dataset.name,
+					data: dataset.data,
+					...randomColor(),
+				})),
 			],
 		},
 		options: {

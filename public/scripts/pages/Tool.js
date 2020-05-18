@@ -40,22 +40,14 @@ const initializeEventListeners = () => {
 const initializeVisuals = () => {
 	// console.log('AAA', stateManager.getStateForVisual().fetchedData);
 
-	Vizualizer.initializeVisualsByType(
-		stateManager.getState().visualType,
-	)(stateManager.getStateForVisual().fetchedData);
+	Vizualizer.initializeVisualsByType(stateManager.getState().visualType)(
+		stateManager.getStateForVisual().fetchedData,
+	);
 };
 
 const initialize = () => {
 	initializeEventListeners();
 	initializeVisuals();
-
-	// An example of using calls to backend
-	const runFetch = async () => {
-		const response = await api.getUsers();
-
-		console.log(response);
-	};
-	runFetch();
 };
 
 export default Tool;

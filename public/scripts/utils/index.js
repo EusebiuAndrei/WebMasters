@@ -20,6 +20,31 @@ const createStateEvent = (payload) => {
 	});
 };
 
+const randRgbNumber = () => Math.floor(Math.random() * 256);
+
+const randRgba = (r, g, b, o) => `rgba(${r}, ${g}, ${b}, ${o})`;
+
+export const randomColor = () => {
+	const r = randRgbNumber();
+	const g = randRgbNumber();
+	const b = randRgbNumber();
+
+	return {
+		borderColor: randRgba(r, g, b, 1),
+		backgroundColor: randRgba(r, g, b, 0.5),
+	};
+};
+
+export const generateNRandColors = (n) => {
+	let colors = [];
+
+	for (let i = 0; i < n; i++) {
+		colors.push(randomColor().borderColor);
+	}
+
+	return colors;
+};
+
 export const eventApplyForm = new Event('applyForm');
 
 export { getDomStringFromArray, getDomElementFromDomString, createStateEvent };

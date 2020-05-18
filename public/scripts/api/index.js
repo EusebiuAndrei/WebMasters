@@ -1,3 +1,5 @@
+import * as converter from '../utils/Converter.js';
+
 const getUsers = async () => {
 	let response = await fetch('http://localhost:3001/api/users');
 	response = response.json();
@@ -11,11 +13,28 @@ const getDataset = async (data) => {
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(data, null, 2),
+		body: JSON.stringify(convertData(data), null, 2),
 	});
 	response = response.json();
 
 	return response;
+};
+
+const convertData = (data) => {
+	return {
+		...data,
+		filters: data.filters.map(({ column, constraint, value }) => {
+			let newValue;
+
+			if (constraint === 'in') {
+				newValue = converter.convertArr(column, value);
+			} else {
+				newValue = converter.conv[converter.columnTypes[column]](value);
+			}
+
+			return { column, constraint, value: newValue };
+		}),
+	};
 };
 
 export { getUsers, getDataset };

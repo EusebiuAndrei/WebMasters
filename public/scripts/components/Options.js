@@ -1,7 +1,17 @@
 import StateManager from '../utils/StateManager.js';
-import { visualTypeEnum } from '../constants.js';
-import { getDomElementFromDomString, eventApplyForm } from '../utils/index.js';
+import {
+	visualTypeEnum,
+	numericColumns,
+	discreteColumns,
+	allColumns,
+} from '../constants.js';
+import {
+	getDomElementFromDomString,
+	eventApplyForm,
+	getDomStringFromArray,
+} from '../utils/index.js';
 import * as api from '../api/index.js';
+
 // fds
 const Options = () => {
 	const { inputData } = StateManager.getStateForVisual();
@@ -69,7 +79,7 @@ const ValueType = () => {
         <div id="js-value-type-more">
             <label>
                 <span>Data target</span>
-                ${SelectForColumn()}
+                ${SelectForColumn(numericColumns)}
             </label>
             <label>
                 <span>Aggregation</span>
@@ -119,7 +129,7 @@ const Filter = () => {
         <div class="dataset-filter">
             <label>
                 <span>Column</span>
-                ${SelectForColumn(true)}
+                ${SelectForColumn(allColumns)}
             </label>
             <label>
                 <span>Constraint</span>
@@ -158,23 +168,22 @@ const BucketColumn = () => {
 	return `
         <label id="js-bucket-column">
             <span>Bucket Column</span>
-            ${SelectForColumn(true)}
+            ${SelectForColumn(discreteColumns)}
         </label>
     `;
 };
 
-const SelectForColumn = (state) => {
+const SelectForColumn = (columns) => {
+	const options = columns.map(
+		(column) =>
+			`<option value="${column}">${
+				column.charAt(0).toUpperCase() + column.slice(1)
+			}</option>`,
+	);
+
 	return `
 		<select style="display: block;">
-			${state ? '<option value="state">State</option>' : ''}
-			<option value="temperature">Temperature</option>
-			<option value="severity">Severity</option>
-			<option value="humidity">Humidity</option>
-			<option value="pressure">Pressure</option>
-			<option value="visibility">Visibility</option>
-			<option value="precipitation">Precipitation</option>
-			<option value="windSpeed">Wind speed</option>
-			<option value="windChill">Wind chill</option>
+			${getDomStringFromArray(options)}
 		</select>
 	`;
 };
@@ -200,22 +209,35 @@ const addEventsListeners = () => {
 		const chartData = computeChartDataObjectFromDom();
 		const datasets = computeDatasetsObjectFromDom(form);
 
-		console.log(chartData);
-		console.log(datasets);
-		console.log(eventApplyForm.type);
+		// console.log(chartData);
+		// console.log(datasets);
+		// console.log(eventApplyForm.type);
 
 		const root = document.getElementById(`a-${StateManager.getState().visualType}`);
-		console.log(root);
+		// console.log(root);
 
 		if (datasets.length === 0) {
+			let chartLabels = [];
+			let chartDatasets = [];
+
 			try {
-				const result = await api.getDataset(chartData);
+				const {
+					data: { labels, data },
+				} = await api.getDataset(payload);
+				chartLabels = labels;
+				chartDatasets.push({ name: 'Default name', data });
+
+				const fetchedData = {
+					labels: chartLabels,
+					data: chartDatasets,
+				};
+
 				console.log('!!!!');
-				console.log(result);
+				console.log(fetchedData);
 				console.log('!!!!');
 
 				console.log('STATE', StateManager.getState());
-				StateManager.setFetchedData(result);
+				StateManager.setFetchedData(fetchedData);
 				root.dispatchEvent(eventApplyForm);
 				console.log('STATE', StateManager.getState());
 			} catch (error) {
@@ -224,22 +246,40 @@ const addEventsListeners = () => {
 			}
 
 			return;
-		}
+		} else {
+			let chartLabels = [];
+			let chartDatasets = [];
+			for (const dataset of datasets) {
+				const { filters } = dataset;
+				const payload = { ...chartData, filters };
 
-		for (const dataset of datasets) {
-			const { filters } = dataset;
-			const payload = { ...chartData, filters };
-
-			console.log(payload);
-			try {
-				const result = await api.getDataset(payload);
-				console.log('!!!!');
-				console.log(result);
-				console.log('!!!!');
-			} catch (error) {
-				console.log('AAAAAAAA');
-				console.log(error);
+				console.log(payload);
+				try {
+					const {
+						data: { labels, data },
+					} = await api.getDataset(payload);
+					chartLabels = labels;
+					chartDatasets.push({ name: dataset.name, data });
+				} catch (error) {
+					alert(
+						`There was a problem with the dataset: ${dataset.name} \n ${error.message}`,
+					);
+				}
 			}
+
+			const fetchedData = {
+				labels: chartLabels,
+				data: chartDatasets,
+			};
+
+			console.log('!!!!');
+			console.log(fetchedData);
+			console.log('!!!!');
+
+			console.log('STATE', StateManager.getState());
+			StateManager.setFetchedData(fetchedData);
+			root.dispatchEvent(eventApplyForm);
+			console.log('STATE', StateManager.getState());
 		}
 	});
 
