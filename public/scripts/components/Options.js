@@ -223,7 +223,7 @@ const addEventsListeners = () => {
 			try {
 				const {
 					data: { labels, data },
-				} = await api.getDataset(payload);
+				} = await api.getDataset(chartData);
 				chartLabels = labels;
 				chartDatasets.push({ name: 'Default name', data });
 

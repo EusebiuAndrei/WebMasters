@@ -23,17 +23,19 @@ const getDataset = async (data) => {
 const convertData = (data) => {
 	return {
 		...data,
-		filters: data.filters.map(({ column, constraint, value }) => {
-			let newValue;
+		filters: data.filters
+			? data.filters.map(({ column, constraint, value }) => {
+					let newValue;
 
-			if (constraint === 'in') {
-				newValue = converter.convertArr(column, value);
-			} else {
-				newValue = converter.conv[converter.columnTypes[column]](value);
-			}
+					if (constraint === 'in') {
+						newValue = converter.convertArr(column, value);
+					} else {
+						newValue = converter.conv[converter.columnTypes[column]](value);
+					}
 
-			return { column, constraint, value: newValue };
-		}),
+					return { column, constraint, value: newValue };
+			  })
+			: [],
 	};
 };
 
