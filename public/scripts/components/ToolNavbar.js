@@ -24,7 +24,7 @@ const ToolNavbar = () => {
 	return `
         <div class="container__header">
             <div style="width: 80%; margin: 0 auto; display: flex; justify-content: space-between">
-                <div>
+                <div class="current-visual-hover">
                     <p id="current-visual" data-current-visual-id="${
 						StateManager.getState().visualType
 					}">Current: ${

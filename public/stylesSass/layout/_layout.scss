@@ -245,3 +245,36 @@ label ~ p {
 	flex-direction: column;
 	align-items: center;
 }
+
+.current-visual-hover {
+	cursor: pointer;
+}
+
+.current-visual-hover ul {
+	display: none;
+	position: absolute;
+	z-index: 10000;
+}
+
+.current-visual-hover ul li a {
+	background-color: antiquewhite;
+	color: darkred;
+	text-align: center;
+	padding: 0.7em 1.7em;
+	border-left: 2px solid darkred;
+	border-right: 2px solid darkred;
+	border-bottom: 2px solid darkred;
+	opacity: 0.8;
+}
+
+.current-visual-hover ul li a:hover {
+	opacity: 1;
+}
+
+.current-visual-hover ul li:first-child a {
+	border-top: 2px solid darkred;
+}
+
+.current-visual-hover:hover ul {
+	display: block;
+}
