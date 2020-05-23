@@ -14,9 +14,9 @@ const routes = {
 };
 
 const matchPathname = (method, reqPathname) => {
-	const mappedPathname = Object.keys(
-		routes[method],
-	).find((pathname) => tryRoute(reqPathname, pathname));
+	const mappedPathname = Object.keys(routes[method]).find((pathname) =>
+		tryRoute(reqPathname, pathname),
+	);
 
 	return mappedPathname;
 };
@@ -31,25 +31,15 @@ exports.handle = async (req, res) => {
 		const root = req.pathname.split('/')[1];
 
 		// Serve public folder
-		if (
-			['pages', 'styles', 'scripts', 'images'].includes(
-				publicFolder,
-			)
-		) {
+		if (['pages', 'styles', 'scripts', 'images'].includes(publicFolder)) {
 			try {
-				const nrOfDirectories = req.pathname
-					.substr(1)
-					.split('/').length;
-				const publicFile = req.pathname.substr(1).split('/')[
-					nrOfDirectories - 1
-				];
+				const nrOfDirectories = req.pathname.substr(1).split('/').length;
+				const publicFile = req.pathname.substr(1).split('/')[nrOfDirectories - 1];
 
 				const nrOfDots = publicFile.split('.').length;
 				const extension = publicFile.split('.')[nrOfDots - 1];
 
-				const data = await fs.readFile(
-					`public/${req.pathname}`,
-				);
+				const data = await fs.readFile(`public/${req.pathname}`);
 
 				res.writeHead(httpStatus.OK, {
 					'Content-Type': getContentType(extension),
@@ -57,9 +47,7 @@ exports.handle = async (req, res) => {
 
 				return res.end(data);
 			} catch (error) {
-				return res
-					.status(httpStatus.NOT_FOUND)
-					.render('error');
+				return res.status(httpStatus.NOT_FOUND).render('error');
 			}
 		}
 		// Api handler

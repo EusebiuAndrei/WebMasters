@@ -3,7 +3,7 @@ import * as Banner from '../components/Banner.js';
 import * as Footer from '../components/Footer.js';
 import * as Vizualizer from '../components/Visualizer.js';
 import * as ToolNavbar from '../components/ToolNavbar.js';
-
+import * as Export from '../components/Export.js';
 // Api
 import * as api from '../api/index.js';
 
@@ -31,6 +31,7 @@ const initializeEventListeners = () => {
 	ToolNavbar.addEventsListeners();
 	Footer.addEventsListeners();
 	Vizualizer.addEventsListeners();
+	Export.addEventsListeners();
 
 	Object.keys(visualTypeEnum).forEach((visualType) =>
 		VisualButton.addEventsListeners('a-' + visualType),
