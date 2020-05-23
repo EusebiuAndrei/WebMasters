@@ -22,9 +22,9 @@ const Footer = ()=>{
                     <section class="footer-container__media">
 
                          
-                    <a href="#" class="footer-container__media__buttons" > <img src="../images/social-twit.png" alt="tw icon"></a>
-                    <a href="#" class="footer-container__media__buttons"> <img  src="../images/pngwave.png" alt="insta icon"></a>
-                    <a href="#" class="footer-container__media__buttons" > <img src="../images/facebook.png" alt="fb icon"></a>
+                    <a href="#" class="footer-container__media__buttons" > <img src="../images/twitter.png" alt="twitter icon"></a>
+                    <a href="#" class="footer-container__media__buttons"> <img  src="../images/instagram.png" alt="instagram icon"></a>
+                    <a href="#" class="footer-container__media__buttons" > <img src="../images/facebook.png" alt="facebook icon"></a>
 
                     </section>
                 
