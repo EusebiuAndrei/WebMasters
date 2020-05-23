@@ -44,17 +44,15 @@
 		margin: auto 12%;
 		align-self: center;
 
-		display: flex;
 		justify-content: space-between;
-		align-self: center;
-
 
 		&__buttons {
 			flex: 1 1 auto;
 			margin-left: 3px;
-			img{
-			width: 30px;
-			height: 25px;
+
+			img {
+				width: 30px;
+				height: 30px;
 			}
 		}
 	}
