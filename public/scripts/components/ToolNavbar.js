@@ -54,7 +54,9 @@ const addEventsListeners = () => {
 		// console.log(Options.default());
 
 		if (optionsContainer === null) {
-			settingsRoot.children[0]?.remove();
+			if (settingsRoot.children[0]) {
+				settingsRoot.children[0].remove();
+			}
 			settingsRoot.append(getDomElementFromDomString(Options.default()));
 			Options.addEventsListeners();
 		} else {
