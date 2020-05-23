@@ -6,7 +6,6 @@ import * as Statistics from '../components/Statistics.js';
 import * as BarGraph from '../components/BarGraph.js';
 import * as Pie from '../components/Pie.js';
 import * as Reports from '../components/Reports.js';
-import * as Subscribe from '../components/Subscribe.js';
 import * as Footer from '../components/Footer.js';
 
 // Gharts, Maps, Pie, Charts(in general)
@@ -27,7 +26,6 @@ const App = () => {
             ${BarGraph.default()}
             ${Pie.default()}
             ${Reports.default()}
-            ${Subscribe.default()}
             ${Footer.default()}
             
         </div>
