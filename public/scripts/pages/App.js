@@ -40,7 +40,6 @@ const initializeEventListeners = () => {
 	BarGraph.addEventsListeners();
 	Pie.addEventsListeners();
 	Reports.addEventsListeners();
-	Subscribe.addEventsListeners();
 	Footer.addEventsListeners();
 };
 
