@@ -9,7 +9,7 @@ const Export = () => {
                     </select>
                 </label>
 
-                <input type="button" id="downloadBtn" value="Download">
+                <a id="downloadBtn">Download </a>
 
                 <p>Send Email</p>
             </div> 
@@ -52,6 +52,22 @@ const addEventsListeners = () => {
 				exportedDoc.save('chart.pdf');
 			} else if (selectedValue == 'png') {
 				alert('png!');
+
+				var toExport = document.querySelector('#chart');
+				if (toExport == null) {
+					toExport = document.querySelector('#pieChart');
+					pie = true;
+				}
+
+				const elem = document.createElement('a');
+
+				document.body.appendChild(elem);
+
+				elem.href = toExport.toDataURL('image/png', 1.0);
+				elem.download = 'chart.png';
+				elem.click();
+
+				document.body.removeChild(elem);
 			}
 		});
 	}
