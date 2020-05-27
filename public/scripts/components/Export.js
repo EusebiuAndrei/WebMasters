@@ -26,11 +26,30 @@ const addEventsListeners = () => {
 			if (selectedValue == 'csv') {
 				alert('csv!');
 			} else if (selectedValue == 'pdf') {
-				var exportedDoc = new jsPDF();
+				var pie = false;
+				var describeTxt = document.getElementsByClassName(
+					'bar_graph__header__title',
+				)[0];
+
+				if (describeTxt) describeTxt = describeTxt.textContent;
+
+				console.log(describeTxt);
+				var toExport = document.querySelector('#chart');
+				if (toExport == null) {
+					toExport = document.querySelector('#pieChart');
+					pie = true;
+				}
+				var canvasImage = toExport.toDataURL('image/png', 1.0);
+
+				var exportedDoc = new jsPDF('landscape');
+				exportedDoc.setFontSize(10);
+
+				exportedDoc.text(15, 12, describeTxt ? describeTxt : '');
+
+				if (pie) exportedDoc.addImage(canvasImage, 'PNG', 10, 10, 200, 150);
+				else exportedDoc.addImage(canvasImage, 'PNG', 10, 10, 280, 150);
 
 				exportedDoc.save('chart.pdf');
-
-				alert('pdf!');
 			} else if (selectedValue == 'png') {
 				alert('png!');
 			}
