@@ -27,9 +27,41 @@ const addEventsListeners = () => {
 		dwnButton.addEventListener('click', (event) => {
 			var selectedValue = exportList.options[exportList.selectedIndex].value;
 			if (selectedValue == 'csv') {
-				alert('csv!');
+				//	alert('csv!');
+				const { fetchedData } = StateManager.getStateForVisual();
+				const csv = [];
 
-				console.log(StateManager.getStateForVisual().fetchedData);
+				const columnNames = ['Label'];
+				for (let i = 0; i < fetchedData.data.length; i++) {
+					columnNames.push(fetchedData.data[i].name);
+				}
+
+				csv.push(columnNames);
+
+				for (let i = 0; i < fetchedData.labels.length; i++) {
+					let csvLine = [fetchedData.labels[i]];
+
+					for (let j = 0; j < fetchedData.data.length; j++) {
+						csvLine.push(fetchedData.data[j].data[i]);
+					}
+
+					csv.push(csvLine);
+				}
+
+				let csvContent =
+					'data:text/csv;charset=utf-8,' +
+					csv.map((e) => e.join(',')).join('\n');
+				//	console.log(csv);
+				console.log(csvContent);
+				const elem = document.createElement('a');
+
+				document.body.appendChild(elem);
+
+				elem.href = encodeURI(csvContent);
+				elem.download = 'date.csv';
+				elem.click();
+
+				document.body.removeChild(elem);
 			} else if (selectedValue == 'pdf') {
 				var pie = false;
 				var describeTxt = document.getElementsByClassName(
@@ -56,7 +88,7 @@ const addEventsListeners = () => {
 
 				exportedDoc.save('chart.pdf');
 			} else if (selectedValue == 'png') {
-				alert('png!');
+				//alert('png!');
 
 				var toExport = document.querySelector('#chart');
 				if (toExport == null) {
