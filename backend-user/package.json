@@ -1,0 +1,40 @@
+{
+	"name": "tw-project",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"celebrate": "^12.1.0",
+		"dotenv": "^8.2.0",
+		"http-status-codes": "^1.4.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.9.10",
+		"mongoose-autopopulate": "^0.12.2",
+		"node-fetch": "^2.6.0",
+		"winston": "^3.2.1"
+	},
+	"devDependencies": {
+		"@types/hapi__joi": "^16.0.12",
+		"nodemon": "^2.0.2",
+		"prettier": "^2.0.2",
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb": "^18.1.0",
+		"eslint-config-node": "^4.0.0",
+		"eslint-config-prettier": "^6.10.1",
+		"eslint-plugin-import": "^2.20.1",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-node": "^11.0.0",
+		"eslint-plugin-prettier": "^3.1.2",
+		"eslint-plugin-react": "^7.19.0",
+		"eslint-plugin-react-hooks": "^2.5.0"
+	},
+	"autoAttachChildProcesses": true
+}
