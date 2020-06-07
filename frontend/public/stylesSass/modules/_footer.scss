@@ -1,0 +1,66 @@
+.footer-container {
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+
+	border-bottom: 1px solid white;
+ 
+	&__text {
+		flex: 1 1 auto;
+		display: flex;
+		justify-content: center;
+
+		&__children {
+			font-size: 1em;
+			flex: 1 1 auto;
+			align-self: center;
+			//   margin: auto 15%;
+		}
+
+		@media (max-width: 700px) {
+			display: none;
+		}
+	}
+
+	&__txtlogo {
+		
+		font-size: 18px;
+		margin-left: 12%;
+		margin-right: 5%;
+		align-self: center;
+		padding: 0.2em;
+
+		@media (max-width: 700px) {
+			font-size: 20px;
+		}
+
+		color: rgb(240,248,255);
+	}
+
+	&__media {
+		display: flex;
+		flex-basis: 150px;
+
+		margin: auto 12%;
+		align-self: center;
+
+		justify-content: space-between;
+
+		&__buttons {
+			flex: 1 1 auto;
+			margin-left: 3px;
+
+			img {
+				width: 30px;
+				height: 30px;
+			}
+		}
+	}
+}
+
+.container__footer{
+	p{
+		margin-left: 12%;
+		margin-right: 5%;
+	}
+}

@@ -1,0 +1,71 @@
+@import '../base/colors';
+
+.button {
+  box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 14pt;
+  color: $color__font-main--base;
+  cursor: pointer;
+
+  &:hover:active {
+    color: $color__font-main--important;
+  }
+
+  &:focus {
+    outline: 1px dotted $color__font-main--base;
+  }
+
+  &--primary {
+    border-color: $color__primary--light;
+    background-color: $color__primary;
+
+    &:hover {
+      border-color: lighten($color__primary--light, 10%)
+    }
+  }
+
+  &--secondary {
+    border-color: $color__primary--dark;
+    color: $color__primary--dark-light;
+    background-color: $color__secondary;
+
+    &:hover {
+      border-color: lighten($color__primary--dark, 10%)
+    }
+
+    &:hover:active {
+      color: lighten($color__primary--dark-light, 20%);
+    }
+  }
+
+  &--danger {
+    border-color: $color__danger;
+    background-color: $color__secondary;
+    color: $color__danger;
+
+    &:hover {
+      border-color: lighten($color__danger, 10%)
+    }
+
+    &:hover:active {
+      color: lighten($color__danger, 20%);
+    }
+  }
+
+  &--settings {
+    background-color: $color__primary;
+    border-color: $color__primary--light;
+    width: 32px;
+    height: 24px;
+
+    background-image: url("../images/settings.png"); // wrong for scss, but right for css
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      border-color: lighten($color__primary--light, 10%)
+    }
+  }
+}

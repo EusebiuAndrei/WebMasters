@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.2rem;
+    background-color: $color__bg;
+    color: $color__font-main--base;
+
+    @media (min-width: map-get($map: $media-breakpoints, $key: "sm")) {
+        font-size: 1rem;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $color__primary--light;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+button {
+    background-color: $color__primary--light;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-size: 1.7em;
+}
+
+h2 {
+    font-size: 1.55em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+p {
+    letter-spacing: 0.05em;
+}

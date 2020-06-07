@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0"
+		/>
+		<link rel="icon" href="../images/scar.png" />
+		<link rel="stylesheet" href="../styles/index.css" />
+
+		<title>AVi</title>
+
+		<!-- Leaflet -->
+		<link rel="stylesheet" href="../styles/leaflet.css" />
+		<script src="../scripts/libs/leaflet.js"></script>
+		<script src="../scripts/libs/moment.min.js"></script>
+		<script src="../scripts/libs/Chart.min.js"></script>
+
+		<style type="text/css">
+			#map {
+				height: 400px;
+			}
+
+			.info {
+				padding: 6px 8px;
+				font: 14px/16px Arial, Helvetica, sans-serif;
+				background: white;
+				background: rgba(255, 255, 255, 0.8);
+				box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+				border-radius: 5px;
+			}
+			.info h4 {
+				margin: 0 0 5px;
+				color: #777;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="../scripts/index.js"></script>
+	</body>
+</html>
