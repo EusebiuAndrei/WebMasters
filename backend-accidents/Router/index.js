@@ -14,14 +14,29 @@ const routes = {
 };
 
 const matchPathname = (method, reqPathname) => {
-	const mappedPathname = Object.keys(
-		routes[method],
-	).find((pathname) => tryRoute(reqPathname, pathname));
+	const mappedPathname = Object.keys(routes[method]).find((pathname) =>
+		tryRoute(reqPathname, pathname),
+	);
 
 	return mappedPathname;
 };
 
 exports.handle = async (req, res) => {
+	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.setHeader('Access-Control-Expose-Headers', 'Content-Type, Content-Length');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Content-Length');
+
+	// console.log(req.headers);
+	// console.log(res.getHeaders());
+	// console.log(req.url);
+	// console.log(req.method);
+
+	// Handling CORS calls
+	if (req.method === 'OPTIONS') {
+		return res.end('CORS');
+	}
+
 	const { pathname } = url.parse(req.url, true);
 	const matchedPathname = matchPathname(req.method, pathname);
 
