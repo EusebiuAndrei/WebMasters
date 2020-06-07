@@ -8,12 +8,13 @@ const getUsers = async () => {
 };
 
 const getDataset = async (data) => {
-	let response = await fetch('http://localhost:3001/api/accidents/chart_data', {
-		method: 'POST',
+	const queryParam = encodeURIComponent(JSON.stringify(convertData(data)));
+	let response = await fetch(
+		`http://localhost:3001/api/accidents/chart_data?query=${queryParam}`, {
+		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(convertData(data), null, 2),
 	});
 
 	response = response.json();

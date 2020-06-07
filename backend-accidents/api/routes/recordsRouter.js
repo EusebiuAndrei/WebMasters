@@ -35,9 +35,8 @@ router.patch(`${ROUTE_BASE}/:id`, async (req, res) => {
 	res.status(statusCode).json(result);
 });
 
-// move to router.get with query params
-router.post(`${ROUTE_BASE}`, async (req, res) => {
-	const result = await recordService.getData(req.body);
+router.get(`${ROUTE_BASE}`, async (req, res) => {
+	const result = await recordService.getData(req.query.query);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
 });

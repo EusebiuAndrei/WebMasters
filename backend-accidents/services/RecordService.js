@@ -8,7 +8,21 @@ class RecordService {
 		this.services = services;
 	}
 
-	async getData(payload) {
+	async getData(payloadString) {
+		let payload;
+		try {
+			payload = JSON.parse(decodeURIComponent(payloadString));
+		} catch (e) {
+			if (e instanceof SyntaxError) {
+				return {
+					success: false,
+					error: {
+						message:
+							"'query' parameter does not contain valid URI-encoded JSON string",
+					},
+				};
+			}
+		}
 		try {
 			const {
 				error,
