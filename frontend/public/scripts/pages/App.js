@@ -7,6 +7,7 @@ import * as BarGraph from '../components/BarGraph.js';
 import * as Pie from '../components/Pie.js';
 import * as Reports from '../components/Reports.js';
 import * as Footer from '../components/Footer.js';
+import * as CardContainer from '../components/CardContainer.js';
 
 // Gharts, Maps, Pie, Charts(in general)
 import { initializeGraph } from '../visuals/graph.js';
@@ -24,10 +25,9 @@ const App = () => {
             ${Banner.default()}
             ${Navbar.default()}
             ${Map.default()}
-            ${Statistics.default()}
             ${BarGraph.default()}
             ${Pie.default()}
-            ${Reports.default()}
+            ${CardContainer.default()}
             ${Footer.default()}
             
         </div>

@@ -5,7 +5,7 @@
 	display: grid;
 	grid-template-rows: repeat(8, auto);
 	grid-template-columns: 1fr;
-	grid-gap: 10px;
+	// grid-gap: 10px;
 
 	grid-template-areas:
 		'banner'
@@ -23,7 +23,7 @@
 		grid-template-areas:
 			'banner banner banner banner banner banner'
 			'header header header header header header'
-			'. map map map nr .'
+			'. map map map map .'
 			'. bar bar bar pie .'
 			'. reports reports reports reports .'
 			'sub sub sub sub sub sub'
@@ -49,6 +49,10 @@
 			background-color: map-get($map: $grid_areas_bg, $key: '#{$grid_area}');
 		}
 	}
+}
+
+.container__map {
+	margin: 4em 0;
 }
 
 .visual-container > .container__pie {
@@ -293,7 +297,7 @@ label ~ p {
 	display: flex;
 	padding: 10px 0;
 
-	>.button {
+	> .button {
 		margin: 0 5px;
 	}
 }
