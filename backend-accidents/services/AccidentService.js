@@ -1,4 +1,5 @@
-// const Logger = require('../loaders/logger');
+/* eslint-disable no-underscore-dangle */
+// used for mongodb-specific _id variables
 
 const { chartDataRequestSchema } = require('../schemas');
 
@@ -45,9 +46,8 @@ function filterIntoMatch({ column, constraint, value }) {
 function sorter({ bucketType }) {
 	if (bucketType === 'time') {
 		return { _id: 1 };
-	} else {
-		return { value: -1 };
 	}
+	return { value: -1 };
 }
 
 function timeAxisFilter({ from, to, timeAxisBasedOn }) {
@@ -65,16 +65,15 @@ function timeAxisFilter({ from, to, timeAxisBasedOn }) {
 function timeLabelToString({ year, month, week, day }) {
 	if (week) {
 		return `${year}w${week}`;
-	} else {
-		let str = year.toString();
-		if (month) {
-			str = `${month}/${str}`;
-			if (day) {
-				str = `${day}/${str}`;
-			}
-		}
-		return str;
 	}
+	let str = year.toString();
+	if (month) {
+		str = `${month}/${str}`;
+		if (day) {
+			str = `${day}/${str}`;
+		}
+	}
+	return str;
 }
 
 class AccidentService {
@@ -83,7 +82,23 @@ class AccidentService {
 		this.services = services;
 	}
 
-	async getBuckets(query) {
+	async getBuckets(queryString) {
+		let query;
+
+		try {
+			query = JSON.parse(decodeURIComponent(queryString));
+		} catch (e) {
+			if (e instanceof SyntaxError) {
+				return {
+					success: false,
+					error: {
+						message:
+							"'query' parameter does not contain valid URI-encoded JSON string",
+					},
+				};
+			}
+		}
+
 		const { error: err, value } = chartDataRequestSchema.validate(query);
 		if (err) {
 			return {
@@ -93,15 +108,14 @@ class AccidentService {
 					details: err.details[0].context.message,
 				},
 			};
-		} else {
-			query = value;
 		}
+		query = value;
 
 		let aggregate = this.db.accidents.aggregate();
 		if (query.filters) {
-			for (const filter of query.filters) {
-				aggregate = aggregate.match(filterIntoMatch(filter));
-			}
+			query.filters.forEach((it) => {
+				aggregate = aggregate.match(filterIntoMatch(it));
+			});
 		}
 		if (query.bucketType === 'time') {
 			aggregate = aggregate.match(timeAxisFilter(query.timeChart));
@@ -115,7 +129,7 @@ class AccidentService {
 			const kept = result.slice(0, query.joinBucketsPast);
 			const merged = result.slice(query.joinBucketsPast);
 			const other = merged.reduce(
-				({ _id, value }, current) => ({ _id, value: value + current.value }),
+				({ _id, value: val }, current) => ({ _id, value: val + current.value }),
 				{
 					_id: 'other',
 					value: 0,

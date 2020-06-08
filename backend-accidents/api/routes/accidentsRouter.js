@@ -9,8 +9,8 @@ router.get(`${ROUTE_BASE}`, (req, res) => {
 });
 
 // move to router.get with query params
-router.post(`${ROUTE_BASE}/chart_data`, async (req, res) => {
-	const result = await accidentService.getBuckets(req.body);
+router.get(`${ROUTE_BASE}/chart_data`, async (req, res) => {
+	const result = await accidentService.getBuckets(req.query.query);
 	const status = result.success ? httpStatus.OK : httpStatus.BAD_REQUEST;
 	res.status(status).json(result);
 });
