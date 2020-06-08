@@ -15,6 +15,8 @@ import { initializePieChart } from '../visuals/pie.js';
 
 // Api
 import * as api from '../api/index.js';
+import { visualTypeEnum } from '../constants.js';
+import StateManager from '../utils/StateManager.js';
 
 const App = () => {
 	return `
@@ -45,9 +47,13 @@ const initializeEventListeners = () => {
 
 const initializeVisuals = () => {
 	// Run visuals
-	initializeGraph();
-	intializeMap();
-	initializePieChart();
+	initializeGraph(
+		StateManager.getStateByVisualType(visualTypeEnum.LINE_CHART).fetchedData,
+	);
+	intializeMap(StateManager.getStateByVisualType(visualTypeEnum.MAP).fetchedData);
+	initializePieChart(
+		StateManager.getStateByVisualType(visualTypeEnum.PIE_CHART).fetchedData,
+	);
 };
 
 const initialize = () => {

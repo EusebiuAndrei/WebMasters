@@ -62,6 +62,21 @@ class StateManager {
 		}
 	};
 
+	getStateByVisualType = (visualType) => {
+		switch (visualType) {
+			case visualTypeEnum.MAP:
+				return this.state.mapUS;
+			case visualTypeEnum.LINE_CHART:
+				return this.state.lineChart;
+			case visualTypeEnum.BAR_GRAPH:
+				return this.state.barChart;
+			case visualTypeEnum.PIE_CHART:
+				return this.state.pieChart;
+			default:
+				return {};
+		}
+	};
+
 	setFetchedData = (payload) => {
 		switch (this.state.visualType) {
 			case visualTypeEnum.MAP:
