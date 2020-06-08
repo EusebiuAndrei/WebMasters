@@ -93,7 +93,7 @@ class AccidentService {
 					success: false,
 					error: {
 						message:
-							"'query' parameter does not contain valid URI-encoded JSON string",
+							'\'query\' parameter does not contain valid URI-encoded JSON string',
 					},
 				};
 			}
