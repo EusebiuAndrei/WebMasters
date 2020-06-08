@@ -471,7 +471,7 @@ p {
 }
 
 #js-settings {
-  background-color: #13211c;
+  background-color: #29323d;
   grid-column-start: 1;
   grid-column-end: 2;
 }
@@ -491,7 +491,7 @@ p {
 .dataset {
   display: flex !important;
   flex-direction: column;
-  box-shadow: 2px 2px 6px 4px #66a;
+  border: solid 2px #1E2A32;
   border-radius: 5px;
   padding: 0.5em;
   margin: 0.5em;
@@ -500,7 +500,7 @@ p {
 .dataset-filter {
   display: flex !important;
   flex-direction: column;
-  border: 2px solid red;
+  border: 2px solid #2E648B;
   padding: 0.5em;
   border-radius: 8px;
   margin: 0.5em 0;
@@ -518,18 +518,18 @@ p {
 }
 
 #js-add-dataset:hover {
-  border: 2px solid #5090be;
-  color: #5090be;
+  border: 2px solid #1E4058;
+  color: #2E648B;
   background-color: inherit !important;
 }
 
 #js-remove-dataset {
-  background-color: red;
+  background-color: #ff7043;
   cursor: pointer;
 }
 
 #js-remove-dataset:hover {
-  background-color: #ff1414;
+  background-color: #ff8057;
 }
 
 #js-add-filter {
@@ -553,14 +553,21 @@ p {
 
 input[type=text] {
   padding: 10px !important;
-  border: 2px solid aqua !important;
+  border: 2px solid #2E648B !important;
   border-radius: 10px !important;
-  color: darkslategrey;
+  background-color: #29323d;
+  color: #d6d6d6;
 }
 
 input[type=text]:focus {
   outline: none !important;
-  border: 2px solid blue !important;
+  border: 2px solid #5090BE !important;
+}
+
+input[type=date] {
+  border: 2px solid #2E648B !important;
+  background-color: #29323d;
+  color: #d6d6d6;
 }
 
 select {
@@ -568,21 +575,21 @@ select {
   font-size: 16px;
   font-family: sans-serif;
   font-weight: 700;
-  color: #444;
+  color: #798da3;
   line-height: 1.3;
   padding: 0.6em 1.4em 0.5em 0.8em;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   margin: 0;
-  border: 1px solid #aaa;
+  border: 1px solid #171F25;
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
   border-radius: 0.5em;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  background-color: #1E2A32;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #1E2A32 0%, #1E2A32 100%);
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
@@ -598,9 +605,8 @@ select:hover {
 
 select:focus {
   border-color: #aaa;
-  box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
   box-shadow: 0 0 0 3px -moz-mac-focusring;
-  color: #222;
+  color: #d6d6d6;
   outline: none;
 }
 
@@ -625,8 +631,7 @@ label span {
 label ~ p {
   letter-spacing: 0.1em;
   font-size: 1.2em;
-  margin: 0;
-  margin-top: 1em;
+  margin: 1em 0 0;
   text-align: center;
 }
 
@@ -646,13 +651,13 @@ label ~ p {
 }
 
 .current-visual-hover ul li a {
-  background-color: antiquewhite;
-  color: darkred;
+  background-color: #1e2932;
+  color: #d6d6d6;
   text-align: center;
   padding: 0.7em 1.7em;
-  border-left: 2px solid darkred;
-  border-right: 2px solid darkred;
-  border-bottom: 2px solid darkred;
+  border-left: 2px solid #d6d6d6;
+  border-right: 2px solid #d6d6d6;
+  border-bottom: 2px solid #d6d6d6;
   opacity: 0.8;
 }
 
@@ -661,7 +666,7 @@ label ~ p {
 }
 
 .current-visual-hover ul li:first-child a {
-  border-top: 2px solid darkred;
+  border-top: 2px solid #d6d6d6;
 }
 
 .current-visual-hover:hover ul {
