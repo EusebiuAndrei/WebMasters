@@ -1,26 +1,37 @@
 const Footer = () => {
 	return `
-        <div class="container__footer">
-            <div class ="footer-container">
-                <p class="footer-container__txtlogo"><a href="http://localhost:3000/">AVi</a></p>
-                <section class ="footer-container__text">
-                    <p class="footer-container__text__children"><a href="/tool">Tool</a></p>
-                    <p class="footer-container__text__children"><a href="#about-us">Team</a></p>
-                    <p class="footer-container__text__children"><a href="#">Documentation</a></p>
-                    <p class="footer-container__text__children"><a href="https://github.com/EusebiuAndrei/WebMasters?fbclid=IwAR2Fl0EMIOE5SiHdBAGeWWetPoBOaPG0EaJ6GDHlBcwZiGGRiDUS8n8j7e8" target="_blank">Github</a></p>
-                </section>
-                <section class="footer-container__media">
-                <a href="#" class="footer-container__media__buttons" > <img src="../images/twitter.png" alt="twitter icon"></a>
-                <a href="#" class="footer-container__media__buttons"> <img  src="../images/instagram.png" alt="instagram icon"></a>
-                <a href="#" class="footer-container__media__buttons" > <img src="../images/facebook.png" alt="facebook icon"></a>
-                </section>
-            </div>
-            <p>&copy AVi 2020</p>
-        </div>
-        `;
+	<div class="container__footer">
+		<div class ="footer-container">
+			<a href="/" class="footer-container__txtlogo">AVi</a>
+			<div class ="footer-container__text">
+				<a class="footer-container__text__link" href="https://github.com/EusebiuAndrei/WebMasters?fbclid=IwAR2Fl0EMIOE5SiHdBAGeWWetPoBOaPG0EaJ6GDHlBcwZiGGRiDUS8n8j7e8">
+				Github
+				</a>
+				<a class="footer-container__text__link" href="https://profs.info.uaic.ro/~andrei.panu/">
+				Coordinating professor
+				</a>
+				<a class="footer-container__text__link" href="https://www.kaggle.com/sobhanmoosavi/us-accidents">
+				Data source
+				</a>
+				<a class="footer-container__text__link" href="#">
+				Public API documentation
+				</a>
+			</div>
+		</div>
+		<div class="container__footer__citations">
+			<p>
+			Moosavi, Sobhan, Mohammad Hossein Samavatian, Srinivasan Parthasarathy, and Rajiv Ramnath. “A Countrywide Traffic Accident Dataset.”, 2019
+			</p>
+			<p>
+			Moosavi, Sobhan, Mohammad Hossein Samavatian, Srinivasan Parthasarathy, Radu Teodorescu, and Rajiv Ramnath. "Accident Risk Prediction based on Heterogeneous Sparse Data: New Dataset and Insights." In proceedings of the 27th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, ACM, 2019. 
+			</p>
+		</div>
+	</div>
+	`;
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default Footer;
 export { addEventsListeners };

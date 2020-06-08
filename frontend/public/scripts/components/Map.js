@@ -5,7 +5,8 @@ const Map = () => {
         `;
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default Map;
 export { addEventsListeners };

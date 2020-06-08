@@ -56,7 +56,7 @@ export const intializeMap = ({ labels, data } = {}) => {
 
 	L.tileLayer(
 		'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' +
-			mapboxAccessToken,
+		mapboxAccessToken,
 		{
 			id: 'mapbox/light-v9',
 			//attribution: ...,
@@ -72,14 +72,14 @@ export const intializeMap = ({ labels, data } = {}) => {
 
 	var info = L.control();
 
-	info.onAdd = function (map) {
+	info.onAdd = function(map) {
 		this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
 		this.update();
 		return this._div;
 	};
 
 	// method that we will use to update the control based on feature properties passed
-	info.update = function (props) {
+	info.update = function(props) {
 		this._div.innerHTML =
 			'<h4>US Population Density</h4>' +
 			(props
@@ -102,15 +102,16 @@ export const intializeMap = ({ labels, data } = {}) => {
 			fillOpacity: 0.7,
 		};
 	}
+
 	// #FC4E2A #FD8D3C #FEB24C #FED976
 	function getColor(d) {
 		return d > avgMax
 			? '#800026'
 			: d > avg
-			? '#BD0026'
-			: d > avgMin
-			? '#FC4E2A'
-			: '#FEB24C';
+				? '#BD0026'
+				: d > avgMin
+					? '#FC4E2A'
+					: '#FEB24C';
 	}
 
 	// Adding interaction

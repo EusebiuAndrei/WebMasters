@@ -1,9 +1,5 @@
 // Utils
-import { createStateEvent } from './utils/index.js';
-
 // Api
-import * as api from './api/index.js';
-
 // Components
 import * as App from './pages/App.js';
 import * as NotFound from './pages/NotFound.js';
@@ -13,8 +9,6 @@ import * as Tool from './pages/Tool.js';
 // 	const root = document.getElementById('list-example');
 // 	root.dispatchEvent(createStateEvent({ data: ['John', 'Marry'] }));
 // }, 3000);
-
-import stateManager from './utils/StateManager.js';
 // console.log(stateManager.getState());
 
 // Router

@@ -1,10 +1,8 @@
 import { visualTypeEnum } from '../constants.js';
-
 // Components
 import MapUS from './Map.js';
 import BarGraph from './BarGraph.js';
 import Pie from './Pie.js';
-
 // visuals initializers
 import { initializeGraph } from '../visuals/graph.js';
 import { intializeMap } from '../visuals/index.js';
@@ -49,11 +47,13 @@ const initializeVisualsByType = (visualType) => {
 		case visualTypeEnum.PIE_CHART:
 			return initializePieChart;
 		default:
-			() => {};
+			() => {
+			};
 	}
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default Vizualizer;
 export { addEventsListeners, initializeVisualsByType };

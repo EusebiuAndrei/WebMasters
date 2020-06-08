@@ -8,7 +8,8 @@ const BarGraph = () => {
     `;
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default BarGraph;
 export { addEventsListeners };

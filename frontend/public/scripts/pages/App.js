@@ -8,12 +8,10 @@ import * as Pie from '../components/Pie.js';
 import * as Reports from '../components/Reports.js';
 import * as Footer from '../components/Footer.js';
 import * as CardContainer from '../components/CardContainer.js';
-
 // Gharts, Maps, Pie, Charts(in general)
 import { initializeGraph } from '../visuals/graph.js';
 import { intializeMap } from '../visuals/index.js';
 import { initializePieChart } from '../visuals/pie.js';
-
 // Api
 import * as api from '../api/index.js';
 import { visualTypeEnum } from '../constants.js';

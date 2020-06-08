@@ -1,7 +1,7 @@
 import { visualDescription } from './ToolNavbar.js';
 import StateManager from '../utils/StateManager.js';
 import * as Visualizer from './Visualizer.js';
-import { getDomElementFromDomString, eventApplyForm } from '../utils/index.js';
+import { eventApplyForm, getDomElementFromDomString } from '../utils/index.js';
 
 const VisualButton = ({ id, text }) => {
 	return `<a href="#" style="display: block" id="a-${id}">${text}</a>`;

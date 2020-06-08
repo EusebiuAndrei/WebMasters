@@ -1,7 +1,4 @@
-import {
-	getDomStringFromArray,
-	getDomElementFromDomString,
-} from '../utils/index.js';
+import { getDomElementFromDomString, getDomStringFromArray } from '../utils/index.js';
 import Greeter from './Greeter.js';
 
 const ListExample = ({ data = ['one', 'two'] } = {}) => {
@@ -22,7 +19,7 @@ const addEventsListeners = () => {
 	const root = document.getElementById('list-example');
 	const button = root.getElementsByTagName('button')[0];
 
-	root.addEventListener('statechange', function (event) {
+	root.addEventListener('statechange', function(event) {
 		update(event.detail);
 	});
 

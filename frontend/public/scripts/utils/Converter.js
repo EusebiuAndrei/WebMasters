@@ -81,11 +81,5 @@ function strToArr(str) {
 }
 
 export function convertArr(column, text) {
-	// return arr.map(conv[columnTypes[column]]);
 	return strToArr(text).map(conv[columnTypes[column]]);
 }
-
-// const arrayText = '2017-12-31T22:04:20Z, 5/3/2018';
-// const converted = convertArr('weatherTimestamp', arrayText);
-
-// console.log(converted);

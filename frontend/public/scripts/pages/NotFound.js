@@ -13,7 +13,8 @@ const NotFound = () => {
     `;
 };
 
-const initialize = () => {};
+const initialize = () => {
+};
 
 export default NotFound;
 export { initialize };

@@ -59,7 +59,7 @@ exports.handle = async (req, res) => {
 			return res.end(data);
 		}
 	} catch (ex) {
-		console.log(`error: ${  ex}`);
+		console.log(`error: ${ex}`);
 	}
 };
 exports.get = (url, action) => {

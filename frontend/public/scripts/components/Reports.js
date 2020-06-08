@@ -1,7 +1,4 @@
-import {
-	getDomStringFromArray,
-	getDomElementFromDomString,
-} from '../utils/index.js';
+import { getDomStringFromArray } from '../utils/index.js';
 
 const obj = {
 	location: 'Near hospital',
@@ -52,7 +49,8 @@ const Reports = ({ data = [obj, obj2, obj, obj2, obj] } = {}) => {
         `;
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default Reports;
 export { addEventsListeners };

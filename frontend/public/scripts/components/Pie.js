@@ -7,7 +7,8 @@ const Pie = () => {
     </div>`;
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default Pie;
 export { addEventsListeners };

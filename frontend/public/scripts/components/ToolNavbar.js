@@ -1,6 +1,6 @@
 import { visualTypeEnum } from '../constants.js';
 import VisualButton from './VisualButton.js';
-import { getDomStringFromArray, getDomElementFromDomString } from '../utils/index.js';
+import { getDomElementFromDomString, getDomStringFromArray } from '../utils/index.js';
 import StateManager from '../utils/StateManager.js';
 import * as Options from './Options.js';
 import * as Export from './Export.js';
@@ -26,8 +26,8 @@ const ToolNavbar = () => {
             <div style="width: 80%; margin: 0 auto; display: flex; justify-content: space-between">
                 <div class="current-visual-hover">
                     <p id="current-visual" data-current-visual-id="${
-						StateManager.getState().visualType
-					}">Current: ${
+		StateManager.getState().visualType
+	}">Current: ${
 		visualDescription[StateManager.getState().visualType]
 	}</p>
                     <ul style="padding: 0; margin: 0">

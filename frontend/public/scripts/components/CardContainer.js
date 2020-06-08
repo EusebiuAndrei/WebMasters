@@ -14,7 +14,8 @@ const CardContainer = () => {
     `;
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default CardContainer;
 export { addEventsListeners };

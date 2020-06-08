@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 
 // Create functions that will represent schema statics
-const findByCredentials = async function (email, password) {
+const findByCredentials = async function(email, password) {
 	const user = await this.findOne({ email });
 
 	if (!user) {

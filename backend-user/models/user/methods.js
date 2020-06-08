@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config/index');
 
 // Create functions that will represent schema methods
-const generateAuthToken = async function () {
+const generateAuthToken = async function() {
 	const user = this;
 	const token = jwt.sign(
 		{ _id: user._id.toString() },
@@ -15,7 +15,7 @@ const generateAuthToken = async function () {
 	return token;
 };
 
-const toJSON = function () {
+const toJSON = function() {
 	const user = this;
 	const userObject = user.toObject();
 

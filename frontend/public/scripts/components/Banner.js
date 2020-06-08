@@ -12,7 +12,8 @@ const Banner = () => {
     `;
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default Banner;
 export { addEventsListeners };
