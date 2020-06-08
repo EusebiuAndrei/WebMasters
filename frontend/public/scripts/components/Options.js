@@ -137,9 +137,9 @@ const Filter = () => {
                     <option value="in">In the next values</option>
                     <option value="ne">Not Equal To</option>
                     <option value="lte">Less than or equal to</option>
-                    <option value="gte">Grater than or equal to</option>
+                    <option value="gte">Greater than or equal to</option>
                     <option value="lt">Less than</option>
-                    <option value="gt">Grater than</option>
+                    <option value="gt">Greater than</option>
                 </select>
             </label>
             <label>
@@ -149,7 +149,6 @@ const Filter = () => {
         </div>
     `;
 };
-// dfsds jvgf sdf
 const Dataset = () => {
 	return `
         <div id="" class="dataset">
