@@ -53,7 +53,7 @@ const Options = () => {
 								visualType === visualTypeEnum.PIE_CHART
 									? `<label id="js-join-buckets-past">
                                         <span>Join Buckets Past</span>
-                                        <input type="text" name="joinBucketsPast" style="display: block;"/>
+                                        <input value="6" type="text" name="joinBucketsPast" style="display: block;"/>
                                     </label>`
 									: ''
 							}
@@ -101,17 +101,17 @@ const TimeChart = () => {
                 <select style="display: block;">
                     <option value="day">Day</option>
                     <option value="week">Week</option>
-                    <option value="month">Month</option>
+                    <option selected value="month">Month</option>
                     <option value="year">Year</option>
                 </select>
             </label>
             <label>
                 <span>Start date</span>
-                <input type="date" value="2016-07-22" min="2016-01-01" max="2018-12-31"/>
+                <input type="date" value="2016-03-23"/>
             </label>
             <label>
                 <span>End date</span>
-                <input type="date" value="2017-07-22" min="2016-01-01" max="2018-12-31"/>
+                <input type="date" value="2019-12-31"/>
             </label>
             <label>
                 <span>Time Axis based on</span>
