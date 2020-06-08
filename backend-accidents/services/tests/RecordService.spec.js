@@ -16,14 +16,14 @@ describe('Record service', () => {
 	});
 
 	const testAccident = {
-		source: 'MapQuest',
-		tmc: { $numberInt: '201' },
-		severity: { $numberInt: '3' },
-		startTime: { $date: { $numberLong: '1454910360000' } },
-		endTime: { $date: { $numberLong: '1454929200000' } },
-		startLat: { $numberDouble: '39.865147' },
-		startLng: { $numberDouble: '-84.058723' },
-		distance: { $numberDouble: '0.01' },
+		source: 'WebMasters',
+		tmc: 201,
+		severity: 3,
+		startTime: 1454910360000,
+		endTime: 1454929200000,
+		startLat: 39.865147,
+		startLong: -84.058723,
+		distance: 0.01,
 		desc:
 			'Right lane blocked due to accident on I-70 Eastbound at Exit 41 OH-235 State Route 4.',
 		street: 'I-70 E',
@@ -34,13 +34,13 @@ describe('Record service', () => {
 		zipcode: '45424',
 		timezone: 'US/Eastern',
 		airportCode: 'KFFO',
-		weatherTimestamp: { $date: { $numberLong: '1454911080000' } },
-		temperature: { $numberDouble: '36.9' },
-		humidity: { $numberInt: '91' },
-		pressure: { $numberDouble: '29.68' },
-		visibility: { $numberInt: '10' },
+		weatherTimestamp: 1454911080000,
+		temperature: 36.9,
+		humidity: 91,
+		pressure: 29.68,
+		visibility: 10,
 		windDirection: 'calm',
-		precipitation: { $numberDouble: '0.02' },
+		precipitation: 0.02,
 		weatherCondition: 'Light Rain',
 		amenity: false,
 		bump: false,
@@ -60,4 +60,7 @@ describe('Record service', () => {
 		nauticalTwilightNight: true,
 		astronomicalTwilightNight: true,
 	};
+	console.log(JSON.stringify(testAccident, null, 2));
+	const token =
+		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRlOWExNWUzYTI5OTIzOTBjNDJhYjkiLCJpYXQiOjE1OTE2NDY3NDF9.GyGG0obU1_yCXyCK7QQkz9CF9lO1cooP_lWHM1fJseU';
 });

@@ -18,16 +18,13 @@ class RecordService {
 					success: false,
 					error: {
 						message:
-							'\'query\' parameter does not contain valid URI-encoded JSON string',
+							"'query' parameter does not contain valid URI-encoded JSON string",
 					},
 				};
 			}
 		}
 		try {
-			const {
-				error,
-				data,
-			} = await recordDataRequestSchema.validate(payload);
+			const { error, data } = await recordDataRequestSchema.validate(payload);
 			const { orderBy } = payload;
 			const { skip, limit } = payload;
 
@@ -171,15 +168,12 @@ class RecordService {
 }
 
 async function authorize(bearerToken) {
-	let response = await fetch(
-		'http://localhost:3001/api/users/auth',
-		{
-			method: 'GET',
-			headers: {
-				Authorization: bearerToken,
-			},
+	let response = await fetch('http://localhost:3002/api/users/auth', {
+		method: 'GET',
+		headers: {
+			Authorization: bearerToken,
 		},
-	);
+	});
 
 	response = await response.json();
 	// console.log(response);
