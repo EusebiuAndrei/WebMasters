@@ -5,17 +5,21 @@ export const intializeMap = ({ labels, data } = {}) => {
 	console.log(labels);
 	console.log(data[0].data);
 
+	console.log(statesData.features instanceof Array);
+
 	// get some data
 	const states = statesData.features.map((feature) => {
 		const abv = statesHash.find(
-			(stateHash) => stateHash.name === feature.properties.name,
+			(stateHash) =>
+				stateHash.name.toLowerCase().trim() ===
+				feature.properties.name.toLowerCase().trim(),
 		);
 		let value = 0;
 
 		if (abv) {
 			const indexOfAbv = labels.indexOf(abv.abbreviation);
 
-			if (indexOfAbv > -1) {
+			if (indexOfAbv > -1 && indexOfAbv < labels.length) {
 				value = data[0].data[indexOfAbv];
 			}
 		}
@@ -25,6 +29,8 @@ export const intializeMap = ({ labels, data } = {}) => {
 			numberOfCrimes: value,
 		};
 	});
+
+	console.log(states);
 
 	// Set boundaries for color selection
 	let sum, min, max, avg, avgMin, avgMax;

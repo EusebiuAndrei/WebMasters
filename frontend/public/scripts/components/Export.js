@@ -29,6 +29,28 @@ const addEventsListeners = () => {
 			if (selectedValue == 'csv') {
 				alert('csv!');
 
+				const { fetchedData } = StateManager.getStateForVisual();
+				const csv = [];
+
+				const columnNames = [''];
+				for (let i = 0; i < fetchedData.data.length; i++) {
+					columnNames.push(fetchedData.data[i].name);
+				}
+
+				csv.push(columnNames);
+
+				for (let i = 0; i < fetchedData.labels.length; i++) {
+					let csvLine = [fetchedData.labels[i]];
+
+					for (let j = 0; j < fetchedData.data.length; j++) {
+						csvLine.push(fetchedData.data[j].data[i]);
+					}
+
+					csv.push(csvLine);
+				}
+
+				console.log(csv);
+
 				console.log(StateManager.getStateForVisual().fetchedData);
 			} else if (selectedValue == 'pdf') {
 				var pie = false;
