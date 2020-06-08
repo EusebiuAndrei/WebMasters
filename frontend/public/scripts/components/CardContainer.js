@@ -5,7 +5,7 @@ const CardContainer = () => {
 	const cards = founders.map((founder) => Card(founder));
 
 	return `
-		<section class="cards">
+		<section class="cards" id="about-us">
 			<h2 class="cards-title">Our team</h2>
             <section class="card-container">
                 ${getDomStringFromArray(cards)}
