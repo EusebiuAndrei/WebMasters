@@ -673,6 +673,14 @@ label ~ p {
   display: block;
 }
 
+.tool-button-container {
+  display: flex;
+  padding: 10px 0;
+}
+.tool-button-container > .button {
+  margin: 0 5px;
+}
+
 .button {
   box-sizing: border-box;
   border: 1px solid;

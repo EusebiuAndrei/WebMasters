@@ -34,9 +34,9 @@ const ToolNavbar = () => {
                         ${getDomStringFromArray(printData)}
                     </ul>
                 </div> 
-                <div>
-                    <a href="#" id="js-export">Export</a>
-                    <a href="#" id="js-options">Options</a>
+                <div class="tool-button-container">
+                    <a class="button" href="#" id="js-export">Export</a>
+                    <a class="button" href="#" id="js-options">Options</a>
                 </div>
             </div>
         </div>
