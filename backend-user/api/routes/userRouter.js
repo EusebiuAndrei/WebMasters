@@ -21,7 +21,7 @@ router.get(`${ROUTE_BASE}/auth`, async (req, res) => {
 	res.status(statusCode).json(result);
 });
 
-router.post(`${ROUTE_BASE}/register`, async function (req, res) {
+router.post(`${ROUTE_BASE}/register`, async function(req, res) {
 	const result = await userService.register(req.body);
 	const statusCode = result.success ? 201 : 400;
 

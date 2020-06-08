@@ -4,7 +4,7 @@ const { Users, Accidents } = require('../models/index');
 // Import all the service constructors
 const UserService = require('./UserService');
 const AccidentService = require('./AccidentService');
-const RecordService = require('./RecordService')
+const RecordService = require('./RecordService');
 
 // Create the service objects with dependencies
 const userService = new UserService({
@@ -33,5 +33,5 @@ const recordService = new RecordService({
 module.exports = {
 	userService,
 	accidentService,
-	recordService
+	recordService,
 };
