@@ -2,7 +2,7 @@ const Footer = () => {
 	return `
         <div class="container__footer">
             <div class ="footer-container">
-                <p class="footer-container__txtlogo">AVi</p>
+                <p class="footer-container__txtlogo"><a href="http://localhost:3000/">AVi</a></p>
                 <section class ="footer-container__text">
                     <p class="footer-container__text__children"><a href="/tool">Tool</a></p>
                     <p class="footer-container__text__children"><a href="#about-us">Team</a></p>

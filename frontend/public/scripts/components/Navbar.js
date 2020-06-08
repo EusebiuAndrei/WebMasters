@@ -2,7 +2,7 @@ const Navbar = () => {
 	return `
         <div class="container__header">
             <section class ="navbar-container">
-                <img src="../images/scar.png" alt="logo" class="navbar-container__img">
+                <a href="http://localhost:3000/"><img src="../images/scar.png" alt="logo" class="navbar-container__img"></a>
                 <section class ="navbar-container__text">
                     <p class="navbar-container__text__children"><a href="#map">Map</a></p>
                     <p class="navbar-container__text__children"><a href="#about-us">About us</a></p>

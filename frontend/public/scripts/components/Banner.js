@@ -1,6 +1,5 @@
 const Banner = () => {
-
-    return `
+	return `
 
     <div class="container__banner banner">
     <div class="banner__title">
