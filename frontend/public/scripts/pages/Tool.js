@@ -10,8 +10,6 @@ import { visualTypeEnum } from '../constants.js';
 import * as VisualButton from '../components/VisualButton.js';
 
 const Tool = () => {
-	// console.log(stateManager.getState());
-
 	return `
         <div class="container">
             ${Banner.default()}
@@ -36,9 +34,6 @@ const initializeEventListeners = () => {
 };
 
 const initializeVisuals = () => {
-	// console.log('AAA', stateManager.getStateForVisual().fetchedData);
-
-	console.log(stateManager.getState());
 	Vizualizer.initializeVisualsByType(stateManager.getState().visualType)(
 		stateManager.getStateForVisual().fetchedData,
 	);
