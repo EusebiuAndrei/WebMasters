@@ -12,6 +12,7 @@ if (!envFound) {
 module.exports = {
 	port: parseInt(process.env.PORT, 10),
 	databaseURL: process.env.DB_CONNECTION,
+	databaseTestURL: process.env.DB_CONNECTION_TEST,
 	jwtSecret: process.env.JWT_SECRET,
 	logs: {
 		level: process.env.LOG_LEVEL || 'silly',
