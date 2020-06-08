@@ -1,7 +1,6 @@
-
 const Statistics = () => {
 
-    return `
+	return `
      <div class="container__nr">
             <div class="container__nr__elements">
 
@@ -32,7 +31,8 @@ const Statistics = () => {
 
 };
 
-const addEventsListeners = () => {};
+const addEventsListeners = () => {
+};
 
 export default Statistics;
 export { addEventsListeners };

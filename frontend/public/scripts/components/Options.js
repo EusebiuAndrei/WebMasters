@@ -1,15 +1,6 @@
 import StateManager from '../utils/StateManager.js';
-import {
-	visualTypeEnum,
-	numericColumns,
-	discreteColumns,
-	allColumns,
-} from '../constants.js';
-import {
-	getDomElementFromDomString,
-	eventApplyForm,
-	getDomStringFromArray,
-} from '../utils/index.js';
+import { allColumns, discreteColumns, numericColumns, visualTypeEnum } from '../constants.js';
+import { eventApplyForm, getDomElementFromDomString, getDomStringFromArray } from '../utils/index.js';
 import * as api from '../api/index.js';
 
 // fds
@@ -30,33 +21,33 @@ const Options = () => {
                                 <span>Bucket Type</span>
                                 <select name="bucketType" id="js-bucket" style="display: block;">
                                     <option value="time" ${
-										visualType === visualTypeEnum.BAR_GRAPH
-											? 'selected'
-											: ''
-									}>Time</option>
+		visualType === visualTypeEnum.BAR_GRAPH
+			? 'selected'
+			: ''
+	}>Time</option>
                                     <option value="column" ${
-										visualType === visualTypeEnum.MAP ||
-										visualType === visualTypeEnum.PIE_CHART
-											? 'selected'
-											: ''
-									}>Column</option>
+		visualType === visualTypeEnum.MAP ||
+		visualType === visualTypeEnum.PIE_CHART
+			? 'selected'
+			: ''
+	}>Column</option>
                                 </select>
                             </label>
 
                             ${
-								inputData.bucketType === 'column'
-									? BucketColumn()
-									: TimeChart()
-							}
+		inputData.bucketType === 'column'
+			? BucketColumn()
+			: TimeChart()
+	}
                             
                             ${
-								visualType === visualTypeEnum.PIE_CHART
-									? `<label id="js-join-buckets-past">
+		visualType === visualTypeEnum.PIE_CHART
+			? `<label id="js-join-buckets-past">
                                         <span>Join Buckets Past</span>
                                         <input value="6" type="text" name="joinBucketsPast" style="display: block;"/>
                                     </label>`
-									: ''
-							}
+			: ''
+	}
                             
                             <label>
                                 <span>Value type of a bucket</span>

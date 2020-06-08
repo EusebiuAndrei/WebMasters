@@ -3,9 +3,7 @@ import * as Banner from '../components/Banner.js';
 import * as Footer from '../components/Footer.js';
 import * as Vizualizer from '../components/Visualizer.js';
 import * as ToolNavbar from '../components/ToolNavbar.js';
-
 // Api
-import * as api from '../api/index.js';
 
 import stateManager from '../utils/StateManager.js';
 import { visualTypeEnum } from '../constants.js';

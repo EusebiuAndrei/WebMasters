@@ -1,30 +1,29 @@
 @import '../base/colors';
 
 .bar_graph {
-	display: flex;
-	flex-direction: column;
-	border: 2px solid $color__font-aside--important;
-	margin-bottom: 4em;
-	margin-right: 1em;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid $color__font-aside--important;
+  margin-bottom: 4em;
+  margin-right: 1em;
 
-	&__header {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 10px;
-		background: linear-gradient(
-					$color__font-aside--important,
-					$color__font-aside--important
-				)
-				bottom left/ 20% 2px no-repeat,
-			$color__secondary--dark;
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background: linear-gradient(
+                    $color__font-aside--important,
+                    $color__font-aside--important
+    ) bottom left/ 20% 2px no-repeat,
+    $color__secondary--dark;
 
-		&__title {
-			font-size: 20px;
-		}
-	}
+    &__title {
+      font-size: 20px;
+    }
+  }
 
-	&__content {
-		min-height: 300px;
-	}
+  &__content {
+    min-height: 300px;
+  }
 }
