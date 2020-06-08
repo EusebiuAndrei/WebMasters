@@ -27,7 +27,6 @@ const App = () => {
             ${Statistics.default()}
             ${BarGraph.default()}
             ${Pie.default()}
-            ${Reports.default()}
             ${Footer.default()}
             
         </div>
