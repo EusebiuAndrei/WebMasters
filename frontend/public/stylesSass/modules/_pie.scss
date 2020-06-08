@@ -1,11 +1,11 @@
 @import '../base/colors';
 
 .container__pie {
-  border: 2px solid $color__font-aside--important;
-  padding-top: 20px;
-  margin-bottom: 4em;
+	border: 2px solid $color__font-aside--important;
+	padding-top: 20px;
+	margin-bottom: 4em;
 
-  &__chart {
-    margin-top: 15%;
-  }
+	&__chart {
+		margin-top: 15%;
+	}
 }
