@@ -1,3 +1,6 @@
+@import '../base/colors';
+@import '../base/variables';
+
 .container {
 	display: grid;
 	grid-template-rows: repeat(8, auto);
@@ -36,7 +39,7 @@
 		'map': $color__primary,
 		'nr': $color__secondary--dark,
 		'bar': $color__secondary--dark,
-		'pie': $color__secondary--light,
+		'pie': $color__secondary--dark,
 		'reports': $color__primary--dark,
 	);
 

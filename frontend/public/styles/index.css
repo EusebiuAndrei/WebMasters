@@ -433,7 +433,7 @@ p {
 }
 .container__pie {
   grid-area: pie;
-  background-color: #29323d;
+  background-color: #171F25;
 }
 .container__reports {
   grid-area: reports;
@@ -1143,6 +1143,10 @@ label ~ p {
   font-size: 25px;
 }
 
+.container__pie {
+  border: 2px solid #3b4754;
+  padding-top: 20px;
+}
 .container__pie__chart {
   margin-top: 15%;
 }
