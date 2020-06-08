@@ -391,6 +391,22 @@ p {
 #pieChart {
   margin: 0; }
 
+.export-container {
+  padding: 20px 20%;
+  display: flex;
+  flex-direction: column; }
+  .export-container__input {
+    display: flex; }
+    .export-container__input > label {
+      width: 200px;
+      align-self: center;
+      font-size: 20px; }
+  .export-container__buttons {
+    display: flex;
+    justify-content: center; }
+    .export-container__buttons > a {
+      margin: 5px; }
+
 .options-contaiener {
   display: flex; }
 

@@ -3,18 +3,20 @@ import StateManager from '../utils/StateManager.js';
 const Export = () => {
 	return `
             <div class="export-container">
-                <label>Export as
-                    <select id="exportType" style="display: block;">
-                        <option value="pdf">PDF</option>
-                        <option value="png">PNG</option>
+            	<div class="export-container__input">
+					<label>Export as:</label>
+					<select id="exportType">
+						<option value="pdf">PDF</option>
+						<option value="png">PNG</option>
 						<option value="csv">CSV</option>
 						<option value="svg">SVG</option>
-                    </select>
-                </label>
+					</select>
+                </div>
 
-                <a id="downloadBtn">Download </a>
-
-                <p>Send Email</p>
+				<div class="export-container__buttons">
+					<a class="button button--primary" id="downloadBtn">Download</a>
+					<a class="button button--primary">Send Email</a>
+                </div>
             </div> 
         `;
 };
@@ -25,8 +27,10 @@ const addEventsListeners = () => {
 
 	if (dwnButton) {
 		dwnButton.addEventListener('click', (event) => {
-			var selectedValue = exportList.options[exportList.selectedIndex].value;
-			if (selectedValue == 'csv') {
+			let toExport;
+			let pie;
+			const selectedValue = exportList.options[exportList.selectedIndex].value;
+			if (selectedValue === 'csv') {
 				//	alert('csv!');
 				const { fetchedData } = StateManager.getStateForVisual();
 				const csv = [];
@@ -62,23 +66,23 @@ const addEventsListeners = () => {
 				elem.click();
 
 				document.body.removeChild(elem);
-			} else if (selectedValue == 'pdf') {
-				var pie = false;
-				var describeTxt = document.getElementsByClassName(
+			} else if (selectedValue === 'pdf') {
+				pie = false;
+				let describeTxt = document.getElementsByClassName(
 					'bar_graph__header__title',
 				)[0];
 
 				if (describeTxt) describeTxt = describeTxt.textContent;
 
 				console.log(describeTxt);
-				var toExport = document.querySelector('#chart');
+				let toExport = document.querySelector('#chart');
 				if (toExport == null) {
 					toExport = document.querySelector('#pieChart');
 					pie = true;
 				}
-				var canvasImage = toExport.toDataURL('image/png', 1.0);
+				const canvasImage = toExport.toDataURL('image/png', 1.0);
 
-				var exportedDoc = new jsPDF('landscape');
+				const exportedDoc = new jsPDF('landscape');
 				exportedDoc.setFontSize(10);
 
 				exportedDoc.text(15, 12, describeTxt ? describeTxt : '');
@@ -87,10 +91,10 @@ const addEventsListeners = () => {
 				else exportedDoc.addImage(canvasImage, 'PNG', 10, 10, 280, 150);
 
 				exportedDoc.save('chart.pdf');
-			} else if (selectedValue == 'png') {
+			} else if (selectedValue === 'png') {
 				//alert('png!');
 
-				var toExport = document.querySelector('#chart');
+				toExport = document.querySelector('#chart');
 				if (toExport == null) {
 					toExport = document.querySelector('#pieChart');
 					pie = true;
