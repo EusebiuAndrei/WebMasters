@@ -459,4 +459,8 @@ label ~ p {
 		border-left: 5px solid $color__primary--dark;
 		padding-left: 10px;
 	}
+
+	& img {
+		margin-left: 15%;
+	}
 }

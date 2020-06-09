@@ -18,9 +18,9 @@ describe('Record service', () => {
 	});
 
 	const getTestAccident = ({ source, severity }) => ({
-		source: source,
+		source,
 		tmc: 201,
-		severity: severity,
+		severity,
 		startTime: 1454910360000,
 		endTime: 1454929200000,
 		startLat: 39.865147,

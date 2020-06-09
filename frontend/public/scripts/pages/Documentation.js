@@ -96,10 +96,17 @@ const Documentation = () => {
       <section>
         <h3>Tehnologii utilizate</h3>
         <p>
-          Aplicația a fost dezvoltată folosind node.js. Principalele biblioteci folosite sunt chart.js (pentru grafice), moment.js (ca și dependință a chart.js necesară prelucrării datelor temporale), și leaflet.js (pentru hartă).
+          Aplicația a fost dezvoltată folosind node.js. Principalele biblioteci folosite sunt chart.js (pentru grafice), 
+          moment.js (ca și dependință a chart.js necesară prelucrării datelor temporale), și leaflet.js (pentru hartă).
           Back-end-ul este conectat la o bază de date MongoDB. Pentru front-end, am folosit fișiere SCSS compilate în
           cod CSS prin Sass, iar HTML-ul este construit dinamic cu ajutorul JavaScript.
         </p>
+        <p>
+        Node.js a fost ales deoarece folosește JavaScript, care este folosit și la front-end, și este o soluție modernă
+        și foarte populară în ceea ce privește dezvoltarea API-urilor REST. Bibliotecile pentru reprezentări au fost
+        alese în funcție de licență, neputând folosi librării cu plată. MongoDB a fost ales ca și bază de date din cauza
+        simplității structurii necesare proiectului, și a ușurinței folosirii sale prin Mongoose.
+		</p>
       </section>
       <section>
         <h3>Evoluția aplicației</h3>
@@ -140,6 +147,39 @@ const Documentation = () => {
         </p>
       </section>
     </section>
+    <section>
+    	<h2>Structura proiectului</h2>
+    	<p>Proiectul este structurat în trei microservicii: o aplicație web și două API-uri.</p>
+    	<img src="../images/General.png" alt="A chart of the structure of the entire application">
+    	
+    	<section>
+    		<h3>Aplicație web</h3>
+    		<p>
+    		Aplicația web servește clientului resursele necesare pentru a randa site-ul. Aceasta este structurată
+    		precum urmează:
+    		</p>
+    		<img src="../images/Front2.png" alt="A chart of the structure of the front-end application">
+    		<p>
+    		Clientul cere resursele de la Router, care i le servește. Printre resurse sunt și o colecție de scripturi,
+    		care construiesc pagina într-un mod asemănător React (toate paginile sunt generate dinamic prin JavaScript), 
+    		și un State Manager, care face apelurile la API și stochează date în Session Storage.
+			</p>
+		</section>
+		<section>
+			<h3>API-uri</h3>
+			<p>
+			Aplicația folosește două API-uri: unul furnizează accidentele (și o parte din acesta este accesibil public),
+			celălalt verifică autorizația în cazul apelurilor la precedentul care le necesită și permite înregistrarea
+			administratorilor. 
+			</p>
+			<img src="../images/Back.png" alt="A chart of the structure of the APIs">
+			<p>
+			Cererea de la client ajunge la Router, care o trimite la Controllerul potrivit. Acesta apelează un serviciu,
+			care validează cererea, verifică autorizația (dacă este nevoie), și apelează prin model baza de date. După
+			ce un răspuns a fost creat, acesta este trimis de Controller înapoi la client.
+			</p>
+		</section>
+	</section>
   </article>
     `;
 };

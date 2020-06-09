@@ -199,7 +199,6 @@ const addEventsListeners = () => {
 
 	inputs.forEach((input) =>
 		input.addEventListener('change', (event) => {
-			console.log('AAAAAA');
 			console.log(event.target);
 		}),
 	);
