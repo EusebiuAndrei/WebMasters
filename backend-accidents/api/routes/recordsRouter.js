@@ -43,10 +43,7 @@ router.get(`${ROUTE_BASE}`, async (req, res) => {
 
 /* add an accident */
 router.post(`${ROUTE_BASE}/add`, async (req, res) => {
-	const result = await recordService.addAccident(
-		req.body,
-		req.headers.authorization,
-	);
+	const result = await recordService.addAccident(req.body, req.headers.authorization);
 	const statusCode = result.success ? 200 : 400;
 	res.status(statusCode).json(result);
 });

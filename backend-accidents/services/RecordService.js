@@ -12,6 +12,7 @@ class RecordService {
 		let payload;
 		try {
 			payload = JSON.parse(decodeURIComponent(payloadString));
+			console.log(payload);
 		} catch (e) {
 			if (e instanceof SyntaxError) {
 				return {
@@ -24,6 +25,7 @@ class RecordService {
 			}
 		}
 		try {
+			//	console.log(payload);
 			const { error, data } = await recordDataRequestSchema.validate(payload);
 			const { orderBy } = payload;
 			const { skip, limit } = payload;
@@ -37,19 +39,27 @@ class RecordService {
 					},
 				};
 			});
-
+			//	console.log(filter);
 			// console.log(JSON.stringify({$and: [...queryFilters]}, null, 2));
 			// console.log();
-
-			const accidents = await this.db.accidents
-				.find({
-					$and: [...queryFilters],
-				})
-				.sort({ [orderBy.column]: orderBy.order })
-				.limit(limit)
-				.skip(skip);
-			// console.log(accidents);
-
+			console.log(queryFilters);
+			let accidents;
+			if (queryFilters.length) {
+				accidents = await this.db.accidents
+					.find({
+						$and: [...queryFilters],
+					})
+					.sort({ [orderBy.column]: orderBy.order })
+					.limit(limit)
+					.skip(skip);
+				// console.log(accidents);
+			} else {
+				accidents = await this.db.accidents
+					.find()
+					.sort({ [orderBy.column]: orderBy.order })
+					.limit(limit)
+					.skip(skip);
+			}
 			return {
 				success: true,
 				data: { accidents },
