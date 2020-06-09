@@ -68,7 +68,7 @@ const Documentation = () => {
       <section>
         <h3>Alinierea cerințelor cu implementarea</h3>
         <p>
-          Pagina permite vizualizarea customizabilă a datelor în trei reprezentări (bar graph, line graph & pie chart) + o
+          Pagina permite vizualizarea personalizabilă a datelor în trei reprezentări (bar graph, line graph & pie chart) + o
           redare cartografică pe teritoriul fiecărui stat. Reprezentările pot fi exportate ca și CSV, PNG, SVG și PDF.
         </p>
         <p>
@@ -96,7 +96,7 @@ const Documentation = () => {
       <section>
         <h3>Tehnologii utilizate</h3>
         <p>
-          Aplicația a fost dezvoltată folosind node.js. Principalele librării folosite sunt chart.js (pentru grafice), moment.js (ca și dependință a chart.js necesară prelucrării datelor temporale), și leaflet.js (pentru hartă).
+          Aplicația a fost dezvoltată folosind node.js. Principalele biblioteci folosite sunt chart.js (pentru grafice), moment.js (ca și dependință a chart.js necesară prelucrării datelor temporale), și leaflet.js (pentru hartă).
           Back-end-ul este conectat la o bază de date MongoDB. Pentru front-end, am folosit fișiere SCSS compilate în
           cod CSS prin Sass, iar HTML-ul este construit dinamic cu ajutorul JavaScript.
         </p>
@@ -144,7 +144,8 @@ const Documentation = () => {
     `;
 };
 
-const initialize = () => {};
+const initialize = () => {
+};
 
 export default Documentation;
 export { initialize };

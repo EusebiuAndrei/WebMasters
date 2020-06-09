@@ -340,3 +340,5 @@ export const statesHash = [
 		abbreviation: 'WY',
 	},
 ];
+
+export const accidentsHost = 'http://localhost:3001';

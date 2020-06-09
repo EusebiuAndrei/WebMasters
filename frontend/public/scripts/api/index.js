@@ -1,16 +1,10 @@
 import * as converter from '../utils/Converter.js';
-
-const getUsers = async () => {
-	let response = await fetch('http://localhost:3002/api/users');
-	response = response.json();
-
-	return response;
-};
+import { accidentsHost } from '../constants.js';
 
 const getDataset = async (data) => {
 	const queryParam = encodeURIComponent(JSON.stringify(convertData(data)));
 	let response = await fetch(
-		`http://localhost:3001/api/accidents/chart_data?query=${queryParam}`, {
+		`${accidentsHost}/api/accidents/chart_data?query=${queryParam}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -41,4 +35,4 @@ const convertData = (data) => {
 	};
 };
 
-export { getUsers, getDataset };
+export { getDataset };

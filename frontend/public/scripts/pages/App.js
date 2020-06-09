@@ -57,14 +57,6 @@ const initializeVisuals = () => {
 const initialize = () => {
 	initializeEventListeners();
 	initializeVisuals();
-
-	// An example of using calls to backend
-	const runFetch = async () => {
-		const response = await api.getUsers();
-
-		console.log(response);
-	};
-	runFetch();
 };
 
 export default App;
