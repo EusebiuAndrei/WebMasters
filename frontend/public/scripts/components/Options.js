@@ -1,7 +1,18 @@
 import StateManager from '../utils/StateManager.js';
-import { allColumns, discreteColumns, numericColumns, visualTypeEnum } from '../constants.js';
-import { eventApplyForm, getDomElementFromDomString, getDomStringFromArray } from '../utils/index.js';
+import {
+	allColumns,
+	discreteColumns,
+	numericColumns,
+	visualTypeEnum,
+} from '../constants.js';
+import {
+	eventApplyForm,
+	getDomElementFromDomString,
+	getDomStringFromArray,
+} from '../utils/index.js';
 import * as api from '../api/index.js';
+import Spinner from './Spinner.js';
+import ErrorBar from './ErrorBar.js';
 
 // fds
 const Options = () => {
@@ -21,33 +32,33 @@ const Options = () => {
                                 <span>Bucket Type</span>
                                 <select name="bucketType" id="js-bucket" style="display: block;">
                                     <option value="time" ${
-		visualType === visualTypeEnum.BAR_GRAPH
-			? 'selected'
-			: ''
-	}>Time</option>
+										visualType === visualTypeEnum.BAR_GRAPH
+											? 'selected'
+											: ''
+									}>Time</option>
                                     <option value="column" ${
-		visualType === visualTypeEnum.MAP ||
-		visualType === visualTypeEnum.PIE_CHART
-			? 'selected'
-			: ''
-	}>Column</option>
+										visualType === visualTypeEnum.MAP ||
+										visualType === visualTypeEnum.PIE_CHART
+											? 'selected'
+											: ''
+									}>Column</option>
                                 </select>
                             </label>
 
                             ${
-		inputData.bucketType === 'column'
-			? BucketColumn()
-			: TimeChart()
-	}
+								inputData.bucketType === 'column'
+									? BucketColumn()
+									: TimeChart()
+							}
                             
                             ${
-		visualType === visualTypeEnum.PIE_CHART
-			? `<label id="js-join-buckets-past">
+								visualType === visualTypeEnum.PIE_CHART
+									? `<label id="js-join-buckets-past">
                                         <span>Join Buckets Past</span>
                                         <input value="6" type="text" name="joinBucketsPast" style="display: block;"/>
                                     </label>`
-			: ''
-	}
+									: ''
+							}
                             
                             <label>
                                 <span>Value type of a bucket</span>
@@ -196,15 +207,13 @@ const addEventsListeners = () => {
 	form.addEventListener('submit', async (event) => {
 		event.preventDefault();
 
+		const spinner = getDomElementFromDomString(Spinner());
+		form.append(spinner);
+
 		const chartData = computeChartDataObjectFromDom();
 		const datasets = computeDatasetsObjectFromDom(form);
 
-		// console.log(chartData);
-		// console.log(datasets);
-		// console.log(eventApplyForm.type);
-
 		const root = document.getElementById(`a-${StateManager.getState().visualType}`);
-		// console.log(root);
 
 		if (datasets.length === 0) {
 			let chartLabels = [];
@@ -222,21 +231,22 @@ const addEventsListeners = () => {
 					data: chartDatasets,
 				};
 
-				console.log('!!!!');
-				console.log(fetchedData);
-				console.log('!!!!');
+				// console.log('!!!!');
+				// console.log(fetchedData);
+				// console.log('!!!!');
 
-				console.log('STATE', StateManager.getState());
+				// console.log('STATE', StateManager.getState());
 				StateManager.setFetchedData(fetchedData);
 				root.dispatchEvent(eventApplyForm);
-				console.log('STATE', StateManager.getState());
+				// console.log('STATE', StateManager.getState());
 			} catch (error) {
-				console.log('AAAAAAAA');
-				console.trace(error);
+				// console.log('AAAAAAAA');
+				// console.trace(error);
 			}
 
 			return;
 		} else {
+			console.log('BBBBBBBBBBBBBBBBBBBBBBBBBB');
 			let chartLabels = [];
 			let chartDatasets = [];
 			for (const dataset of datasets) {
@@ -251,9 +261,16 @@ const addEventsListeners = () => {
 					chartLabels = labels;
 					chartDatasets.push({ name: dataset.name, data });
 				} catch (error) {
-					alert(
-						`There was a problem with the dataset: ${dataset.name} \n ${error.message}`,
+					const errorBar = getDomElementFromDomString(
+						ErrorBar({
+							datasetName: dataset.name,
+							errMsg: error.message,
+						}),
 					);
+					form.append(errorBar);
+
+					spinner.remove();
+					return;
 				}
 			}
 
@@ -262,15 +279,17 @@ const addEventsListeners = () => {
 				data: chartDatasets,
 			};
 
-			console.log('!!!!');
-			console.log(fetchedData);
-			console.log('!!!!');
+			// console.log('!!!!');
+			// console.log(fetchedData);
+			// console.log('!!!!');
 
-			console.log('STATE', StateManager.getState());
+			// console.log('STATE', StateManager.getState());
 			StateManager.setFetchedData(fetchedData);
 			root.dispatchEvent(eventApplyForm);
-			console.log('STATE', StateManager.getState());
+			// console.log('STATE', StateManager.getState());
 		}
+
+		spinner.remove();
 	});
 
 	value_type.addEventListener('change', (event) => {
@@ -288,6 +307,16 @@ const addEventsListeners = () => {
 	});
 
 	buttonAddDataset.addEventListener('click', (event) => {
+		if (
+			StateManager.getState().visualType === visualTypeEnum.MAP ||
+			StateManager.getState().visualType === visualTypeEnum.PIE_CHART
+		) {
+			const nrOfDatasets = buttonAddDataset.parentElement.children.length - 1;
+			if (nrOfDatasets >= 1) {
+				return;
+			}
+		}
+
 		event.target.before(getDomElementFromDomString(Dataset()));
 
 		// button add filter

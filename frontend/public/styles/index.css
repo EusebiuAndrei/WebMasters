@@ -542,7 +542,12 @@ p {
 
 #js-apply-form {
   margin-top: 1.5em !important;
-  margin-bottom: 1em !important; }
+  margin-bottom: 1em !important;
+  cursor: pointer; }
+
+#js-apply-form:hover {
+  background-color: aquamarine;
+  color: black; }
 
 input[type='text'] {
   padding: 10px !important;
@@ -653,6 +658,45 @@ label ~ p {
   padding: 10px 0; }
   .tool-button-container > .button {
     margin: 0 5px; }
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  border-radius: 50%;
+  margin: 1em auto; }
+
+.spinner::before,
+.spinner::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  animation: spin 1s infinite linear; }
+
+.spinner::before {
+  border-top-color: #ff7043; }
+
+.spinner::after {
+  border-bottom-color: #ff7043; }
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg); } }
+.error-bar {
+  color: #ff7043;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.error-bar p {
+  margin-top: 0; }
+
+.error-bar p:last-child {
+  font-size: 1.15em; }
 
 .button {
   box-sizing: border-box;
