@@ -4,6 +4,8 @@ const config = require('../../config');
 const { recordService } = require('../index');
 const { Accidents } = require('../../models/index');
 
+// AAA: Arrange Act Assert
+
 describe('Record service', () => {
 	beforeAll(async () => {
 		await mongoose.connect(config.databaseTestURL, {
@@ -15,10 +17,10 @@ describe('Record service', () => {
 		await Accidents.deleteMany({});
 	});
 
-	const testAccident = {
-		source: 'WebMasters',
+	const getTestAccident = ({ source, severity }) => ({
+		source: source,
 		tmc: 201,
-		severity: 3,
+		severity: severity,
 		startTime: 1454910360000,
 		endTime: 1454929200000,
 		startLat: 39.865147,
@@ -59,8 +61,23 @@ describe('Record service', () => {
 		civilTwilightNight: true,
 		nauticalTwilightNight: true,
 		astronomicalTwilightNight: true,
-	};
-	console.log(JSON.stringify(testAccident, null, 2));
-	const token =
-		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRlOWExNWUzYTI5OTIzOTBjNDJhYjkiLCJpYXQiOjE1OTE2NDY3NDF9.GyGG0obU1_yCXyCK7QQkz9CF9lO1cooP_lWHM1fJseU';
+	});
+	const getTestToken = () => ({
+		valid:
+			'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRlOWExNWUzYTI5OTIzOTBjNDJhYjkiLCJpYXQiOjE1OTE2NDY3NDF9.GyGG0obU1_yCXyCK7QQkz9CF9lO1cooP_lWHM1fJseU',
+		invalid:
+			'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRlOWExNWUzYTI5OTIzOTBjNDJhYjkiLCJqYXQiOjE1OTE2NDY3NDF9.GyGG0obU1_yCXyCK7QQkz9CF9lO1cooP_lWHM1fJseU',
+	});
+
+	describe('addAccident', () => {
+		it('successfully adds an accident given the necessary data', async () => {
+			const testAccident = getTestAccident({ source: 'WebMasters', severity: 3 });
+
+			const {
+				data: { accident },
+			} = await recordService.addAccident(testAccident, getTestToken().valid);
+
+			expect(accident).toEqual(testAccident);
+		});
+	});
 });
