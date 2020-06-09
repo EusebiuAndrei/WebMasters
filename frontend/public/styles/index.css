@@ -399,9 +399,44 @@ p {
 .container__map {
   margin: 4em 0; }
 
+.visual-container {
+  min-height: 55vh; }
+
 .visual-container > .container__pie {
   width: 50%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  margin-bottom: 4em; }
+  @media (max-width: 992px) {
+    .visual-container > .container__pie {
+      width: 60%; } }
+  @media (max-width: 700px) {
+    .visual-container > .container__pie {
+      width: 70%; } }
+  @media (max-width: 500px) {
+    .visual-container > .container__pie {
+      width: 100%; } }
+
+.visual-container > .container__bar {
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 4em; }
+  @media (max-width: 500px) {
+    .visual-container > .container__bar {
+      width: 100%; } }
+
+.visual-container > .container__bar .bar_graph__content {
+  height: 400px; }
+  @media (max-width: 500px) {
+    .visual-container > .container__bar .bar_graph__content {
+      height: 300px; } }
+
+.visual-container > .container__map {
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 4em; }
+  @media (max-width: 500px) {
+    .visual-container > .container__map {
+      width: 100%; } }
 
 #pieChart {
   margin: 0; }
@@ -439,11 +474,14 @@ p {
   flex-direction: column;
   align-items: center; }
 
+@media (max-width: 992px) {
+  .options-container > form > div:first-child {
+    flex-direction: column-reverse !important; } }
+
 #js-settings {
   background-color: #29323d;
-  grid-column-start: 1;
-  grid-column-end: 2; }
-  @media (min-width: 700px) {
+  margin-bottom: 4em; }
+  @media (min-width: 992px) {
     #js-settings {
       grid-column-start: 2;
       grid-column-end: 6; } }
