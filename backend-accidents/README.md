@@ -16,10 +16,10 @@ The `query` query parameter is a URI-encoded version of the following JSON:
 
 ```json
 {
-	"bucketType": "column",
-	"bucketColumn": "state",
-	"valueType": "count",
-	"joinBucketsPast": 5
+    "bucketType": "column",
+    "bucketColumn": "state",
+    "valueType": "count",
+    "joinBucketsPast": 5
 }
 ```
 
@@ -27,11 +27,11 @@ The `query` query parameter is a URI-encoded version of the following JSON:
 
 ```json
 {
-	"success": true,
-	"data": {
-		"labels": ["CA", "TX", "FL", "SC", "NC", "other"],
-		"data": [663204, 298062, 223746, 146689, 142460, 1500174]
-	}
+    "success": true,
+    "data": {
+        "labels": ["CA", "TX", "FL", "SC", "NC", "other"],
+        "data": [663204, 298062, 223746, 146689, 142460, 1500174]
+    }
 }
 ```
 
