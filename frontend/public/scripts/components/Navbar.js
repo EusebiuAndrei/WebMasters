@@ -14,8 +14,7 @@ const Navbar = () => {
     `;
 };
 
-const addEventsListeners = () => {
-};
+const addEventsListeners = () => {};
 
 export default Navbar;
 export { addEventsListeners };
