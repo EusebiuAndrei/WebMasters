@@ -4,6 +4,8 @@
 import * as App from './pages/App.js';
 import * as NotFound from './pages/NotFound.js';
 import * as Tool from './pages/Tool.js';
+import * as Help from './pages/Help.js';
+import * as Documentation from './pages/Documentation.js';
 
 // setTimeout(() => {
 // 	const root = document.getElementById('list-example');
@@ -16,6 +18,8 @@ const routes = {
 	'/': App,
 	'/not-found': NotFound,
 	'/tool': Tool,
+	'/docs': Documentation,
+	'/help': Help,
 };
 
 let pathname = location.pathname;
