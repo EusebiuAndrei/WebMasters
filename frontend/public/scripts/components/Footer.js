@@ -13,7 +13,7 @@ const Footer = () => {
 				<a class="footer-container__text__link" href="https://www.kaggle.com/sobhanmoosavi/us-accidents">
 				Data source
 				</a>
-				<a class="footer-container__text__link" href="#">
+				<a class="footer-container__text__link" href="https://github.com/EusebiuAndrei/WebMasters/blob/master/backend-accidents/README.md">
 				Public API documentation
 				</a>
 				<a class="footer-container__text__link" href="/docs">

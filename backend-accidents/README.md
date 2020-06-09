@@ -51,9 +51,13 @@ the following properties (\* = required):
     'trafficCalming', 'trafficSignal', 'turningLoop', 'sunriseSunsetNight',
     'civilTwilightNight', 'nauticalTwilightNight' or 'astronomicalTwilightNight'.
 -   `timeChart` - required for a `bucketType` of 'time', it should be an object with some
-    properties fine-tuning the time intervals: - `bucketSize`\* = 'year', 'month', 'week'
-    or 'day' - `from` = a Date value representing the lower bound of the times to allow as
-    buckets - `to` = the upper bound - `timeAxisBasedOn` = controls whether to define the
+    properties fine-tuning the time intervals: 
+    - `bucketSize`\* = 'year', 'month', 'week'
+    or 'day' 
+    - `from` = a Date value representing the lower bound of the times to allow as
+    buckets 
+    - `to` = the upper bound 
+    - `timeAxisBasedOn` = controls whether to define the
     time buckets by the start time of the accident ('start'), or the end time ('end')
 -   `joinBucketsPast` - a positive number. If present, it signifies the number of buckets
     to show (in descending order of value) before merging the rest into a bucket labelled
@@ -61,10 +65,12 @@ the following properties (\* = required):
 -   `valueType*` - either 'count', which uses the number of accidents as the value of the
     bucket, or an object with the following props: - `column` - the column to calculate
     the value around - `type` - 'min', 'max' or 'avg'
--   `filters` - an array containing one or more objects with the following properties: -
-    `column` - the column to filter by - `constraint` - 'in' (for a list of allowed
+-   `filters` - an array containing one or more objects with the following properties: 
+    - `column` - the column to filter by 
+    - `constraint` - 'in' (for a list of allowed
     values) or 'lte' (less than or equal to), 'gte' (greater than or equal to), 'lt' (less
-    than), 'gt' (greater than), or 'ne' (not equal to) - `value` - either an array of
+    than), 'gt' (greater than), or 'ne' (not equal to) 
+    - `value` - either an array of
     allowed values (for 'in'), or a value to compare with (for the other constraint types)
 
 #### Response format
@@ -101,18 +107,18 @@ The `query` query parameter is a URI-encoded version of the following JSON:
 
 ```json
 {
-	"filters": [
-		{
-			"column": "severity",
-			"constraint": "lte",
-			"value": 2
-		}
-	],
-	"orderBy": {
-		"column": "startTime",
-		"order": "desc"
-	},
-	"limit": 1
+    "filters": [
+        {
+            "column": "severity",
+            "constraint": "lte",
+            "value": 2
+        }
+    ],
+    "orderBy": {
+        "column": "startTime",
+        "order": "desc"
+    },
+    "limit": 1
 }
 ```
 
@@ -120,45 +126,45 @@ The `query` query parameter is a URI-encoded version of the following JSON:
 
 ```json
 {
-	"success": true,
-	"data": {
-		"accidents": [
-			{
-				"_id": "5ebc1a84f33a7c7f3c29bd0e",
-				"source": "MapQuest",
-				"tmc": 201,
-				"severity": 2,
-				"startTime": "2020-01-01T00:50:55.000Z",
-				"endTime": "2020-01-01T01:20:23.000Z",
-				"startLat": 42.960461,
-				"startLng": -73.790909,
-				"distance": 0,
-				"desc": "Lane blocked due to accident on US-9 at Knabner Rd.",
-				"number": 2389,
-				"street": "Route 9",
-				"side": "L",
-				"city": "Mechanicville",
-				"county": "Saratoga",
-				"state": "NY",
-				"zipcode": "12118-3901",
-				"timezone": "US/Eastern",
-				"airportCode": "KALB",
-				"amenity": false,
-				"bump": false,
-				"crossing": false,
-				"giveWay": false,
-				"junction": false,
-				"noExit": false,
-				"railway": false,
-				"roundabout": false,
-				"station": false,
-				"stop": false,
-				"trafficCalming": false,
-				"trafficSignal": false,
-				"turningLoop": false
-			}
-		]
-	}
+    "success": true,
+    "data": {
+        "accidents": [
+            {
+                "_id": "5ebc1a84f33a7c7f3c29bd0e",
+                "source": "MapQuest",
+                "tmc": 201,
+                "severity": 2,
+                "startTime": "2020-01-01T00:50:55.000Z",
+                "endTime": "2020-01-01T01:20:23.000Z",
+                "startLat": 42.960461,
+                "startLng": -73.790909,
+                "distance": 0,
+                "desc": "Lane blocked due to accident on US-9 at Knabner Rd.",
+                "number": 2389,
+                "street": "Route 9",
+                "side": "L",
+                "city": "Mechanicville",
+                "county": "Saratoga",
+                "state": "NY",
+                "zipcode": "12118-3901",
+                "timezone": "US/Eastern",
+                "airportCode": "KALB",
+                "amenity": false,
+                "bump": false,
+                "crossing": false,
+                "giveWay": false,
+                "junction": false,
+                "noExit": false,
+                "railway": false,
+                "roundabout": false,
+                "station": false,
+                "stop": false,
+                "trafficCalming": false,
+                "trafficSignal": false,
+                "turningLoop": false
+            }
+        ]
+    }
 }
 ```
 
@@ -166,25 +172,27 @@ The `query` query parameter is a URI-encoded version of the following JSON:
 
 `GET $HOST/api/records?query=...`
 
-The request requires a query query parameter in the URL, a URI-encoded JSON string with
+The request requires a `query` query parameter in the URL, a URI-encoded JSON string with
 the following properties:
 
--   `filters` - an array containing one or more objects with the following properties: -
-    `column` - the column to filter by - `constraint` - 'in' (for a list of allowed
-    values) or 'lte' (less than or equal to), 'gte' (greater than or equal to), 'lt' (less
-    than), 'gt' (greater than), or 'ne' (not equal to) - `value` - either an array of
+-   `filters` - an array containing one or more objects with the following properties: 
+    - `column` - the column to filter by 
+    - `constraint` - 'in' (for a list of allowed values) or 'lte' (less than or equal to), 
+    'gte' (greater than or equal to), 'lt' (less than), 'gt' (greater than), or 'ne' (not equal to) - `value` - either an array of
     allowed values (for 'in'), or a value to compare with (for the other constraint types)
+    - `value` - either an array of
+        allowed values (for 'in'), or a value to compare with (for the other constraint types)
 
 -   `orderBy` - The orderBy property store other 2 properties: `column` and `order`.
-    column-the column to filter by should be a valid column from database) and the order
-    specifies the rule: (asc)endent, (desc)endent.
+    The column to filter by should be a valid column from the database, and the order
+    specifies the rule: (asc)ending, (desc)ending.
 
 -   `skip` - the number of accidents you want to skip.
 
--   `limit` - the number of accidents you want. You can set a limit (max: 20). By default
+-   `limit` - the number of accidents you want. You can set a limit (max: 20). By default, 
     it is 10.
 
--   `columns` - the columns you want from database. By default all columns are selected.
+-   `columns` - the columns you want from the database. By default, all columns are selected.
 
 #### Response format
 
@@ -194,7 +202,8 @@ A JSON object with the following properties:
 
 If successful, also:
 
--   all details about the accident you searched
+-   `data` - an object containing a property `accidents`, which is an array of objects 
+containing the requested columns
 
 If unsuccessful, also:
 
