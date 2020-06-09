@@ -1,14 +1,8 @@
-import * as Navbar from '../components/Navbar.js';
-import * as Banner from '../components/Banner.js';
-import * as Footer from '../components/Footer.js';
-
 const Help = () => {
 	return `
-    ${Banner.default()}
-            ${Navbar.default()}
-    <article typeof="schema:ScholarlyArticle">
+    <article typeof="schema:ScholarlyArticle" class="doc-root">
     <header>
-      <h1 property="schema:name">AVi - Ghid de utilizare</h1>
+      <h1 property="schema:name">Ghid de utilizare</h1>
     </header>
     <div role="contentinfo">
       <section typeof="sa:AuthorsList">
@@ -106,7 +100,6 @@ const Help = () => {
       </p>
     </section>
   </article>
-  ${Footer.default()}
     `;
 };
 

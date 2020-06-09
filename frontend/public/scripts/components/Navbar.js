@@ -6,7 +6,7 @@ const Navbar = () => {
                 <section class ="navbar-container__text">
                     <p class="navbar-container__text__children"><a href="#map">Map</a></p>
                     <p class="navbar-container__text__children"><a href="#about-us">About us</a></p>
-                    <p class="navbar-container__text__children"><a href="/docs">Documentation</a></p>
+					<p class="navbar-container__text__children"><a href="/help">Usage guide (RO)</a></p>
                 </section>
                 <p class="navbar-container__text__children"><a class="button" href="/tool">Tool</a></p>
             </section>

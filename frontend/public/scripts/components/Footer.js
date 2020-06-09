@@ -16,6 +16,10 @@ const Footer = () => {
 				<a class="footer-container__text__link" href="#">
 				Public API documentation
 				</a>
+				<a class="footer-container__text__link" href="/docs">
+				Project documentation
+				</a>
+
 			</div>
 		</div>
 		<div class="container__footer__citations">
