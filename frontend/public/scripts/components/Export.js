@@ -15,7 +15,6 @@ const Export = () => {
 
 				<div class="export-container__buttons">
 					<a class="button button--primary" id="downloadBtn">Download</a>
-					<a class="button button--primary">Send Email</a>
                 </div>
             </div> 
         `;
