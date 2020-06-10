@@ -29,7 +29,7 @@ class UserService {
 		try {
 			await user.save();
 			await user.generateAuthToken();
-			return { success: true, data: { user } };
+			return { success: true, data: { user, token } };
 		} catch (error) {
 			Logger.error(error);
 			return {
