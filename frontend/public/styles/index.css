@@ -856,7 +856,11 @@ label ~ p {
   padding-left: 10px;
 }
 .doc-root img {
-  margin-left: 15%;
+  display: block;
+  margin: 0 auto;
+}
+.doc-root figure {
+  text-align: center;
 }
 
 .button {

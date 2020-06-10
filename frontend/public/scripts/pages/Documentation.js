@@ -150,7 +150,10 @@ const Documentation = () => {
     <section>
     	<h2>Structura proiectului</h2>
     	<p>Proiectul este structurat în trei microservicii: o aplicație web și două API-uri.</p>
+		<figure typeof="sa:image">
     	<img src="../images/General.png" alt="A chart of the structure of the entire application">
+    	<figcaption>The structure of the entire application</figcaption>
+    	</figure>
     	
     	<section>
     		<h3>Aplicație web</h3>
@@ -158,7 +161,10 @@ const Documentation = () => {
     		Aplicația web servește clientului resursele necesare pentru a randa site-ul. Aceasta este structurată
     		precum urmează:
     		</p>
+    		<figure typeof="sa:image">
     		<img src="../images/Front2.png" alt="A chart of the structure of the front-end application">
+    		<figcaption>The structure of the client application</figcaption>
+    		</figure>
     		<p>
     		Clientul cere resursele de la Router, care i le servește. Printre resurse sunt și o colecție de scripturi,
     		care construiesc pagina într-un mod asemănător React (toate paginile sunt generate dinamic prin JavaScript), 
@@ -172,7 +178,10 @@ const Documentation = () => {
 			celălalt verifică autorizația în cazul apelurilor la precedentul care le necesită și permite înregistrarea
 			administratorilor. 
 			</p>
+			<figure typeof="sa:image">
 			<img src="../images/Back.png" alt="A chart of the structure of the APIs">
+			<figcaption>The structure of the APIs</figcaption>
+			</figure>
 			<p>
 			Cererea de la client ajunge la Router, care o trimite la Controllerul potrivit. Acesta apelează un serviciu,
 			care validează cererea, verifică autorizația (dacă este nevoie), și apelează prin model baza de date. După

@@ -461,6 +461,11 @@ label ~ p {
 	}
 
 	& img {
-		margin-left: 15%;
+		display: block;
+		margin: 0 auto;
+	}
+
+	& figure {
+		text-align: center;
 	}
 }
