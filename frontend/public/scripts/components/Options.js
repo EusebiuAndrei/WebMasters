@@ -27,28 +27,30 @@ const Options = () => {
                         <div>
                             <button type="button" id="js-add-dataset">+</button>
                         </div>
-                        <div id="js-chart-data">
-                            <label>
-                                <span>Bucket Type</span>
-                                <select name="bucketType" id="js-bucket" style="display: block;">
-                                    <option value="time" ${
-										visualType === visualTypeEnum.BAR_GRAPH
-											? 'selected'
-											: ''
-									}>Time</option>
-                                    <option value="column" ${
-										visualType === visualTypeEnum.MAP ||
-										visualType === visualTypeEnum.PIE_CHART
-											? 'selected'
-											: ''
-									}>Column</option>
-                                </select>
-                            </label>
+						<div id="js-chart-data">
+							${
+								visualType !== visualTypeEnum.MAP
+									? `
+								<label>
+									<span>Bucket Type</span>
+									<select name="bucketType" id="js-bucket" style="display: block;">
+										<option value="time" ${
+											visualType === visualTypeEnum.BAR_GRAPH
+												? 'selected'
+												: ''
+										}>Time</option>
+										<option value="column" ${
+											visualType === visualTypeEnum.MAP ||
+											visualType === visualTypeEnum.PIE_CHART
+												? 'selected'
+												: ''
+										}>Column</option>
+									</select>
+								</label>
 
-                            ${
-								inputData.bucketType === 'column'
-									? BucketColumn()
-									: TimeChart()
+								${inputData.bucketType === 'column' ? BucketColumn() : TimeChart()}
+							`
+									: ''
 							}
                             
                             ${

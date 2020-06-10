@@ -1,4 +1,5 @@
 import StateManager from '../utils/StateManager.js';
+import { visualTypeEnum } from '../constants.js';
 
 const Export = () => {
 	return `
@@ -6,10 +7,16 @@ const Export = () => {
             	<div class="export-container__input">
 					<label>Export as:</label>
 					<select id="exportType">
-						<option value="pdf">PDF</option>
-						<option value="png">PNG</option>
+						${
+							StateManager.getState().visualType !== visualTypeEnum.MAP
+								? `
+								<option value="pdf">PDF</option>
+								<option value="png">PNG</option>
+								<option value="svg">SVG</option>
+								`
+								: ''
+						}
 						<option value="csv">CSV</option>
-						<option value="svg">SVG</option>
 					</select>
                 </div>
 
