@@ -434,13 +434,15 @@ label ~ p {
 	font-size: 1.15em;
 }
 
+//das
+
 .doc-root {
 	margin: 5% 20%;
 
 	& h1 {
 		padding: 40px;
 		font-size: 30px;
-		background-color: #171F25;
+		background-color: #171f25;
 		border-radius: 20px;
 	}
 
@@ -461,6 +463,11 @@ label ~ p {
 	}
 
 	& img {
-		margin-left: 15%;
+		display: block;
+		margin: 0 auto;
+	}
+
+	& figure {
+		text-align: center;
 	}
 }

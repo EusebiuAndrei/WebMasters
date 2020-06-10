@@ -703,7 +703,7 @@ label ~ p {
   .doc-root h1 {
     padding: 40px;
     font-size: 30px;
-    background-color: #171F25;
+    background-color: #171f25;
     border-radius: 20px; }
   .doc-root h2 {
     padding-left: 20px;
@@ -716,7 +716,10 @@ label ~ p {
     border-left: 5px solid #1E4058;
     padding-left: 10px; }
   .doc-root img {
-    margin-left: 15%; }
+    display: block;
+    margin: 0 auto; }
+  .doc-root figure {
+    text-align: center; }
 
 .button {
   box-sizing: border-box;
