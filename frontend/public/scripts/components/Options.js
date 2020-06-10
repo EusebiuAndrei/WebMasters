@@ -28,30 +28,25 @@ const Options = () => {
                             <button type="button" id="js-add-dataset">+</button>
                         </div>
 						<div id="js-chart-data">
-							${
-								visualType !== visualTypeEnum.MAP
-									? `
-								<label>
-									<span>Bucket Type</span>
-									<select name="bucketType" id="js-bucket" style="display: block;">
-										<option value="time" ${
-											visualType === visualTypeEnum.BAR_GRAPH
-												? 'selected'
-												: ''
-										}>Time</option>
-										<option value="column" ${
-											visualType === visualTypeEnum.MAP ||
-											visualType === visualTypeEnum.PIE_CHART
-												? 'selected'
-												: ''
-										}>Column</option>
-									</select>
-								</label>
+							<label>
+								<span>Bucket Type</span>
+								<select name="bucketType" id="js-bucket" style="display: block;">
+									<option value="time" ${
+										visualType === visualTypeEnum.BAR_GRAPH
+											? 'selected'
+											: ''
+									}>Time</option>
+									<option value="column" ${
+										visualType === visualTypeEnum.MAP ||
+										visualType === visualTypeEnum.PIE_CHART
+											? 'selected'
+											: ''
+									}>Column</option>
+								</select>
+							</label>
 
-								${inputData.bucketType === 'column' ? BucketColumn() : TimeChart()}
-							`
-									: ''
-							}
+							${inputData.bucketType === 'column' ? BucketColumn() : TimeChart()}
+					
                             
                             ${
 								visualType === visualTypeEnum.PIE_CHART
@@ -216,13 +211,20 @@ const addEventsListeners = () => {
 
 		const root = document.getElementById(`a-${StateManager.getState().visualType}`);
 
+		const errorBar = document.getElementById('js-error-bar');
+		if (errorBar) {
+			errorBar.remove();
+		}
+
 		if (datasets.length === 0) {
 			let chartLabels = [];
 			let chartDatasets = [];
 
 			try {
 				const {
+					success,
 					data: { labels, data },
+					error: err,
 				} = await api.getDataset(chartData);
 				chartLabels = labels;
 				chartDatasets.push({ name: 'Default name', data });
@@ -232,22 +234,30 @@ const addEventsListeners = () => {
 					data: chartDatasets,
 				};
 
-				// console.log('!!!!');
-				// console.log(fetchedData);
-				// console.log('!!!!');
-
-				// console.log('STATE', StateManager.getState());
 				StateManager.setFetchedData(fetchedData);
 				root.dispatchEvent(eventApplyForm);
-				// console.log('STATE', StateManager.getState());
 			} catch (error) {
-				// console.log('AAAAAAAA');
-				// console.trace(error);
+				const { error: err } = await api.getDataset(chartData);
+				if (
+					error.message === "Cannot read property 'labels' of undefined" &&
+					err
+				) {
+					error.message = err.message;
+				}
+				const errorBar = getDomElementFromDomString(
+					ErrorBar({
+						datasetName: 'No dataset',
+						errMsg: error.message,
+					}),
+				);
+				form.append(errorBar);
+
+				spinner.remove();
+				return;
 			}
 
 			return;
 		} else {
-			console.log('BBBBBBBBBBBBBBBBBBBBBBBBBB');
 			let chartLabels = [];
 			let chartDatasets = [];
 			for (const dataset of datasets) {
@@ -262,6 +272,10 @@ const addEventsListeners = () => {
 					chartLabels = labels;
 					chartDatasets.push({ name: dataset.name, data });
 				} catch (error) {
+					const { error: err } = await api.getDataset(chartData);
+					if (err) {
+						error.message = err.message;
+					}
 					const errorBar = getDomElementFromDomString(
 						ErrorBar({
 							datasetName: dataset.name,
@@ -279,15 +293,8 @@ const addEventsListeners = () => {
 				labels: chartLabels,
 				data: chartDatasets,
 			};
-
-			// console.log('!!!!');
-			// console.log(fetchedData);
-			// console.log('!!!!');
-
-			// console.log('STATE', StateManager.getState());
 			StateManager.setFetchedData(fetchedData);
 			root.dispatchEvent(eventApplyForm);
-			// console.log('STATE', StateManager.getState());
 		}
 
 		spinner.remove();

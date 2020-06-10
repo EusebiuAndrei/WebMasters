@@ -5,6 +5,9 @@ const url = require('url');
 const { enhanceReqAndRes } = require('./enhancers');
 const { tryRoute } = require('./helpers');
 
+const AccessProxy = require('./AccessProxy');
+const accessProxy = new AccessProxy(2, 2);
+
 const routes = {
 	GET: {},
 	POST: {},
@@ -27,16 +30,12 @@ exports.handle = async (req, res) => {
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
 	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Content-Length');
 
-	// console.log(req.headers);
-	// console.log(res.getHeaders());
-	// console.log(req.url);
-	// console.log(req.method);
-
 	// Handling CORS calls
 	if (req.method === 'OPTIONS') {
 		return res.end('CORS');
 	}
 
+	const reqAccess = accessProxy.makeRequest(req.headers.origin, new Date());
 	const { pathname } = url.parse(req.url, true);
 	const matchedPathname = matchPathname(req.method, pathname);
 
@@ -46,8 +45,15 @@ exports.handle = async (req, res) => {
 
 		// Api handler
 		if (root === 'api') {
-			// Fire the appropriate request handler
+			// Restrict access per time period
+			if (!reqAccess.success) {
+				return res.status(httpStatus.NOT_FOUND).json({
+					success: false,
+					error: { message: reqAccess.message },
+				});
+			}
 
+			// Fire the appropriate request handler
 			if (routes[req.method][matchedPathname]) {
 				return routes[req.method][matchedPathname](req, res);
 			}

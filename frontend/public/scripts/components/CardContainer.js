@@ -14,8 +14,7 @@ const CardContainer = () => {
     `;
 };
 
-const addEventsListeners = () => {
-};
+const addEventsListeners = () => {};
 
 export default CardContainer;
 export { addEventsListeners };
@@ -26,17 +25,20 @@ const founders = [
 		description:
 			'The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.',
 		role: 'Fullstack developer',
+		imgUrl: '../images/web-eusebiu.jpg',
 	},
 	{
 		name: 'Tudor Iacobescu',
 		description:
 			'The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.',
 		role: 'Fullstack developer',
+		imgUrl: '../images/web-tudor.jpg',
 	},
 	{
 		name: 'Bicu Daniel',
 		description:
 			'The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.',
 		role: 'Fullstack developer',
+		imgUrl: '../images/web-daniel.jpg',
 	},
 ];
