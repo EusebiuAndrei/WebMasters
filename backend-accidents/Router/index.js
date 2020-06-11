@@ -6,7 +6,7 @@ const { enhanceReqAndRes } = require('./enhancers');
 const { tryRoute } = require('./helpers');
 
 const AccessProxy = require('./AccessProxy');
-const accessProxy = new AccessProxy(2, 2);
+const accessProxy = new AccessProxy(2, 200);
 
 const routes = {
 	GET: {},
