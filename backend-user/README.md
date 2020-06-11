@@ -35,7 +35,7 @@ e.g. (response) :
 	"data": {
 		"user": {
 			"_id": "5ee2089c06579041c2d6b5c2",
-			"email": "danielbicu@gmail.com",
+			"email": "user.name@gmail.com",
 			"__v": 1
 		},
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWUyMDg5YzA2NTc5MDQxYzJkNmI1YzIiLCJpYXQiOjE1OTE4NzE2NDR9.0ic0r0-lOOPD-s8Fg8Uo2u7fTG65U-rwjFAYUCPZnWo"
