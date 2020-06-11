@@ -4,19 +4,19 @@ const Footer = () => {
 		<div class ="footer-container">
 			<a href="/" class="footer-container__txtlogo">AVi</a>
 			<div class ="footer-container__text">
-				<a class="footer-container__text__link" href="https://github.com/EusebiuAndrei/WebMasters?fbclid=IwAR2Fl0EMIOE5SiHdBAGeWWetPoBOaPG0EaJ6GDHlBcwZiGGRiDUS8n8j7e8">
+				<a class="footer-container__text__link" target="_blank" href="https://github.com/EusebiuAndrei/WebMasters?fbclid=IwAR2Fl0EMIOE5SiHdBAGeWWetPoBOaPG0EaJ6GDHlBcwZiGGRiDUS8n8j7e8">
 				Github
 				</a>
-				<a class="footer-container__text__link" href="https://profs.info.uaic.ro/~andrei.panu/">
+				<a class="footer-container__text__link" target="_blank" href="https://profs.info.uaic.ro/~andrei.panu/">
 				Coordinating professor
 				</a>
-				<a class="footer-container__text__link" href="https://www.kaggle.com/sobhanmoosavi/us-accidents">
+				<a class="footer-container__text__link" target="_blank" href="https://www.kaggle.com/sobhanmoosavi/us-accidents">
 				Data source
 				</a>
-				<a class="footer-container__text__link" href="https://github.com/EusebiuAndrei/WebMasters/blob/master/backend-accidents/README.md">
+				<a class="footer-container__text__link" target="_blank" href="https://github.com/EusebiuAndrei/WebMasters/blob/master/backend-accidents/README.md">
 				Public API documentation
 				</a>
-				<a class="footer-container__text__link" href="/docs">
+				<a class="footer-container__text__link"href="/docs">
 				Project documentation
 				</a>
 
@@ -34,8 +34,7 @@ const Footer = () => {
 	`;
 };
 
-const addEventsListeners = () => {
-};
+const addEventsListeners = () => {};
 
 export default Footer;
 export { addEventsListeners };
