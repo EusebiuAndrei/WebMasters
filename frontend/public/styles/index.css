@@ -784,7 +784,8 @@ label ~ p {
     flex: 1 1 auto;
     display: block;
     max-width: 100%;
-    height: 300px; }
+    height: 300px;
+    height: 250px !important; }
     @media (min-width: 500px) {
       .card__imageProfile {
         height: 150px; } }
