@@ -2,11 +2,6 @@ import statesData from './us-states.js';
 import { statesHash } from '../constants.js';
 
 export const intializeMap = ({ labels, data } = {}) => {
-	console.log(labels);
-	console.log(data[0].data);
-
-	console.log(statesData.features instanceof Array);
-
 	// get some data
 	const states = statesData.features.map((feature) => {
 		const abv = statesHash.find(
@@ -29,8 +24,6 @@ export const intializeMap = ({ labels, data } = {}) => {
 			numberOfCrimes: value,
 		};
 	});
-
-	console.log(states);
 
 	// Set boundaries for color selection
 	let sum, min, max, avg, avgMin, avgMax;
@@ -81,9 +74,8 @@ export const intializeMap = ({ labels, data } = {}) => {
 	// method that we will use to update the control based on feature properties passed
 	info.update = function(props) {
 		this._div.innerHTML =
-			'<h4>US Population Density</h4>' +
 			(props
-				? '<b>' + props.name + '<br />' + props.numberOfCrimes + ' crimes'
+				? '<b>' + props.name + '<br />' + props.numberOfCrimes
 				: 'Hover over a state');
 	};
 

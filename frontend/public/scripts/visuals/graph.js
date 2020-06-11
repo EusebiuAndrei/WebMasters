@@ -1,7 +1,6 @@
 import { randomColor } from '../utils/index.js';
 
 export const initializeGraph = ({ data, labels }) => {
-	console.log('~~~~~~~~', labels);
 	const ctx = document.getElementById('chart');
 	const chart = new Chart(ctx, {
 		type: 'bar',
