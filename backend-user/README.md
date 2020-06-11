@@ -10,7 +10,38 @@ accidents from the database
 (`CR`-creation, `U` - update, `D` - delete ).
 
 In order to use this route you need an authorization token which can be obtained after
-registration at route: .........
+registration is done successfuly at route: `POST $HOST/api/users`. The registration part
+needs a `body` part for the POST request which should be completed with the credentials
+for the account: email and password (don't worry about the password, it will be encrypted
+before it will be stored in database.)
+
+e.g. :
+
+```json
+{
+	"email": "user.name@gmail.com",
+	"password": "poo92321L;;"
+}
+```
+
+The response will be an JSON with data you've completed (without password), in addition to
+this you will get an ID and an authorization token (JWT-JsonWebToken).
+
+e.g. (response) :
+
+```json
+{
+	"success": true,
+	"data": {
+		"user": {
+			"_id": "5ee2089c06579041c2d6b5c2",
+			"email": "danielbicu@gmail.com",
+			"__v": 1
+		},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWUyMDg5YzA2NTc5MDQxYzJkNmI1YzIiLCJpYXQiOjE1OTE4NzE2NDR9.0ic0r0-lOOPD-s8Fg8Uo2u7fTG65U-rwjFAYUCPZnWo"
+	}
+}
+```
 
 ### Headers
 
