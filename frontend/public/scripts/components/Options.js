@@ -423,7 +423,7 @@ const computeDatasetsObjectFromDom = (form) => {
 				// Use what Tudor gave
 				filter.value = value;
 			} else {
-				filter.value = parseInt(value);
+				filter.value = value;
 			}
 
 			dataset.filters.push(filter);

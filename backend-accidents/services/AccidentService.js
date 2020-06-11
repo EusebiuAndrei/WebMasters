@@ -36,6 +36,22 @@ function groupBuilder({ bucketType, bucketColumn, timeChart, valueType }) {
 }
 
 function filterIntoMatch({ column, constraint, value }) {
+	let dateValue;
+	if (['startTime', 'endTime', 'weatherTimestamp'].includes(column)) {
+		if (value instanceof Array) {
+			dateValue = value.map((it) => new Date(it));
+		} else {
+			dateValue = new Date(value);
+		}
+	}
+
+	if (dateValue) {
+		return {
+			[column]: {
+				[`$${constraint}`]: dateValue,
+			},
+		};
+	}
 	return {
 		[column]: {
 			[`$${constraint}`]: value,
@@ -93,7 +109,7 @@ class AccidentService {
 					success: false,
 					error: {
 						message:
-							'\'query\' parameter does not contain valid URI-encoded JSON string',
+							"'query' parameter does not contain valid URI-encoded JSON string",
 					},
 				};
 			}
