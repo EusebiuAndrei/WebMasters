@@ -23,22 +23,22 @@ const founders = [
 	{
 		name: 'Gagea Eusebiu-Andrei',
 		description:
-			'The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.',
-		role: 'Fullstack developer',
+			'Surprisingly, beyond all odds, actually likes front-end. Pretty handy with JavaScript.',
+		role: 'https://github.com/EusebiuAndrei',
 		imgUrl: '../images/web-eusebiu.jpg',
 	},
 	{
 		name: 'Tudor Iacobescu',
 		description:
-			'The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.',
-		role: 'Fullstack developer',
+			'Likes UX/UI, but not front-end. Feels comfortable behind the scenes.',
+		role: 'https://github.com/limelier',
 		imgUrl: '../images/web-tudor.jpg',
 	},
 	{
-		name: 'Bicu Daniel',
+		name: 'Bîcu Daniel',
 		description:
-			'The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.',
-		role: 'Fullstack developer',
+			"Uses tabs instead of spaces, but he claims it's by accident.",
+		role: 'https://github.com/DanBicu',
 		imgUrl: '../images/web-daniel.jpg',
 	},
 ];
