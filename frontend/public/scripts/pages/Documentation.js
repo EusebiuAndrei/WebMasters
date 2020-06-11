@@ -104,8 +104,9 @@ const Documentation = () => {
 			</li>
 			<li>
         		<p>
-        		<b>Daniel</b> a lucrat la back-end-ul de useri, respectiv a continuat back-end-ul accidentelor cu rutele
-        		de CRUD. În afară de asta, el a lucrat și la reprezentări și exportarea lor.
+        		<b>Daniel</b> a lucrat la back-end-ul de useri și a continuat back-end-ul accidentelor cu rutele
+        		de Create, Read, Update și Delete, pe \/records. În afară de asta, el a lucrat și la reprezentări și 
+        		exportarea lor.
         		</p>
 			</li>
 		</ul>
