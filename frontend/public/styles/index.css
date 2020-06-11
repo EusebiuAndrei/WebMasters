@@ -1039,8 +1039,26 @@ label ~ p {
 .container__pie {
   border: 2px solid #3b4754;
   padding-top: 20px;
+  margin: 0 auto;
+  width: 80%;
   margin-bottom: 4em; }
+  @media (max-width: 992px) {
+    .container__pie {
+      width: 70%;
+      margin: 0 auto; } }
   .container__pie__chart {
     margin-top: 15%; }
+
+@media (max-width: 992px) {
+  .container__bar {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto; } }
+
+@media (max-width: 992px) {
+  .container__map {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto; } }
 
 /*# sourceMappingURL=index.css.map */
