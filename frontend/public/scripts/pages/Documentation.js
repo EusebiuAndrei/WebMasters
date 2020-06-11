@@ -82,16 +82,33 @@ const Documentation = () => {
       <section>
         <h3>Împărțirea cerințelor</h3>
         <p>
-          În general, ne-am împărțit pe diverse bucăți ale proiectului în orice moment, dar am lucrat flexibil, de
-          multe ori intrând unul peste codul mai vechi al celuilalt pentru a face o îmbunătățire, a rezolva o problemă,
-          etc. Așadar, este greu de spus "cine a făcut ce" cu exactitate.
+          În multe cazuri, ne-am împărțit în multe task-uri mici în loc de câteva mai mari, lucrând împreună la multe
+          componente. Dacă ar fi să luăm în considerare cine este cel mai responsabil de părțile principale ale
+          aplicației, o posibilă împărțire ar fi următoarea:
         </p>
-        <p>
-          În linii mari, totuși, scheletul aplicației a fost alcătuit de Eusebiu și eventual împărțit de Tudor; pentru
-          componentele grafice, am lucrat fiecare la câteva componente, cu toate că odată cu evoluția proiectului multe
-          dintre ele au fost înlocuite sau scoase din aplicație. API-ul pentru datele din reprezentări a fost făcut de
-          Tudor, iar cel pentru accesarea accidentelor individuale de către Daniel.
-        </p>
+        <ul>
+        	<li>
+        		<p>
+        		<b>Eusebiu</b> a făcut structura de bază a aplicației, punând la punct sisteme ca routerul și modul în 
+        		care paginile sunt construite dinamic. Mai mult, cu toate că componentele de interfață au fost 
+        		împărțite, el le-a pus pe toate cap la cap, iar funcționarea părții de front a personalizării 
+        		reprezentărilor a fost în mare munca sa.
+        		</p>
+			</li>
+			<li>
+        		<p>
+        		<b>Tudor</b> a lucrat la back-end-ul accidentelor, la structura modelului și a bazei de date,
+        		respectiv controllerele, schemele și serviciile aferente rutei \/accidents\/chart\_data. În rest,
+        		contribuția sa a fost în mare pe design și code quality.
+        		</p>
+			</li>
+			<li>
+        		<p>
+        		<b>Daniel</b> a lucrat la back-end-ul de useri, respectiv a continuat back-end-ul accidentelor cu rutele
+        		de CRUD. În afară de asta, el a lucrat și la reprezentări și exportarea lor.
+        		</p>
+			</li>
+		</ul>
       </section>
       <section>
         <h3>Tehnologii utilizate</h3>
