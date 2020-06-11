@@ -37,8 +37,8 @@ const founders = [
 	{
 		name: 'Bîcu Daniel',
 		description:
-			"Uses tabs instead of spaces, but he claims it's by accident.",
-		role: 'https://github.com/DanBicu',
+			"Passionate about statistics, but not fan of math. He uses tabs instead of spaces, but he claims it's by ACCIDENT.",
+		role: 'https://github.com/daniel-bicu',
 		imgUrl: '../images/web-daniel.jpg',
 	},
 ];
