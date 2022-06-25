@@ -16,7 +16,7 @@
     "http-status-codes": "^1.4.0",
     "leaflet": "^1.6.0",
     "moment": "^2.25.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "winston": "^3.2.1"
   },
   "devDependencies": {
